@@ -39,6 +39,11 @@
             vertical-align: middle !important;
         }
 
+        table>tr>th {
+            background: #415db5;
+            color: white !important;
+        }
+
         .bg-d-blue {
             background: #267ED6;
             color: white
