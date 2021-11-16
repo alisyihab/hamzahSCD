@@ -27,15 +27,15 @@ class SubSidebarController extends Controller
 
     public function index()
     {
-        $in_subsidebar = $this->subsidebarService->mendapatkanSeluruhData();
-        return compact("in_subsidebar");
+        $in_sub_sidebar = $this->subsidebarService->mendapatkanSeluruhData();
+        return compact("in_sub_sidebar");
     }
 
 
     public function show($id)
     {
-        $in_subsidebar = $this->subsidebarService->mendapatkanSatuData($id);
-        return compact("in_subsidebar");
+        $in_sub_sidebar = $this->subsidebarService->mendapatkanSatuData($id);
+        return compact("in_sub_sidebar");
     }
 
     public function create()
@@ -52,8 +52,9 @@ class SubSidebarController extends Controller
     }
     public function edit($id)
     {
-        $in_subsidebar = $this->subsidebarService->mendapatkanSatuData($id);
-        return compact("in_subsidebar");
+        $in_permission = $this->permissionService->mendapatkanSeluruhData();
+        $in_sub_sidebar = $this->subsidebarService->mendapatkanSatuData($id);
+        return compact("in_sub_sidebar", "in_permission");
     }
 
     public function update(Request $request, $id)

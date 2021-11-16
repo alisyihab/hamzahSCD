@@ -23,6 +23,12 @@ class SidebarService
         return Sidebar::where("status_sidebar", true)->orderBy('urutan_sidebar', "ASC");
     }
 
+
+    public function EloquentDataRelasiSubsidebar()
+    {
+        return $this->EloquentDataAktif()->with("getSubsidebar");
+    }
+
     private function EloquentData()
     {
         return Sidebar::orderBy('urutan_sidebar', "ASC");
@@ -33,12 +39,10 @@ class SidebarService
         return Sidebar::where("status_sidebar", false)->orderBy('urutan_sidebar', "ASC");
     }
 
-
     public function mendapatkanSeluruhData()
     {
         return $this->EloquentDataAktif()->get();
     }
-
 
     public function mendapatkanSeluruhDataPaginate($paginate)
     {
@@ -47,7 +51,12 @@ class SidebarService
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentDataAktif()->where($nama_kolom, $request->nama)->paginate($paginate);
+        return $this->EloquentDataAktif()->where($nama_kolom, 'ILIKE', '%' . $request . '%')->paginate($paginate);
+    }
+
+    public function mencariDataBerdasarkanKostumNonPaginate($nama_kolom, $request)
+    {
+        return $this->EloquentDataRelasiSubsidebar()->where($nama_kolom, 'ILIKE', '%' . $request . '%')->get();
     }
 
     public function mendapatkanSatuData($id)
@@ -62,7 +71,7 @@ class SidebarService
 
     public function mendapatkanSeluruhDataDenganRelasiSubsidebar()
     {
-        return $this->EloquentDataAktif()->with("getSubsidebar")->get();
+        return $this->EloquentDataRelasiSubsidebar()->get();
     }
 
     public function mendapatkanSeluruhDataDenganRelasiSubsidebarUserLogin($list_sidebar)

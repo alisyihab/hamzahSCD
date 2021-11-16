@@ -1,5 +1,5 @@
 const options = {
-    color: "#b66dff",
+    color: "#54A3F2",
     failedColor: "#874b4b",
     thickness: "10px",
     transition: {

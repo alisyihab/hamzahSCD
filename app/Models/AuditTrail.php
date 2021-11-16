@@ -10,6 +10,7 @@ class AuditTrail extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "kd_audit_trail";
     public function getCreator()
     {
         return $this->hasOne(User::class, "kd_user", 'fk_kd_user')->select("nama", "kd_user");

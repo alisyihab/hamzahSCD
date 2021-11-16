@@ -565,11 +565,11 @@ var render = function() {
                         }
                       },
                       [
-                        _c("option", { attrs: { value: "1" } }, [
+                        _c("option", { attrs: { value: "true" } }, [
                           _vm._v("Aktif")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "0" } }, [
+                        _c("option", { attrs: { value: "false" } }, [
                           _vm._v("Nonaktif")
                         ])
                       ]

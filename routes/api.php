@@ -16,10 +16,13 @@ Route::post("/login-app", [AutentikasiController::class, "loginDefault"])->name(
 
 
 Route::middleware(['auth:api', "akses"])->group(function () {
+
+    Route::get("/sidebar/pencarian", [SidebarController::class, "search"])->name('sidebar.search');
     Route::apiResources(['/sidebar' => SidebarController::class], [
         'only' => ["index", "create", "edit", "show", "store", "update", "destroy"]
     ]);
 
+    Route::get("/role/pencarian", [RoleController::class, "search"])->name('role.search');
     Route::apiResources(['/role' => RoleController::class], [
         'only' => ["index", "show", "store", "update", "destroy"]
     ]);
@@ -31,7 +34,7 @@ Route::middleware(['auth:api', "akses"])->group(function () {
 
     Route::get("/permission/pencarian", [PermissionController::class, "search"])->name('permission.search');
     Route::apiResources(['/permission' => PermissionController::class], [
-        'only' => ["index",  "show",]
+        'only' => ["index",  "show", "destroy"]
     ]);
 
 
@@ -40,6 +43,8 @@ Route::middleware(['auth:api', "akses"])->group(function () {
         'only' => ["index", "create", "edit", "show", "store", "update", "destroy"]
     ]);
 
+
+
     route::prefix("role-permission")->name("role-permission.")->group(function () {
         Route::get("{kd_role}", [KelolaRolePermissionController::class, "index"])->name('index');
         Route::get("{kd_role}/pencarian", [KelolaRolePermissionController::class, "search"])->name('search');
@@ -47,11 +52,10 @@ Route::middleware(['auth:api', "akses"])->group(function () {
         Route::delete("{kd_impl_permission}", [KelolaRolePermissionController::class, "destroy"])->name('destroy');
     });
 
+    Route::get("/audit-trail/pencarian", [AuditTrailController::class, "search"])->name('audit-trail.search');
     Route::apiResources(['audit-trail' => AuditTrailController::class], [
         'only' => ["index",  "show"]
     ]);
-
-    Route::resource('aplikasi', AplikasiController::class);
 });
 
 

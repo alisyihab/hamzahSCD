@@ -63,6 +63,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -96,10 +102,18 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$Progress.start();
-      axios.get(this.$api_sub_sidebar + "/" + this.kd_sub_sidebar).then(function (respon) {
+      axios.get(this.$api_sub_sidebar + "/" + this.kd_sub_sidebar + "/edit").then(function (respon) {
         _this.$Progress.finish();
 
+        _this.in_permission = respon.data.in_permission;
+
+        var permission_selected = _this.in_permission.map(function (e) {
+          return e.route_url;
+        }).indexOf("kelola-user.index");
+
         _this.form.fill(respon.data.in_sub_sidebar);
+
+        _this.form.data_permission = _this.in_permission[permission_selected];
       })["catch"](function (e) {
         _this.$Progress.fail();
 
@@ -349,11 +363,11 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "1" } }, [
+                      _c("option", { attrs: { value: "true" } }, [
                         _vm._v("Aktif")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "0" } }, [
+                      _c("option", { attrs: { value: "false" } }, [
                         _vm._v("Nonaktif")
                       ])
                     ]
@@ -379,7 +393,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-dark btn-block btn-sm",
+          staticClass: "btn btn-dark btn-block btn-sm btn-submit-data",
           attrs: { type: "submit" }
         },
         [_vm._v("Simpan")]

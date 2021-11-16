@@ -10,7 +10,13 @@
                   <th>Nama Route</th>
                   <td>
                      <div>
-                        <multiselect v-model="form.data_permission" @input="setNameToForm" :options="in_permission" track-by="route_url" label="nama_route" ></multiselect>
+                        <multiselect
+                           v-model="form.data_permission"
+                           @input="setNameToForm"
+                           :options="in_permission"
+                           track-by="route_url"
+                           label="nama_route"
+                        ></multiselect>
                      </div>
                      <!-- <select class="form-control" required v-model="form.data_permission">
                         <option
@@ -18,7 +24,7 @@
                            v-for=" (pemission,i)  in  in_permission"
                            :key="i"
                         >{{pemission.nama_route}}</option>
-                     </select> -->
+                     </select>-->
                   </td>
                </tr>
                <tr>
@@ -36,15 +42,15 @@
                   <th>Status</th>
                   <td>
                      <select class="form-control" v-model="form.status_sub_sidebar" required>
-                        <option value="1">Aktif</option>
-                        <option value="0">Nonaktif</option>
+                        <option value="true">Aktif</option>
+                        <option value="false">Nonaktif</option>
                      </select>
                   </td>
                </tr>
             </table>
 
             <div class="my-2">
-               <button type="submit" class="btn btn-dark btn-block btn-sm">Simpan</button>
+               <button type="submit" class="btn btn-dark btn-block btn-sm btn-submit-data">Simpan</button>
             </div>
          </form>
       </div>
@@ -76,16 +82,26 @@ export default {
       }
    },
    methods: {
-      setNameToForm(){
-         this.form.nama_sub_sidebar = this.form.data_permission["nama_route"]
+      setNameToForm() {
+         this.form.nama_sub_sidebar = this.form.data_permission["nama_route"];
       },
       load_if_edit() {
          this.$Progress.start();
          axios
-            .get(this.$api_sub_sidebar + "/" + this.kd_sub_sidebar)
+            .get(this.$api_sub_sidebar + "/" + this.kd_sub_sidebar + "/edit")
             .then(respon => {
                this.$Progress.finish();
+               this.in_permission = respon.data.in_permission;
+               let permission_selected = this.in_permission
+                  .map(function(e) {
+                     return e.route_url;
+                  })
+                  .indexOf("kelola-user.index");
+
                this.form.fill(respon.data.in_sub_sidebar);
+               this.form.data_permission = this.in_permission[
+                  permission_selected
+               ];
             })
             .catch(e => {
                this.$Progress.fail();
@@ -105,7 +121,7 @@ export default {
                this.$error.catch(e);
             });
       },
-    
+
       submit() {
          this.form
             .post(this.$api_sub_sidebar)

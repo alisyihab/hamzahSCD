@@ -15,34 +15,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "navbar",
   data: function data() {
@@ -138,59 +110,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-dark text-white" }, [
-    _c("div", { staticClass: "container-fluid py-2" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col col-md als" }, [
-          _c("div", { staticClass: "f5-fz font-weight-bolder" }, [
-            _vm._v(_vm._s(_vm.nama_aplikasi))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col col-md-3 col-lg-2 als" }, [
-          _c("div", { staticClass: "row " }, [
-            _c("div", { staticClass: "col" }, [
-              _c(
-                "div",
-                { staticClass: "my-1" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "text-white btn btn-block btn-sm",
-                      attrs: { to: { name: "home" } }
-                    },
-                    [_vm._v("Home")]
-                  )
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c(
-                "div",
-                { staticClass: "my-1" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "text-white btn btn-block btn-sm",
-                      attrs: { to: { name: "login" } }
-                    },
-                    [_vm._v("login")]
-                  )
-                ],
-                1
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("asdf")])])
+  }
+]
 render._withStripped = true
 
 

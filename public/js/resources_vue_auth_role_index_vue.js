@@ -108,9 +108,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      isPencarian: false,
       in_role: {},
       cari_data: "",
       canDoStore: true,
@@ -149,7 +154,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.$Progress.start();
-      axios.get("/api/role?cari_data=" + this.cari_data).then(function (respon) {
+      axios.get("/api/role/pencarian?cari=" + this.cari_data).then(function (respon) {
+        _this2.isPencarian = true;
+
         _this2.$Progress.finish();
 
         _this2.in_role = respon.data.in_role;
@@ -164,6 +171,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$Progress.start();
       axios.get("/api/role").then(function (respon) {
+        _this3.isPencarian = false;
+
         _this3.$Progress.finish();
 
         _this3.in_role = respon.data.in_role;
@@ -362,7 +371,29 @@ var render = function() {
                 : _vm._e()
             ])
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _vm.isPencarian
+          ? _c("section", [
+              _vm._v(
+                "\n            Hasil Dari : " +
+                  _vm._s(_vm.cari_data) +
+                  "\n            "
+              ),
+              _c(
+                "div",
+                {
+                  staticClass: "text-blue cp",
+                  on: {
+                    click: function($event) {
+                      return _vm.load_role()
+                    }
+                  }
+                },
+                [_vm._v("Reset")]
+              )
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "py-2" }, [

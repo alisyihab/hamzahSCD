@@ -40,11 +40,19 @@
                   <th class="px-3 align-middle">Nama Route</th>
                   <th class="px-3 align-middle">Nama Grup</th>
                   <th class="px-3 align-middle">Route URL</th>
+                  <th class="px-3 align-middle"></th>
                </tr>
                <tr v-for="(permission,i) in in_permission" :key="i">
                   <td class="px-3 align-middle">{{permission.nama_route}}</td>
                   <td class="px-3 align-middle">{{permission.nama_grup}}</td>
                   <td class="px-3 align-middle">{{permission.route_url}}</td>
+                  <td width="25" class="ox-3 align-middle">
+                     <i
+                        class="fa fa-trash text-danger"
+                        @click="hapus(permission.kd_permission)"
+                        aria-hidden="true"
+                     ></i>
+                  </td>
                </tr>
             </table>
          </div>

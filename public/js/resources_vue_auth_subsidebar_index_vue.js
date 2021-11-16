@@ -82,6 +82,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -332,44 +333,48 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "btn-group" }, [
-                    _vm._m(1, true),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "dropdown-menu dropdown-menu-right" },
-                      [
-                        _vm.canDoUpdate
-                          ? _c(
-                              "a",
-                              {
-                                staticClass: "dropdown-item",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.edit(sub_sidebar)
+                  _c("td", [
+                    _c("div", { staticClass: "btn-group" }, [
+                      _vm._m(1, true),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "dropdown-menu dropdown-menu-right" },
+                        [
+                          _vm.canDoUpdate
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.edit(sub_sidebar)
+                                    }
                                   }
-                                }
-                              },
-                              [_vm._v("Edit")]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.canDoDestroy
-                          ? _c(
-                              "a",
-                              {
-                                staticClass: "dropdown-item",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.hapus(sub_sidebar.kd_sub_sidebar)
+                                },
+                                [_vm._v("Edit")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.canDoDestroy
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.hapus(
+                                        sub_sidebar.kd_sub_sidebar
+                                      )
+                                    }
                                   }
-                                }
-                              },
-                              [_vm._v("Hapus")]
-                            )
-                          : _vm._e()
-                      ]
-                    )
+                                },
+                                [_vm._v("Hapus")]
+                              )
+                            : _vm._e()
+                        ]
+                      )
+                    ])
                   ])
                 ])
               }),

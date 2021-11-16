@@ -126,9 +126,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      isPencarian: false,
       in_sidebar: {},
       cari_data: "",
       grup_url: ""
@@ -189,7 +194,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.$Progress.start();
-      axios.get(this.$api_sidebar + "?cari_data=" + this.cari_data).then(function (respon) {
+      this.isPencarian = true;
+      axios.get(this.$api_sidebar + "/pencarian?cari=" + this.cari_data).then(function (respon) {
         _this3.$Progress.finish();
 
         _this3.in_sidebar = respon.data.in_sidebar;
@@ -202,6 +208,7 @@ __webpack_require__.r(__webpack_exports__);
     load_sidebar: function load_sidebar() {
       var _this4 = this;
 
+      this.isPencarian = false;
       this.$Progress.start();
       axios.get(this.$api_sidebar).then(function (respon) {
         _this4.$Progress.finish();
@@ -402,7 +409,29 @@ var render = function() {
                 ])
               ])
             : _vm._e()
-        ])
+        ]),
+        _vm._v(" "),
+        _vm.isPencarian
+          ? _c("section", [
+              _vm._v(
+                "\n            Hasil Dari : " +
+                  _vm._s(_vm.cari_data) +
+                  "\n            "
+              ),
+              _c(
+                "div",
+                {
+                  staticClass: "text-blue cp",
+                  on: {
+                    click: function($event) {
+                      return _vm.load_sidebar()
+                    }
+                  }
+                },
+                [_vm._v("Reset")]
+              )
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "py-2 table-responsive" }, [

@@ -2090,7 +2090,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "app",
   components: {
@@ -2541,7 +2540,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var options = {
-  color: "#b66dff",
+  color: "#54A3F2",
   failedColor: "#874b4b",
   thickness: "10px",
   transition: {
@@ -2688,7 +2687,7 @@ var routes = [{
   },
   name: "subsidebar.store"
 }, {
-  path: "/sidebar/:kd_sidebar/subsidebar/:kd_subsidebar",
+  path: "/sidebar/:kd_sidebar/subsidebar/:kd_sub_sidebar",
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_vue_auth_subsidebar_create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../../vue/auth/subsidebar/create.vue */ "./resources/vue/auth/subsidebar/create.vue"));
   },
@@ -43261,12 +43260,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "app" }, [
-    _c(
-      "div",
-      { staticClass: "py-3" },
-      [_c("router-view"), _vm._v(" "), _c("vue-progress-bar")],
-      1
-    )
+    _c("div", [_c("router-view"), _vm._v(" "), _c("vue-progress-bar")], 1)
   ])
 }
 var staticRenderFns = []

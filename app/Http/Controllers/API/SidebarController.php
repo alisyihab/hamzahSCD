@@ -29,6 +29,12 @@ class SidebarController extends Controller
         return compact("in_sidebar");
     }
 
+    public function search(Request $request)
+    {
+        $in_sidebar = $this->sidebarService->mencariDataBerdasarkanKostumNonPaginate("nama_sidebar", $request->cari);
+        return compact("in_sidebar");
+    }
+
     public function edit($id)
     {
         $in_sidebar = $this->sidebarService->mendapatkanSatuDataDenganRelasiSubsidebar($id);

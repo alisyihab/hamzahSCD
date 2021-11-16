@@ -22,6 +22,12 @@ class AuditTrailController extends Controller
         return compact("in_audit_trail");
     }
 
+    public function search(Request $request)
+    {
+        $in_audit_trail = $this->auditTrailService->mencariDataBerdasarkanKostum("nama_form", $request->cari, $this->paginate);
+        return compact("in_audit_trail");
+    }
+
     public function show($id)
     {
         $in_audit_trail = $this->auditTrailService->mendapatkanSatuData($id);

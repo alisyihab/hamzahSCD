@@ -64,6 +64,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -342,7 +350,23 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", { staticClass: "px-3 align-middle" }, [
                   _vm._v(_vm._s(permission.route_url))
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "ox-3 align-middle", attrs: { width: "25" } },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-trash text-danger",
+                      attrs: { "aria-hidden": "true" },
+                      on: {
+                        click: function($event) {
+                          return _vm.hapus(permission.kd_permission)
+                        }
+                      }
+                    })
+                  ]
+                )
               ])
             })
           ],
@@ -394,7 +418,9 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Nama Grup")]),
       _vm._v(" "),
-      _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Route URL")])
+      _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Route URL")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "px-3 align-middle" })
     ])
   }
 ]

@@ -85,8 +85,8 @@
                      <th class="px-3 align-middle">Status Users</th>
                      <td class="px-3 align-middle">
                         <select v-model="form.status_user" required class="form-control">
-                           <option value="1">Aktif</option>
-                           <option value="0">Nonaktif</option>
+                           <option value="true">Aktif</option>
+                           <option value="false">Nonaktif</option>
                         </select>
                      </td>
                   </tr>

@@ -44,7 +44,7 @@ class AuditTrailService extends Controller
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentData()->where($nama_kolom, 'LIKE', '%' . $request . '%')->paginate($paginate);
+        return $this->EloquentData()->where($nama_kolom, 'ILIKE', '%' . $request . '%')->paginate($paginate);
     }
 
     public function mendapatkanSatuData($id)
@@ -68,9 +68,9 @@ class AuditTrailService extends Controller
     {
         $model->fk_kd_user = $this->authGetKdUser();
         $model->nama_form = $request["nama_form"];
-        $model->nama_field = json_encode($request["nama_field"]);
-        $model->value_sebelumnya = json_encode($request["value_sebelumnya"]);
-        $model->value_terbaru = json_encode($request["value_terbaru"]);
+        $model->nama_field = json_encode($request["nama_field"] ??  ["(Tidak merubah apa apa )"]);
+        $model->value_sebelumnya = json_encode($request["value_sebelumnya"] ??  ["(Tidak merubah apa apa )"]);
+        $model->value_terbaru = json_encode($request["value_terbaru"] ??  ["(Tidak merubah apa apa )"]);
         $model->jenis_kegiatan = $request["jenis_kegiatan"];
         $model->save();
         return $model;

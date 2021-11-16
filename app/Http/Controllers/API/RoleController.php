@@ -25,6 +25,12 @@ class RoleController extends Controller
         return compact("in_role");
     }
 
+    public function search(Request $request)
+    {
+        $in_role = $this->roleService->mencariDataBerdasarkanKostum("nama_role", $request->cari, $this->paginate);
+        return compact("in_role");
+    }
+
     public function show($id)
     {
         $in_role = $this->roleService->mendapatkanSatuData($id);
@@ -38,7 +44,7 @@ class RoleController extends Controller
 
     public function edit()
     {
-       return null;
+        return null;
     }
 
     public function store(Request $request)

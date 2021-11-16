@@ -32,7 +32,7 @@
                               class="btn btn-outline-dark btn-block btn-sm"
                            >Export role</button>
                         </div>
-                     </div> -->
+                     </div>-->
                      <div class="col-sm" v-if="canDoStore">
                         <div class="my-2">
                            <router-link
@@ -44,6 +44,10 @@
                   </div>
                </div>
             </div>
+            <section v-if="isPencarian">
+               Hasil Dari : {{cari_data}}
+               <div class="text-blue cp" @click="load_role()">Reset</div>
+            </section>
          </div>
          <div class="py-2">
             <table class="table table-hover">
@@ -99,6 +103,7 @@
 export default {
    data() {
       return {
+         isPencarian: false,
          in_role: {},
          cari_data: "",
          canDoStore: true,
@@ -131,8 +136,9 @@ export default {
       pencarian() {
          this.$Progress.start();
          axios
-            .get("/api/role?cari_data=" + this.cari_data)
+            .get("/api/role/pencarian?cari=" + this.cari_data)
             .then(respon => {
+               this.isPencarian = true;
                this.$Progress.finish();
                this.in_role = respon.data.in_role;
             })
@@ -146,6 +152,7 @@ export default {
          axios
             .get("/api/role")
             .then(respon => {
+               this.isPencarian = false;
                this.$Progress.finish();
                this.in_role = respon.data.in_role;
             })

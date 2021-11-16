@@ -36,7 +36,7 @@ const routes = [
         name: "subsidebar.store"
     },
     {
-        path: "/sidebar/:kd_sidebar/subsidebar/:kd_subsidebar",
+        path: "/sidebar/:kd_sidebar/subsidebar/:kd_sub_sidebar",
         component: () => import("../../vue/auth/subsidebar/create.vue"),
         name: "subsidebar.update"
     },

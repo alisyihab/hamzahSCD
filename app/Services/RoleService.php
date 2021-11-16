@@ -31,7 +31,7 @@ class RoleService extends Controller
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentData()->where($nama_kolom, $request->nama)->paginate($paginate);
+        return $this->EloquentData()->where($nama_kolom, "ILIKE", "%" . $request . "%")->paginate($paginate);
     }
 
     public function mendapatkanSatuData($id)

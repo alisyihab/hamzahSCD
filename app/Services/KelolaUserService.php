@@ -42,7 +42,7 @@ class KelolaUserService extends Controller
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentDataAktif()->where($nama_kolom, "LIKE", '%' . $request . '%')->paginate($paginate);
+        return $this->EloquentDataAktif()->where($nama_kolom, "ILIKE", '%' . $request . '%')->paginate($paginate);
     }
 
     public function mendapatkanSatuData($id)

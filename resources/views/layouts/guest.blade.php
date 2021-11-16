@@ -1,4 +1,4 @@
-<div class="bg-dark text-white">
+{{-- <div class="bg-dark text-white">
     <div class="container-fluid py-2">
         <div class="row">
             <div class="col col-md als">
@@ -21,5 +21,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <app></app>

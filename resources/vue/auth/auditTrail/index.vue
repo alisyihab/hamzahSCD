@@ -23,27 +23,11 @@
                      </span>
                   </div>
                </div>
-               <!-- <div class="col-sm-5"> -->
-               <!-- <div class="row">
-                     <div class="col-sm">
-                        <div class="my-2">
-                           <button
-                              @click="export_all()"
-                              class="btn btn-outline-dark btn-block btn-sm"
-                           >Export Audit Trail</button>
-                        </div>
-                     </div>
-                     <div class="col-sm" v-if="canDoStore">
-                        <div class="my-2">
-                           <router-link
-                              to="/audit-trail/create"
-                              class="btn btn-dark btn-block btn-sm"
-                           >Tambah Audit Trail</router-link>
-                        </div>
-               </div>-->
-               <!-- </div> -->
-               <!-- </div> -->
             </div>
+            <section v-if="isPencarian">
+               Hasil Dari : {{cari_data}}
+               <div class="text-blue cp" @click="load()">Reset</div>
+            </section>
          </div>
          <div class="py-2">
             <table class="table table-hover">
@@ -119,6 +103,7 @@
 export default {
    data() {
       return {
+         isPencarian: false,
          isEditableData: false,
          in_audit_trail: {},
          cari_data: "",
@@ -158,8 +143,9 @@ export default {
       pencarian() {
          this.$Progress.start();
          axios
-            .get("/api/audit-trail?cari_data=" + this.cari_data)
+            .get("/api/audit-trail/pencarian?cari=" + this.cari_data)
             .then(respon => {
+               this.isPencarian = true;
                this.$Progress.finish();
                this.in_audit_trail = respon.data.in_audit_trail;
             })
@@ -169,6 +155,7 @@ export default {
             });
       },
       load() {
+         this.isPencarian = false;
          this.$Progress.start();
          axios
             .get(this.$api_audit_trail)

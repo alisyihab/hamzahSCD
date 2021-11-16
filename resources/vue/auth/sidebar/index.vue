@@ -36,6 +36,10 @@
                   </div>
                </div>
             </div>
+            <section v-if="isPencarian">
+               Hasil Dari : {{cari_data}}
+               <div class="text-blue cp" @click="load_sidebar()">Reset</div>
+            </section>
          </div>
 
          <div class="py-2 table-responsive">
@@ -117,6 +121,7 @@
 export default {
    data() {
       return {
+         isPencarian: false,
          in_sidebar: {},
          cari_data: "",
          grup_url: ""
@@ -168,8 +173,9 @@ export default {
       },
       pencarian() {
          this.$Progress.start();
+         this.isPencarian = true;
          axios
-            .get(this.$api_sidebar + "?cari_data=" + this.cari_data)
+            .get(this.$api_sidebar + "/pencarian?cari=" + this.cari_data)
             .then(respon => {
                this.$Progress.finish();
                this.in_sidebar = respon.data.in_sidebar;
@@ -180,6 +186,7 @@ export default {
             });
       },
       load_sidebar() {
+         this.isPencarian = false;
          this.$Progress.start();
          axios
             .get(this.$api_sidebar)

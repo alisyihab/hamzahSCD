@@ -50,19 +50,20 @@ $in_sidebar = [
 <aside class="main-sidebar sidebar-light-lime ">
     {{-- {{ $in_sidebars }} --}}
 
-    <a href="#" class="brand-link">
-        <img src="/file/default/amr.png" alt="AdminLTE Logo" class="brand-image">
-        <span class="brand-text font-weight-bolder">AMR APP</span>
+    <a href="#" class="brand-link gr-bg-d-blue text-white">
+        <img src="/file/default/data.png" alt="Data Center" class="brand-image">
+        <span class="brand-text font-weight-bolder">Data Center</span>
     </a>
-    <div class="sidebar">
+    <div class="sidebar  gr-bg-d-blue">
         @auth
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="user-panel  mt-3 pb-3 mb-3 d-flex">
                 <div class="image " style="align-self: center;">
-                    <i class="fa fa-user-circle img-circle align-middle fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-user-circle img-circle text-white align-middle fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block font-weight-bolder"> {{ substr(auth()->user()->nama, 0, 15) }} </a>
-                    <small class="d-block  badge badge-dark font-weight-bold">
+                    <a href="#" class="d-block font-weight-bolder text-white"> {{ substr(auth()->user()->nama, 0, 15) }}
+                    </a>
+                    <small class="d-block  badge badge-light font-weight-bold">
                         {{ auth()->user()->email }}
                     </small>
                 </div>
@@ -73,7 +74,7 @@ $in_sidebar = [
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <router-link to="/dashboard " class="nav-link text-gray">
+                    <router-link to="/dashboard " class="nav-link text-white">
                         <i class="nav-icon fa fa-home  "></i>
                         <p>
                             Halaman Utama
@@ -84,34 +85,34 @@ $in_sidebar = [
                 @foreach ($in_sidebars as $data_sidebar)
 
                     @if (count($data_sidebar['get_sub_sidebar']) > 0)
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link text-gray ">
-                            <i class="nav-icon fa {{ $data_sidebar['icon_sidebar'] }} "></i>
-                            <p>
-                                {{ $data_sidebar['nama_sidebar'] }}
-                                <i class="right fa fa-angle-left"></i>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link text-white ">
+                                <i class="nav-icon fa {{ $data_sidebar['icon_sidebar'] }} "></i>
+                                <p>
+                                    {{ $data_sidebar['nama_sidebar'] }}
+                                    <i class="right fa fa-angle-left"></i>
 
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
 
-                            @foreach ($data_sidebar['get_sub_sidebar'] as $route)
-                                <li class="nav-item ">
-                                    <router-link :to="{name:'{{ $route['fk_nama_permission'] }}'}"
-                                        class="nav-link text-gray">
+                                @foreach ($data_sidebar['get_sub_sidebar'] as $route)
+                                    <li class="nav-item ">
+                                        <router-link :to="{name:'{{ $route['fk_nama_permission'] }}'}"
+                                            class="nav-link text-white">
 
-                                        <p>{{ $route['nama_sub_sidebar'] }}</p>
-                                    </router-link>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
+                                            <p>{{ $route['nama_sub_sidebar'] }}</p>
+                                        </router-link>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                     @endif
                 @endforeach
 
                 @auth
                     <li class="nav-item">
-                        <a href=" {{ route('logout') }} " class="nav-link"
+                        <a href=" {{ route('logout') }} " class="nav-link text-white"
                             onclick="event.preventDefault(); document.getElementById('logoutForm').submit()">
                             <i class="nav-icon fa fa-power-off text-danger"></i>
                             <p>

@@ -32,11 +32,41 @@
         .cp {
             cursor: pointer;
         }
-        
+
         table>thead>tr>th,
         table>tbody>tr>td {
             padding: 0.5em 1em !important;
             vertical-align: middle !important;
+        }
+
+        .bg-d-blue {
+            background: #267ED6;
+            color: white
+        }
+
+        .gr-bg-d-blue {
+            background: #1e3c72;
+            background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);
+            background: linear-gradient(to right, #2a5298, #1e3c72);
+        }
+
+        .gr-bg-d-blue-tl {
+            background: #1e3c72;
+            background: -webkit-linear-gradient(to left, #2a5298, #1e3c72);
+            background: linear-gradient(to left, #2a5298, #1e3c72);
+        }
+
+        .brand-link {
+            border-bottom: 1px solid #1E67AF !important;
+        }
+
+        .sidebar-light {
+            border: none !important;
+        }
+
+
+        .user-panel {
+            border-bottom: 1px solid #1E67AF !important;
         }
 
     </style>

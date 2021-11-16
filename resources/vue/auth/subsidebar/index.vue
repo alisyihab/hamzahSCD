@@ -36,14 +36,15 @@
                      <td>{{sub_sidebar.nama_sub_sidebar}}</td>
                      <td>{{sub_sidebar.status_sub_sidebar | STATUS}}</td>
                      <td width="25">
-                           <input
-                              type="text"
-                              class="form-control text-center"
-                              :value="sub_sidebar.urutan_sub_sidebar"
-                              @change="updateUrutan"
-                              :id=" sub_sidebar.kd_sub_sidebar"
-                           />
+                        <input
+                           type="text"
+                           class="form-control text-center"
+                           :value="sub_sidebar.urutan_sub_sidebar"
+                           @change="updateUrutan"
+                           :id=" sub_sidebar.kd_sub_sidebar"
+                        />
                      </td>
+                     <td>
                         <div class="btn-group">
                            <button class="btn btn-sm" type="button" data-toggle="dropdown">
                               <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
