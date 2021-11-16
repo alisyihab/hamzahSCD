@@ -392,7 +392,7 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "py-2" }, [
+      _c("div", { staticClass: "py-2 table-responsive" }, [
         _c(
           "table",
           { staticClass: "table table-hover" },

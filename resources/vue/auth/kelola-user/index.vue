@@ -37,7 +37,7 @@
                <div class="text-blue cp" @click="load_kelola_user()">Reset</div>
             </section>
          </div>
-         <div class="py-2">
+         <div class="py-2 table-responsive">
             <table class="table table-hover">
                <tr>
                   <th>#</th>
