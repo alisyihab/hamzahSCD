@@ -47,6 +47,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -238,39 +240,41 @@ var render = function() {
             },
             [
               _c("table", { staticClass: "table table-borderless" }, [
-                _c("tr", [
-                  _c("th", { staticClass: "px-3 align-middle" }, [
-                    _vm._v("Nama Role")
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.nama_role,
-                          expression: "form.nama_role"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        required: "",
-                        id: "nama_role",
-                        maxlength: "50",
-                        minlength: "1"
-                      },
-                      domProps: { value: _vm.form.nama_role },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { staticClass: "px-3 align-middle" }, [
+                      _vm._v("Nama Role")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.nama_role,
+                            expression: "form.nama_role"
                           }
-                          _vm.$set(_vm.form, "nama_role", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          required: "",
+                          id: "nama_role",
+                          maxlength: "50",
+                          minlength: "1"
+                        },
+                        domProps: { value: _vm.form.nama_role },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "nama_role", $event.target.value)
+                          }
                         }
-                      }
-                    })
+                      })
+                    ])
                   ])
                 ])
               ]),

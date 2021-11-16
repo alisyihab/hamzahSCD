@@ -69,6 +69,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -265,113 +267,115 @@ var render = function() {
           },
           [
             _c("table", { staticClass: "table table-borderless" }, [
-              _c("tr", [
-                _c("th", [_vm._v("Nama Route")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "div",
-                    [
-                      _c("multiselect", {
-                        attrs: {
-                          options: _vm.in_permission,
-                          "track-by": "route_url",
-                          label: "nama_route"
-                        },
-                        on: { input: _vm.setNameToForm },
-                        model: {
-                          value: _vm.form.data_permission,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "data_permission", $$v)
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Nama Route")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "div",
+                      [
+                        _c("multiselect", {
+                          attrs: {
+                            options: _vm.in_permission,
+                            "track-by": "route_url",
+                            label: "nama_route"
                           },
-                          expression: "form.data_permission"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("th", [_vm._v("Nama subsidebar")]),
+                          on: { input: _vm.setNameToForm },
+                          model: {
+                            value: _vm.form.data_permission,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "data_permission", $$v)
+                            },
+                            expression: "form.data_permission"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.nama_sub_sidebar,
-                        expression: "form.nama_sub_sidebar"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", required: "" },
-                    domProps: { value: _vm.form.nama_sub_sidebar },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.form,
-                          "nama_sub_sidebar",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("th", [_vm._v("Status")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "select",
-                    {
+                _c("tr", [
+                  _c("th", [_vm._v("Nama subsidebar")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.status_sub_sidebar,
-                          expression: "form.status_sub_sidebar"
+                          value: _vm.form.nama_sub_sidebar,
+                          expression: "form.nama_sub_sidebar"
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { required: "" },
+                      attrs: { type: "text", required: "" },
+                      domProps: { value: _vm.form.nama_sub_sidebar },
                       on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
                           _vm.$set(
                             _vm.form,
-                            "status_sub_sidebar",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            "nama_sub_sidebar",
+                            $event.target.value
                           )
                         }
                       }
-                    },
-                    [
-                      _c("option", { attrs: { value: "true" } }, [
-                        _vm._v("Aktif")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "false" } }, [
-                        _vm._v("Nonaktif")
-                      ])
-                    ]
-                  )
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Status")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.status_sub_sidebar,
+                            expression: "form.status_sub_sidebar"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "status_sub_sidebar",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "true" } }, [
+                          _vm._v("Aktif")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "false" } }, [
+                          _vm._v("Nonaktif")
+                        ])
+                      ]
+                    )
+                  ])
                 ])
               ])
             ]),

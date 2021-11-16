@@ -13,83 +13,85 @@
          <div class="py-2 container">
             <form @submit.prevent="kd_user == null ? add() : update() ">
                <table class="table table-borderless">
-                  <tr>
-                     <th class="px-3 align-middle">Nama</th>
-                     <td class="px-3 align-middle">
-                        <input
-                           type="text"
-                           v-model="form.nama"
-                           required
-                           class="form-control"
-                           id="nama"
-                           maxlength="50"
-                           minlength="1"
-                        />
-                     </td>
-                  </tr>
-                  <tr>
-                     <th class="px-3 align-middle">Username</th>
-                     <td class="px-3 align-middle">
-                        <input
-                           type="text"
-                           v-model="form.username"
-                           required
-                           class="form-control"
-                           id="username"
-                           maxlength="100"
-                           minlength="1"
-                        />
-                     </td>
-                  </tr>
-                  <tr>
-                     <th class="px-3 align-middle">Email</th>
-                     <td class="px-3 align-middle">
-                        <input
-                           type="text"
-                           v-model="form.email"
-                           required
-                           class="form-control"
-                           id="email"
-                           maxlength="100"
-                           minlength="1"
-                        />
-                     </td>
-                  </tr>
-                  <tr v-if="this.kd_user == null">
-                     <th class="px-3 align-middle">Password</th>
-                     <td class="px-3 align-middle">
-                        <input
-                           type="text"
-                           v-model="form.password"
-                           required
-                           class="form-control"
-                           id="password"
-                           maxlength="100"
-                           minlength="1"
-                        />
-                     </td>
-                  </tr>
-                  <tr>
-                     <th class="px-3 align-middle">role</th>
-                     <td class="px-3 align-middle">
-                        <select v-model="form.role" required class="form-control">
-                           <option
-                              v-for="(role,i) in  in_role"
-                              :key="i"
-                              :value="role.kd_role"
-                           >{{role.nama_role}}</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <th class="px-3 align-middle">Status Users</th>
-                     <td class="px-3 align-middle">
-                        <select v-model="form.status_user" required class="form-control">
-                           <option value="true">Aktif</option>
-                           <option value="false">Nonaktif</option>
-                        </select>
-                     </td>
-                  </tr>
+                  <thead>
+                     <tr>
+                        <th class="px-3 align-middle">Nama</th>
+                        <td class="px-3 align-middle">
+                           <input
+                              type="text"
+                              v-model="form.nama"
+                              required
+                              class="form-control"
+                              id="nama"
+                              maxlength="50"
+                              minlength="1"
+                           />
+                        </td>
+                     </tr>
+                     <tr>
+                        <th class="px-3 align-middle">Username</th>
+                        <td class="px-3 align-middle">
+                           <input
+                              type="text"
+                              v-model="form.username"
+                              required
+                              class="form-control"
+                              id="username"
+                              maxlength="100"
+                              minlength="1"
+                           />
+                        </td>
+                     </tr>
+                     <tr>
+                        <th class="px-3 align-middle">Email</th>
+                        <td class="px-3 align-middle">
+                           <input
+                              type="text"
+                              v-model="form.email"
+                              required
+                              class="form-control"
+                              id="email"
+                              maxlength="100"
+                              minlength="1"
+                           />
+                        </td>
+                     </tr>
+                     <tr v-if="this.kd_user == null">
+                        <th class="px-3 align-middle">Password</th>
+                        <td class="px-3 align-middle">
+                           <input
+                              type="text"
+                              v-model="form.password"
+                              required
+                              class="form-control"
+                              id="password"
+                              maxlength="100"
+                              minlength="1"
+                           />
+                        </td>
+                     </tr>
+                     <tr>
+                        <th class="px-3 align-middle">role</th>
+                        <td class="px-3 align-middle">
+                           <select v-model="form.role" required class="form-control">
+                              <option
+                                 v-for="(role,i) in  in_role"
+                                 :key="i"
+                                 :value="role.kd_role"
+                              >{{role.nama_role}}</option>
+                           </select>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th class="px-3 align-middle">Status Users</th>
+                        <td class="px-3 align-middle">
+                           <select v-model="form.status_user" required class="form-control">
+                              <option value="true">Aktif</option>
+                              <option value="false">Nonaktif</option>
+                           </select>
+                        </td>
+                     </tr>
+                  </thead>
                </table>
                <button class="btn btn-block btn-dark" type="submit">Simpan Kelola User</button>
             </form>

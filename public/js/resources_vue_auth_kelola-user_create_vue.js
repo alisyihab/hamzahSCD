@@ -110,6 +110,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -324,256 +326,258 @@ var render = function() {
             },
             [
               _c("table", { staticClass: "table table-borderless" }, [
-                _c("tr", [
-                  _c("th", { staticClass: "px-3 align-middle" }, [
-                    _vm._v("Nama")
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { staticClass: "px-3 align-middle" }, [
+                      _vm._v("Nama")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.nama,
+                            expression: "form.nama"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          required: "",
+                          id: "nama",
+                          maxlength: "50",
+                          minlength: "1"
+                        },
+                        domProps: { value: _vm.form.nama },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "nama", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.nama,
-                          expression: "form.nama"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        required: "",
-                        id: "nama",
-                        maxlength: "50",
-                        minlength: "1"
-                      },
-                      domProps: { value: _vm.form.nama },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("tr", [
+                    _c("th", { staticClass: "px-3 align-middle" }, [
+                      _vm._v("Username")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.username,
+                            expression: "form.username"
                           }
-                          _vm.$set(_vm.form, "nama", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          required: "",
+                          id: "username",
+                          maxlength: "100",
+                          minlength: "1"
+                        },
+                        domProps: { value: _vm.form.username },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "username", $event.target.value)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", { staticClass: "px-3 align-middle" }, [
-                    _vm._v("Username")
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.username,
-                          expression: "form.username"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        required: "",
-                        id: "username",
-                        maxlength: "100",
-                        minlength: "1"
-                      },
-                      domProps: { value: _vm.form.username },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("tr", [
+                    _c("th", { staticClass: "px-3 align-middle" }, [
+                      _vm._v("Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.email,
+                            expression: "form.email"
                           }
-                          _vm.$set(_vm.form, "username", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          required: "",
+                          id: "email",
+                          maxlength: "100",
+                          minlength: "1"
+                        },
+                        domProps: { value: _vm.form.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "email", $event.target.value)
+                          }
                         }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", { staticClass: "px-3 align-middle" }, [
-                    _vm._v("Email")
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _c("input", {
-                      directives: [
+                  this.kd_user == null
+                    ? _c("tr", [
+                        _c("th", { staticClass: "px-3 align-middle" }, [
+                          _vm._v("Password")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "px-3 align-middle" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.password,
+                                expression: "form.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              required: "",
+                              id: "password",
+                              maxlength: "100",
+                              minlength: "1"
+                            },
+                            domProps: { value: _vm.form.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { staticClass: "px-3 align-middle" }, [
+                      _vm._v("role")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _c(
+                        "select",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.email,
-                          expression: "form.email"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        required: "",
-                        id: "email",
-                        maxlength: "100",
-                        minlength: "1"
-                      },
-                      domProps: { value: _vm.form.email },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "email", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                this.kd_user == null
-                  ? _c("tr", [
-                      _c("th", { staticClass: "px-3 align-middle" }, [
-                        _vm._v("Password")
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "px-3 align-middle" }, [
-                        _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.password,
-                              expression: "form.password"
+                              value: _vm.form.role,
+                              expression: "form.role"
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            required: "",
-                            id: "password",
-                            maxlength: "100",
-                            minlength: "1"
-                          },
-                          domProps: { value: _vm.form.password },
+                          attrs: { required: "" },
                           on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
                               _vm.$set(
                                 _vm.form,
-                                "password",
-                                $event.target.value
+                                "role",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               )
                             }
                           }
-                        })
-                      ])
+                        },
+                        _vm._l(_vm.in_role, function(role, i) {
+                          return _c(
+                            "option",
+                            { key: i, domProps: { value: role.kd_role } },
+                            [_vm._v(_vm._s(role.nama_role))]
+                          )
+                        }),
+                        0
+                      )
                     ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", { staticClass: "px-3 align-middle" }, [
-                    _vm._v("role")
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.role,
-                            expression: "form.role"
+                  _c("tr", [
+                    _c("th", { staticClass: "px-3 align-middle" }, [
+                      _vm._v("Status Users")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.status_user,
+                              expression: "form.status_user"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { required: "" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "status_user",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
                           }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { required: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "role",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.in_role, function(role, i) {
-                        return _c(
-                          "option",
-                          { key: i, domProps: { value: role.kd_role } },
-                          [_vm._v(_vm._s(role.nama_role))]
-                        )
-                      }),
-                      0
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", { staticClass: "px-3 align-middle" }, [
-                    _vm._v("Status Users")
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.status_user,
-                            expression: "form.status_user"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { required: "" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "status_user",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "true" } }, [
-                          _vm._v("Aktif")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "false" } }, [
-                          _vm._v("Nonaktif")
-                        ])
-                      ]
-                    )
+                        },
+                        [
+                          _c("option", { attrs: { value: "true" } }, [
+                            _vm._v("Aktif")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "false" } }, [
+                            _vm._v("Nonaktif")
+                          ])
+                        ]
+                      )
+                    ])
                   ])
                 ])
               ]),

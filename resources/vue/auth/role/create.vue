@@ -13,20 +13,22 @@
          <div class="py-2 container">
             <form @submit.prevent="id == null ? add() : update() ">
                <table class="table table-borderless">
-                  <tr>
-                     <th class="px-3 align-middle">Nama Role</th>
-                     <td class="px-3 align-middle">
-                        <input
-                           type="text"
-                           v-model="form.nama_role"
-                           required
-                           class="form-control"
-                           id="nama_role"
-                           maxlength="50"
-                           minlength="1"
-                        />
-                     </td>
-                  </tr>
+                  <thead>
+                     <tr>
+                        <th class="px-3 align-middle">Nama Role</th>
+                        <td class="px-3 align-middle">
+                           <input
+                              type="text"
+                              v-model="form.nama_role"
+                              required
+                              class="form-control"
+                              id="nama_role"
+                              maxlength="50"
+                              minlength="1"
+                           />
+                        </td>
+                     </tr>
+                  </thead>
                </table>
                <button class="btn btn-block btn-dark" type="submit">Simpan role</button>
             </form>

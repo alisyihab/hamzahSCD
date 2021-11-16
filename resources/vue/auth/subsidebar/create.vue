@@ -6,47 +6,49 @@
          <hr />
          <form @submit.prevent="isEdit ? update() : submit() ">
             <table class="table table-borderless">
-               <tr>
-                  <th>Nama Route</th>
-                  <td>
-                     <div>
-                        <multiselect
-                           v-model="form.data_permission"
-                           @input="setNameToForm"
-                           :options="in_permission"
-                           track-by="route_url"
-                           label="nama_route"
-                        ></multiselect>
-                     </div>
-                     <!-- <select class="form-control" required v-model="form.data_permission">
+               <thead>
+                  <tr>
+                     <th>Nama Route</th>
+                     <td>
+                        <div>
+                           <multiselect
+                              v-model="form.data_permission"
+                              @input="setNameToForm"
+                              :options="in_permission"
+                              track-by="route_url"
+                              label="nama_route"
+                           ></multiselect>
+                        </div>
+                        <!-- <select class="form-control" required v-model="form.data_permission">
                         <option
                            :value="pemission.id"
                            v-for=" (pemission,i)  in  in_permission"
                            :key="i"
                         >{{pemission.nama_route}}</option>
-                     </select>-->
-                  </td>
-               </tr>
-               <tr>
-                  <th>Nama subsidebar</th>
-                  <td>
-                     <input
-                        type="text"
-                        class="form-control"
-                        required
-                        v-model="form.nama_sub_sidebar"
-                     />
-                  </td>
-               </tr>
-               <tr>
-                  <th>Status</th>
-                  <td>
-                     <select class="form-control" v-model="form.status_sub_sidebar" required>
-                        <option value="true">Aktif</option>
-                        <option value="false">Nonaktif</option>
-                     </select>
-                  </td>
-               </tr>
+                        </select>-->
+                     </td>
+                  </tr>
+                  <tr>
+                     <th>Nama subsidebar</th>
+                     <td>
+                        <input
+                           type="text"
+                           class="form-control"
+                           required
+                           v-model="form.nama_sub_sidebar"
+                        />
+                     </td>
+                  </tr>
+                  <tr>
+                     <th>Status</th>
+                     <td>
+                        <select class="form-control" v-model="form.status_sub_sidebar" required>
+                           <option value="true">Aktif</option>
+                           <option value="false">Nonaktif</option>
+                        </select>
+                     </td>
+                  </tr>
+               </thead>
             </table>
 
             <div class="my-2">
