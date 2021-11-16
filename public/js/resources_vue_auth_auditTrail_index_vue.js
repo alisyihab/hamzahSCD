@@ -112,6 +112,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -297,8 +300,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "bg-white rounded border" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "bg-white box-shadow-1 border-radius-10" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row py-3" }, [
           _vm._m(0),
@@ -378,166 +381,178 @@ var render = function() {
                 [_vm._v("Reset")]
               )
             ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "py-2" }, [
-        _c(
-          "table",
-          { staticClass: "table table-hover" },
-          [
-            _c("tr", [
-              _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Jenis")]),
-              _vm._v(" "),
-              _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Form")]),
-              _vm._v(" "),
-              _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Trace")]),
-              _vm._v(" "),
-              _c("th", { staticClass: "px-3 align-middle" }, [_vm._v("Aktor")]),
-              _vm._v(" "),
-              _c("th", { staticClass: "px-3 align-middle text-center" }, [
-                _vm._v("Waktu")
-              ]),
-              _vm._v(" "),
-              _vm.isEditableData
-                ? _c("th", { staticClass: "px-3 align-middle text-center" }, [
-                    _c("i", { staticClass: "fa fa-ellipsis-v" })
-                  ])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.in_audit_trail.data, function(audit_trail, i) {
-              return _c("tr", { key: i }, [
-                _c(
-                  "td",
-                  { staticClass: "px-3 align-middle", attrs: { width: "25" } },
-                  [_vm._v(_vm._s(audit_trail.jenis_kegiatan))]
-                ),
-                _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(audit_trail.nama_form))
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-2" }, [
+          _c(
+            "table",
+            { staticClass: "table table-hover" },
+            [
+              _c("tr", [
+                _c("th", { staticClass: "px-3 align-middle" }, [
+                  _vm._v("Jenis")
                 ]),
                 _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _c(
-                    "table",
-                    { staticClass: "table-sm table table-bordered" },
-                    [
-                      _vm._m(1, true),
-                      _vm._v(" "),
-                      _vm._l(JSON.parse(audit_trail.nama_field), function(
-                        nama_field,
-                        i
-                      ) {
-                        return _c("tr", { key: i }, [
-                          _c("td", { staticClass: "small" }, [
-                            _vm._v(_vm._s(nama_field))
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "small" }, [
-                            _vm._v(
-                              _vm._s(
-                                JSON.parse(audit_trail.value_sebelumnya)[i]
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "small" }, [
-                            _vm._v(
-                              _vm._s(JSON.parse(audit_trail.value_terbaru)[i])
-                            )
-                          ])
-                        ])
-                      })
-                    ],
-                    2
-                  )
+                _c("th", { staticClass: "px-3 align-middle" }, [
+                  _vm._v("Form")
                 ]),
                 _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(audit_trail.get_creator.nama))
+                _c("th", { staticClass: "px-3 align-middle" }, [
+                  _vm._v("Trace")
                 ]),
                 _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle text-center" }, [
-                  _vm._v(
-                    _vm._s(
-                      _vm
-                        .$date(audit_trail.created_at)
-                        .format("dddd, DD/MMM/YY HH:mm")
-                    )
-                  )
+                _c("th", { staticClass: "px-3 align-middle" }, [
+                  _vm._v("Aktor")
+                ]),
+                _vm._v(" "),
+                _c("th", { staticClass: "px-3 align-middle text-center" }, [
+                  _vm._v("Waktu")
                 ]),
                 _vm._v(" "),
                 _vm.isEditableData
-                  ? _c(
-                      "td",
-                      {
-                        staticClass: "px-3 align-middle text-center",
-                        attrs: { width: "25" }
-                      },
-                      [
-                        _c("div", { staticClass: "btn-group" }, [
-                          _vm._m(2, true),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "dropdown-menu dropdown-menu-right"
-                            },
-                            [
-                              _vm.canDoUpdate
-                                ? _c(
-                                    "router-link",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: {
-                                        to:
-                                          "audit-trail/create/" + audit_trail.id
-                                      }
-                                    },
-                                    [_vm._v("Edit")]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.canDoDestroy
-                                ? _c(
-                                    "div",
-                                    {
-                                      staticClass: "dropdown-item cp",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.hapus(audit_trail.id)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Delete")]
-                                  )
-                                : _vm._e()
-                            ],
-                            1
-                          )
-                        ])
-                      ]
-                    )
+                  ? _c("th", { staticClass: "px-3 align-middle text-center" }, [
+                      _c("i", { staticClass: "fa fa-ellipsis-v" })
+                    ])
                   : _vm._e()
-              ])
-            })
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c("pagination", {
-              staticClass: "mt-3",
-              attrs: { limit: 1, data: _vm.in_audit_trail },
-              on: { "pagination-change-page": _vm.loadPaginate }
-            })
-          ],
-          1
-        )
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.in_audit_trail.data, function(audit_trail, i) {
+                return _c("tr", { key: i }, [
+                  _c(
+                    "td",
+                    {
+                      staticClass: "px-3 align-middle",
+                      attrs: { width: "25" }
+                    },
+                    [_vm._v(_vm._s(audit_trail.jenis_kegiatan))]
+                  ),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(audit_trail.nama_form))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table-sm table table-bordered" },
+                      [
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _vm._l(JSON.parse(audit_trail.nama_field), function(
+                          nama_field,
+                          i
+                        ) {
+                          return _c("tr", { key: i }, [
+                            _c("td", { staticClass: "small" }, [
+                              _vm._v(_vm._s(nama_field))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "small" }, [
+                              _vm._v(
+                                _vm._s(
+                                  JSON.parse(audit_trail.value_sebelumnya)[i]
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "small" }, [
+                              _vm._v(
+                                _vm._s(JSON.parse(audit_trail.value_terbaru)[i])
+                              )
+                            ])
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(audit_trail.get_creator.nama))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle text-center" }, [
+                    _vm._v(
+                      _vm._s(
+                        _vm
+                          .$date(audit_trail.created_at)
+                          .format("dddd, DD/MMM/YY HH:mm")
+                      )
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.isEditableData
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "px-3 align-middle text-center",
+                          attrs: { width: "25" }
+                        },
+                        [
+                          _c("div", { staticClass: "btn-group" }, [
+                            _vm._m(2, true),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "dropdown-menu dropdown-menu-right"
+                              },
+                              [
+                                _vm.canDoUpdate
+                                  ? _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "dropdown-item",
+                                        attrs: {
+                                          to:
+                                            "audit-trail/create/" +
+                                            audit_trail.id
+                                        }
+                                      },
+                                      [_vm._v("Edit")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.canDoDestroy
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass: "dropdown-item cp",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.hapus(audit_trail.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Delete")]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            )
+                          ])
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "container" },
+            [
+              _c("pagination", {
+                staticClass: "mt-3",
+                attrs: { limit: 1, data: _vm.in_audit_trail },
+                on: { "pagination-change-page": _vm.loadPaginate }
+              })
+            ],
+            1
+          )
+        ])
       ])
     ])
   ])

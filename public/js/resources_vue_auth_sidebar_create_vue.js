@@ -70,6 +70,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -239,111 +241,131 @@ var render = function() {
           },
           [
             _c("table", { staticClass: "table table-borderless" }, [
-              _c("tr", [
-                _c("th", [_vm._v("Nama Sidebar")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.nama_sidebar,
-                        expression: "form.nama_sidebar"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", required: "", min: "1", max: "100" },
-                    domProps: { value: _vm.form.nama_sidebar },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "nama_sidebar", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("th", [_vm._v("Icon Sidebar")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.icon_sidebar,
-                        expression: "form.icon_sidebar"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", required: "", min: "1", max: "100" },
-                    domProps: { value: _vm.form.icon_sidebar },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "icon_sidebar", $event.target.value)
-                      }
-                    }
-                  }),
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Nama Sidebar")]),
                   _vm._v(" "),
-                  _vm._m(0)
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("th", [_vm._v("Status Sidebar")]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "select",
-                    {
+                  _c("td", [
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.status_sidebar,
-                          expression: "form.status_sidebar"
+                          value: _vm.form.nama_sidebar,
+                          expression: "form.nama_sidebar"
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { required: "" },
+                      attrs: {
+                        type: "text",
+                        required: "",
+                        min: "1",
+                        max: "100"
+                      },
+                      domProps: { value: _vm.form.nama_sidebar },
                       on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
                           _vm.$set(
                             _vm.form,
-                            "status_sidebar",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            "nama_sidebar",
+                            $event.target.value
                           )
                         }
                       }
-                    },
-                    [
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Aktif")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "0" } }, [
-                        _vm._v("Nonaktif")
-                      ])
-                    ]
-                  )
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Icon Sidebar")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.icon_sidebar,
+                          expression: "form.icon_sidebar"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        required: "",
+                        min: "1",
+                        max: "100"
+                      },
+                      domProps: { value: _vm.form.icon_sidebar },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.form,
+                            "icon_sidebar",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Status Sidebar")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.status_sidebar,
+                            expression: "form.status_sidebar"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "status_sidebar",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Aktif")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Nonaktif")
+                        ])
+                      ]
+                    )
+                  ])
                 ])
               ])
             ]),
@@ -363,7 +385,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("small", [
       _vm._v(
-        "\n                     Icon Menggunakan Font Awesome 4 , untuk daftar iconnya dapat dilihat\n                     "
+        "\n                        Icon Menggunakan Font Awesome 4 , untuk daftar iconnya dapat dilihat\n                        "
       ),
       _c(
         "a",

@@ -129,7 +129,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -326,8 +325,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "bg-white rounded border" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "bg-white box-shadow-1 border-radius-10" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row py-3" }, [
           _vm._m(0),
@@ -431,139 +430,139 @@ var render = function() {
                 [_vm._v("Reset")]
               )
             ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "py-2 table-responsive" }, [
-        _c(
-          "table",
-          { staticClass: "table table-hover" },
-          [
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._l(_vm.in_sidebar, function(sidebar, i) {
-              return _c("tr", { key: i }, [
-                _c("td", [_vm._v(_vm._s(i + 1))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(sidebar.nama_sidebar))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("i", {
-                    staticClass: "mr-2",
-                    class: "fa " + sidebar.icon_sidebar
-                  }),
-                  _vm._v(
-                    "\n                  " +
-                      _vm._s(sidebar.icon_sidebar) +
-                      "\n               "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", { attrs: { width: "25" } }, [
-                  _c("input", {
-                    staticClass: "form-control text-center",
-                    attrs: { type: "text", id: sidebar.kd_sidebar },
-                    domProps: { value: sidebar.urutan_sidebar },
-                    on: { change: _vm.updateUrutan }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(_vm._f("STATUS")(sidebar.status_sidebar)))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _vm._l(sidebar.get_subsidebar, function(subsidebar, i) {
-                      return _c("div", { key: i }, [
-                        _vm._v(_vm._s(subsidebar.nama_sub_sidebar))
-                      ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-2 table-responsive" }, [
+          _c(
+            "table",
+            { staticClass: "table table-hover" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._l(_vm.in_sidebar, function(sidebar, i) {
+                return _c("tr", { key: i }, [
+                  _c("td", [_vm._v(_vm._s(i + 1))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(sidebar.nama_sidebar))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("i", {
+                      staticClass: "mr-2",
+                      class: "fa " + sidebar.icon_sidebar
                     }),
-                    _vm._v(" "),
-                    sidebar.get_subsidebar.length == 0
-                      ? _c("div", [
-                          _c("i", { staticClass: "small" }, [
-                            _vm._v("Subsidebar Kosong")
-                          ])
-                        ])
-                      : _vm._e()
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("td", [
+                    _vm._v(
+                      "\n                     " +
+                        _vm._s(sidebar.icon_sidebar) +
+                        "\n                  "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { width: "25" } }, [
+                    _c("input", {
+                      staticClass: "form-control text-center",
+                      attrs: { type: "text", id: sidebar.kd_sidebar },
+                      domProps: { value: sidebar.urutan_sidebar },
+                      on: { change: _vm.updateUrutan }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm._f("STATUS")(sidebar.status_sidebar)))
+                  ]),
+                  _vm._v(" "),
                   _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-dark btn-block btn-sm",
-                      on: {
-                        click: function($event) {
-                          return _vm.tambah_sub(sidebar.kd_sidebar)
-                        }
-                      }
-                    },
+                    "td",
                     [
-                      _c("i", {
-                        staticClass: "fa fa-plus-circle mr-2",
-                        attrs: { "aria-hidden": "true" }
+                      _vm._l(sidebar.get_subsidebar, function(subsidebar, i) {
+                        return _c("div", { key: i }, [
+                          _vm._v(_vm._s(subsidebar.nama_sub_sidebar))
+                        ])
                       }),
-                      _vm._v(
-                        "\n                     Subsidebar\n                  "
-                      )
+                      _vm._v(" "),
+                      sidebar.get_subsidebar.length == 0
+                        ? _c("div", [
+                            _c("i", { staticClass: "small" }, [
+                              _vm._v("Subsidebar Kosong")
+                            ])
+                          ])
+                        : _vm._e()
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark btn-block btn-sm",
+                        on: {
+                          click: function($event) {
+                            return _vm.tambah_sub(sidebar.kd_sidebar)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-plus-circle mr-2",
+                          attrs: { "aria-hidden": "true" }
+                        }),
+                        _vm._v(
+                          "\n                        Subsidebar\n                     "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "text-center", attrs: { width: "25" } },
+                    [
+                      _c("div", { staticClass: "btn-group" }, [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "dropdown-menu dropdown-menu-right" },
+                          [
+                            _vm.$canDoUpdate
+                              ? _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: {
+                                      to: "sidebar/create/" + sidebar.kd_sidebar
+                                    }
+                                  },
+                                  [_vm._v("Edit")]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.$canDoDestroy
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "dropdown-item cp",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.hapus(sidebar.kd_sidebar)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Delete")]
+                                )
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ])
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "text-center", attrs: { width: "25" } },
-                  [
-                    _c("div", { staticClass: "btn-group" }, [
-                      _vm._m(2, true),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "dropdown-menu dropdown-menu-right" },
-                        [
-                          _vm.$canDoUpdate
-                            ? _c(
-                                "router-link",
-                                {
-                                  staticClass: "dropdown-item",
-                                  attrs: {
-                                    to: "sidebar/create/" + sidebar.kd_sidebar
-                                  }
-                                },
-                                [_vm._v("Edit")]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.$canDoDestroy
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass: "dropdown-item cp",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.hapus(sidebar.kd_sidebar)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Delete")]
-                              )
-                            : _vm._e()
-                        ],
-                        1
-                      )
-                    ])
-                  ]
-                )
-              ])
-            })
-          ],
-          2
-        )
+                ])
+              })
+            ],
+            2
+          )
+        ])
       ])
     ])
   ])

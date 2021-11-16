@@ -82,7 +82,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -277,33 +276,40 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "container" },
     [
       _c("kembali"),
       _vm._v(" "),
-      _c("div", { staticClass: "bg-white p-2 rounded border" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm col-md als" }, [
-            _c("div", { staticClass: "m-2 h5-font-size font-weight-bolder" }, [
-              _vm._v("Kelola Sidebar : " + _vm._s(_vm.in_sidebar.nama_sidebar))
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.canDoStore
-            ? _c("div", { staticClass: "col-sm col-md-4" }, [
-                _c("div", { staticClass: "m-2" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-block btn-sm btn-dark",
-                      on: { click: _vm.create_subsidebar }
-                    },
-                    [_vm._v("Tambah Subsidebar")]
-                  )
-                ])
+      _c(
+        "div",
+        { staticClass: "bg-white box-shadow-1 rounded border-radius-10 p-3" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm col-md als" }, [
+              _c("div", { staticClass: "m-2 f5-fz font-weight-bolder" }, [
+                _vm._v(
+                  "Kelola Sidebar : " + _vm._s(_vm.in_sidebar.nama_sidebar)
+                )
               ])
-            : _vm._e()
-        ])
-      ]),
+            ]),
+            _vm._v(" "),
+            _vm.canDoStore
+              ? _c("div", { staticClass: "col-sm col-md-4" }, [
+                  _c("div", { staticClass: "m-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-block btn-sm btn-dark",
+                        on: { click: _vm.create_subsidebar }
+                      },
+                      [_vm._v("Tambah Subsidebar")]
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "bg-white" }, [
         _c("div", { staticClass: "table-responsive" }, [
@@ -314,17 +320,19 @@ var render = function() {
               "tbody",
               _vm._l(_vm.in_sidebar.get_subsidebar, function(sub_sidebar, i) {
                 return _c("tr", { key: i }, [
-                  _c("td", [_vm._v(_vm._s(i + 1))]),
+                  _c("td", { staticClass: "px-3" }, [_vm._v(_vm._s(i + 1))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(sub_sidebar.nama_sub_sidebar))]),
+                  _c("td", { staticClass: "px-3" }, [
+                    _vm._v(_vm._s(sub_sidebar.nama_sub_sidebar))
+                  ]),
                   _vm._v(" "),
-                  _c("td", [
+                  _c("td", { staticClass: "px-3" }, [
                     _vm._v(
                       _vm._s(_vm._f("STATUS")(sub_sidebar.status_sub_sidebar))
                     )
                   ]),
                   _vm._v(" "),
-                  _c("td", { attrs: { width: "25" } }, [
+                  _c("td", { staticClass: "px-3", attrs: { width: "25" } }, [
                     _c("input", {
                       staticClass: "form-control text-center",
                       attrs: { type: "text", id: sub_sidebar.kd_sub_sidebar },
@@ -333,7 +341,7 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("td", [
+                  _c("td", { staticClass: "px-3" }, [
                     _c("div", { staticClass: "btn-group" }, [
                       _vm._m(1, true),
                       _vm._v(" "),
@@ -392,18 +400,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Urutan")]),
-        _vm._v(" "),
-        _c("th")
-      ])
+    return _c("tr", [
+      _c("th", { staticClass: "px-3" }, [_vm._v("#")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "px-3" }, [_vm._v("Nama")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "px-3" }, [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "text-center px-3" }, [_vm._v("Urutan")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "px-3" })
     ])
   },
   function() {

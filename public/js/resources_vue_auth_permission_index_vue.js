@@ -72,6 +72,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -247,8 +249,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "bg-white rounded border" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "bg-white box-shadow-1 border-radius-10" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row py-3" }, [
           _vm._m(0),
@@ -311,67 +313,74 @@ var render = function() {
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
-      _vm.isPencarian
-        ? _c("section", { staticClass: "container" }, [
-            _vm._v(
-              "\n         Hasil Dari : " + _vm._s(_vm.cari_data) + "\n         "
-            ),
-            _c(
-              "div",
-              {
-                staticClass: "text-blue cp",
-                on: {
-                  click: function($event) {
-                    return _vm.load_kelola_user()
+      _c("div", { staticClass: "container" }, [
+        _vm.isPencarian
+          ? _c("section", { staticClass: "container" }, [
+              _vm._v(
+                "\n            Hasil Dari : " +
+                  _vm._s(_vm.cari_data) +
+                  "\n            "
+              ),
+              _c(
+                "div",
+                {
+                  staticClass: "text-blue cp",
+                  on: {
+                    click: function($event) {
+                      return _vm.load_kelola_user()
+                    }
                   }
-                }
-              },
-              [_vm._v("Reset")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "py-2" }, [
-        _c(
-          "table",
-          { staticClass: "table table-hover" },
-          [
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._l(_vm.in_permission, function(permission, i) {
-              return _c("tr", { key: i }, [
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(permission.nama_route))
-                ]),
-                _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(permission.nama_grup))
-                ]),
-                _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(permission.route_url))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "ox-3 align-middle", attrs: { width: "25" } },
-                  [
-                    _c("i", {
-                      staticClass: "fa fa-trash text-danger",
-                      attrs: { "aria-hidden": "true" },
-                      on: {
-                        click: function($event) {
-                          return _vm.hapus(permission.kd_permission)
+                },
+                [_vm._v("Reset")]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-2" }, [
+          _c(
+            "table",
+            { staticClass: "table table-hover" },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._l(_vm.in_permission, function(permission, i) {
+                return _c("tr", { key: i }, [
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(permission.nama_route))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(permission.nama_grup))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(permission.route_url))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "ox-3 align-middle",
+                      attrs: { width: "25" }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-trash text-danger",
+                        attrs: { "aria-hidden": "true" },
+                        on: {
+                          click: function($event) {
+                            return _vm.hapus(permission.kd_permission)
+                          }
                         }
-                      }
-                    })
-                  ]
-                )
-              ])
-            })
-          ],
-          2
-        )
+                      })
+                    ]
+                  )
+                ])
+              })
+            ],
+            2
+          )
+        ])
       ])
     ])
   ])

@@ -1,7 +1,7 @@
 
 <template>
-   <div>
-      <div class="bg-white rounded border">
+   <div class="container">
+      <div class="bg-white box-shadow-1 border-radius-10">
          <div class="container">
             <div class="row py-3">
                <div class="col-sm als">
@@ -40,79 +40,78 @@
                Hasil Dari : {{cari_data}}
                <div class="text-blue cp" @click="load_sidebar()">Reset</div>
             </section>
-         </div>
-
-         <div class="py-2 table-responsive">
-            <table class="table table-hover">
-               <tr>
-                  <th>#</th>
-                  <th class>Nama</th>
-                  <th class>Icon</th>
-                  <th class>Urutan</th>
-                  <th class>Status</th>
-                  <th class>Subsidebar</th>
-                  <th class></th>
-                  <th class="text-center">
-                     <i class="fa fa-ellipsis-v"></i>
-                  </th>
-               </tr>
-               <tr v-for="(sidebar,i) in in_sidebar" :key="i">
-                  <td>{{i+1}}</td>
-                  <td>{{sidebar.nama_sidebar}}</td>
-                  <td>
-                     <i :class="'fa '+sidebar.icon_sidebar" class="mr-2"></i>
-                     {{sidebar.icon_sidebar}}
-                  </td>
-                  <td width="25">
-                     <input
-                        type="text"
-                        class="form-control text-center"
-                        :value="sidebar.urutan_sidebar"
-                        @change="updateUrutan"
-                        :id=" sidebar.kd_sidebar "
-                     />
-                  </td>
-                  <td>{{sidebar.status_sidebar | STATUS}}</td>
-                  <td>
-                     <div
-                        v-for="(subsidebar,i) in  sidebar.get_subsidebar"
-                        :key="i"
-                     >{{subsidebar.nama_sub_sidebar}}</div>
-                     <div v-if="sidebar.get_subsidebar.length == 0 ">
-                        <i class="small">Subsidebar Kosong</i>
-                     </div>
-                  </td>
-                  <td>
-                     <button
-                        class="btn btn-dark btn-block btn-sm"
-                        @click="tambah_sub(sidebar.kd_sidebar)"
-                     >
-                        <i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>
-                        Subsidebar
-                     </button>
-                  </td>
-
-                  <td class="text-center" width="25">
-                     <div class="btn-group">
-                        <button class="btn btn-sm" type="button" data-toggle="dropdown">
-                           <i class="fa fa-ellipsis-v"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                           <router-link
-                              v-if="$canDoUpdate"
-                              :to="'sidebar/create/'+sidebar.kd_sidebar"
-                              class="dropdown-item"
-                           >Edit</router-link>
-                           <div
-                              v-if="$canDoDestroy"
-                              class="dropdown-item cp"
-                              @click="hapus(sidebar.kd_sidebar)"
-                           >Delete</div>
+            <div class="py-2 table-responsive">
+               <table class="table table-hover">
+                  <tr>
+                     <th>#</th>
+                     <th class>Nama</th>
+                     <th class>Icon</th>
+                     <th class>Urutan</th>
+                     <th class>Status</th>
+                     <th class>Subsidebar</th>
+                     <th class></th>
+                     <th class="text-center">
+                        <i class="fa fa-ellipsis-v"></i>
+                     </th>
+                  </tr>
+                  <tr v-for="(sidebar,i) in in_sidebar" :key="i">
+                     <td>{{i+1}}</td>
+                     <td>{{sidebar.nama_sidebar}}</td>
+                     <td>
+                        <i :class="'fa '+sidebar.icon_sidebar" class="mr-2"></i>
+                        {{sidebar.icon_sidebar}}
+                     </td>
+                     <td width="25">
+                        <input
+                           type="text"
+                           class="form-control text-center"
+                           :value="sidebar.urutan_sidebar"
+                           @change="updateUrutan"
+                           :id=" sidebar.kd_sidebar "
+                        />
+                     </td>
+                     <td>{{sidebar.status_sidebar | STATUS}}</td>
+                     <td>
+                        <div
+                           v-for="(subsidebar,i) in  sidebar.get_subsidebar"
+                           :key="i"
+                        >{{subsidebar.nama_sub_sidebar}}</div>
+                        <div v-if="sidebar.get_subsidebar.length == 0 ">
+                           <i class="small">Subsidebar Kosong</i>
                         </div>
-                     </div>
-                  </td>
-               </tr>
-            </table>
+                     </td>
+                     <td>
+                        <button
+                           class="btn btn-dark btn-block btn-sm"
+                           @click="tambah_sub(sidebar.kd_sidebar)"
+                        >
+                           <i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>
+                           Subsidebar
+                        </button>
+                     </td>
+
+                     <td class="text-center" width="25">
+                        <div class="btn-group">
+                           <button class="btn btn-sm" type="button" data-toggle="dropdown">
+                              <i class="fa fa-ellipsis-v"></i>
+                           </button>
+                           <div class="dropdown-menu dropdown-menu-right">
+                              <router-link
+                                 v-if="$canDoUpdate"
+                                 :to="'sidebar/create/'+sidebar.kd_sidebar"
+                                 class="dropdown-item"
+                              >Edit</router-link>
+                              <div
+                                 v-if="$canDoDestroy"
+                                 class="dropdown-item cp"
+                                 @click="hapus(sidebar.kd_sidebar)"
+                              >Delete</div>
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
          </div>
       </div>
    </div>

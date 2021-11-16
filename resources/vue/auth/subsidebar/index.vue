@@ -1,11 +1,11 @@
 <template>
-   <div>
+   <div class="container">
       <kembali></kembali>
-      <div class="bg-white p-2 rounded border">
+      <div class="bg-white box-shadow-1 rounded border-radius-10 p-3">
          <div class="row">
             <div class="col-sm col-md als">
                <div
-                  class="m-2 h5-font-size font-weight-bolder"
+                  class="m-2 f5-fz font-weight-bolder"
                >Kelola Sidebar : {{in_sidebar.nama_sidebar}}</div>
             </div>
             <div class="col-sm col-md-4" v-if="canDoStore">
@@ -21,21 +21,20 @@
       <div class="bg-white">
          <div class="table-responsive">
             <table class="table-sm table-hover table">
-               <thead>
-                  <tr>
-                     <th>#</th>
-                     <th>Nama</th>
-                     <th>Status</th>
-                     <th class="text-center">Urutan</th>
-                     <th></th>
-                  </tr>
-               </thead>
+               <tr>
+                  <th class="px-3">#</th>
+                  <th class="px-3">Nama</th>
+                  <th class="px-3">Status</th>
+                  <th class="text-center px-3">Urutan</th>
+                  <th class="px-3"></th>
+               </tr>
+
                <tbody>
                   <tr v-for="(sub_sidebar,i)  in in_sidebar.get_subsidebar" :key="i">
-                     <td>{{i+1}}</td>
-                     <td>{{sub_sidebar.nama_sub_sidebar}}</td>
-                     <td>{{sub_sidebar.status_sub_sidebar | STATUS}}</td>
-                     <td width="25">
+                     <td class="px-3">{{i+1}}</td>
+                     <td class="px-3">{{sub_sidebar.nama_sub_sidebar}}</td>
+                     <td class="px-3">{{sub_sidebar.status_sub_sidebar | STATUS}}</td>
+                     <td class="px-3" width="25">
                         <input
                            type="text"
                            class="form-control text-center"
@@ -44,7 +43,7 @@
                            :id=" sub_sidebar.kd_sub_sidebar"
                         />
                      </td>
-                     <td>
+                     <td class="px-3">
                         <div class="btn-group">
                            <button class="btn btn-sm" type="button" data-toggle="dropdown">
                               <i class="fa fa-ellipsis-v" aria-hidden="true"></i>

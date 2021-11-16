@@ -1,7 +1,7 @@
 
 <template>
-   <div>
-      <div class="bg-white rounded border">
+   <div class="container">
+      <div class="bg-white box-shadow-1 rounded border-radius-10">
          <div class="container">
             <div class="row py-3">
                <div class="col-sm als">
@@ -36,58 +36,59 @@
                Hasil Dari : {{cari_data}}
                <div class="text-blue cp" @click="load_kelola_user()">Reset</div>
             </section>
-         </div>
-         <div class="py-2 table-responsive">
-            <table class="table table-hover">
-               <tr>
-                  <th>#</th>
-                  <th class="px-3 align-middle">Nama</th>
-                  <th class="px-3 align-middle">Email</th>
-                  <th class="px-3 align-middle">Username</th>
-                  <th class="px-3 align-middle">role</th>
-                  <th class="px-3 align-middle">Status</th>
-                  <th class="px-3 align-middle text-center">
-                     <i class="fa fa-ellipsis-v"></i>
-                  </th>
-               </tr>
-               <tr v-for="(kelola_user,i) in in_kelola_user.data" :key="i">
-                  <td>{{i+1}}</td>
-                  <td class="px-3 align-middle">{{kelola_user.nama}}</td>
-                  <td class="px-3 align-middle">{{kelola_user.email}}</td>
-                  <td class="px-3 align-middle">{{kelola_user.username}}</td>
-                  <td
-                     class="px-3 align-middle"
-                  >{{kelola_user.get_role ? kelola_user.get_role.nama_role : "-" }}</td>
-                  <td class="px-3 align-middle">{{kelola_user.status_user | STATUS}}</td>
 
-                  <td class="px-3 align-middle text-center" width="25">
-                     <div class="btn-group">
-                        <button class="btn btn-sm" type="button" data-toggle="dropdown">
-                           <i class="fa fa-ellipsis-v"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                           <router-link
-                              v-if="$canDoUpdate"
-                              :to="'kelola-user/create/'+kelola_user.kd_user"
-                              class="dropdown-item"
-                           >Edit</router-link>
-                           <div
-                              class="dropdown-item cp"
-                              v-if="$canDoDestroy"
-                              @click="hapus(kelola_user.kd_user)"
-                           >Delete</div>
+            <div class="py-2 table-responsive">
+               <table class="table table-hover">
+                  <tr>
+                     <th>#</th>
+                     <th class="px-3 align-middle">Nama</th>
+                     <th class="px-3 align-middle">Email</th>
+                     <th class="px-3 align-middle">Username</th>
+                     <th class="px-3 align-middle">role</th>
+                     <th class="px-3 align-middle">Status</th>
+                     <th class="px-3 align-middle text-center">
+                        <i class="fa fa-ellipsis-v"></i>
+                     </th>
+                  </tr>
+                  <tr v-for="(kelola_user,i) in in_kelola_user.data" :key="i">
+                     <td>{{i+1}}</td>
+                     <td class="px-3 align-middle">{{kelola_user.nama}}</td>
+                     <td class="px-3 align-middle">{{kelola_user.email}}</td>
+                     <td class="px-3 align-middle">{{kelola_user.username}}</td>
+                     <td
+                        class="px-3 align-middle"
+                     >{{kelola_user.get_role ? kelola_user.get_role.nama_role : "-" }}</td>
+                     <td class="px-3 align-middle">{{kelola_user.status_user | STATUS}}</td>
+
+                     <td class="px-3 align-middle text-center" width="25">
+                        <div class="btn-group">
+                           <button class="btn btn-sm" type="button" data-toggle="dropdown">
+                              <i class="fa fa-ellipsis-v"></i>
+                           </button>
+                           <div class="dropdown-menu dropdown-menu-right">
+                              <router-link
+                                 v-if="$canDoUpdate"
+                                 :to="'kelola-user/create/'+kelola_user.kd_user"
+                                 class="dropdown-item"
+                              >Edit</router-link>
+                              <div
+                                 class="dropdown-item cp"
+                                 v-if="$canDoDestroy"
+                                 @click="hapus(kelola_user.kd_user)"
+                              >Delete</div>
+                           </div>
                         </div>
-                     </div>
-                  </td>
-               </tr>
-            </table>
-            <div class="container">
-               <pagination
-                  class="mt-3"
-                  :limit="1"
-                  :data="in_kelola_user"
-                  @pagination-change-page="loadPaginate"
-               ></pagination>
+                     </td>
+                  </tr>
+               </table>
+               <div class="container">
+                  <pagination
+                     class="mt-3"
+                     :limit="1"
+                     :data="in_kelola_user"
+                     @pagination-change-page="loadPaginate"
+                  ></pagination>
+               </div>
             </div>
          </div>
       </div>

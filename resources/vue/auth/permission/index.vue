@@ -1,7 +1,7 @@
 
 <template>
-   <div>
-      <div class="bg-white rounded border">
+   <div class="container">
+      <div class="bg-white box-shadow-1 border-radius-10">
          <div class="container">
             <div class="row py-3">
                <div class="col-sm als">
@@ -30,31 +30,33 @@
             <p>Untuk mengelola permission hanya bisa dilakukan saat menggenerate api terbaru, pastikan melakukan regenerate saat telah mengimplementasikan api baru</p>
             <p class="mb-0"></p>
          </div>
-         <section v-if="isPencarian" class="container">
-            Hasil Dari : {{cari_data}}
-            <div class="text-blue cp" @click="load_kelola_user()">Reset</div>
-         </section>
-         <div class="py-2">
-            <table class="table table-hover">
-               <tr>
-                  <th class="px-3 align-middle">Nama Route</th>
-                  <th class="px-3 align-middle">Nama Grup</th>
-                  <th class="px-3 align-middle">Route URL</th>
-                  <th class="px-3 align-middle"></th>
-               </tr>
-               <tr v-for="(permission,i) in in_permission" :key="i">
-                  <td class="px-3 align-middle">{{permission.nama_route}}</td>
-                  <td class="px-3 align-middle">{{permission.nama_grup}}</td>
-                  <td class="px-3 align-middle">{{permission.route_url}}</td>
-                  <td width="25" class="ox-3 align-middle">
-                     <i
-                        class="fa fa-trash text-danger"
-                        @click="hapus(permission.kd_permission)"
-                        aria-hidden="true"
-                     ></i>
-                  </td>
-               </tr>
-            </table>
+         <div class="container">
+            <section v-if="isPencarian" class="container">
+               Hasil Dari : {{cari_data}}
+               <div class="text-blue cp" @click="load_kelola_user()">Reset</div>
+            </section>
+            <div class="py-2">
+               <table class="table table-hover">
+                  <tr>
+                     <th class="px-3 align-middle">Nama Route</th>
+                     <th class="px-3 align-middle">Nama Grup</th>
+                     <th class="px-3 align-middle">Route URL</th>
+                     <th class="px-3 align-middle"></th>
+                  </tr>
+                  <tr v-for="(permission,i) in in_permission" :key="i">
+                     <td class="px-3 align-middle">{{permission.nama_route}}</td>
+                     <td class="px-3 align-middle">{{permission.nama_grup}}</td>
+                     <td class="px-3 align-middle">{{permission.route_url}}</td>
+                     <td width="25" class="ox-3 align-middle">
+                        <i
+                           class="fa fa-trash text-danger"
+                           @click="hapus(permission.kd_permission)"
+                           aria-hidden="true"
+                        ></i>
+                     </td>
+                  </tr>
+               </table>
+            </div>
          </div>
       </div>
    </div>

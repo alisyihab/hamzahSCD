@@ -6,48 +6,50 @@
          <hr />
          <form @submit.prevent="isEdit ?  update() : submit()">
             <table class="table table-borderless">
-               <tr>
-                  <th>Nama Sidebar</th>
-                  <td>
-                     <input
-                        type="text"
-                        class="form-control"
-                        required
-                        v-model="form.nama_sidebar"
-                        min="1"
-                        max="100"
-                     />
-                  </td>
-               </tr>
-               <tr>
-                  <th>Icon Sidebar</th>
-                  <td>
-                     <input
-                        type="text"
-                        class="form-control"
-                        required
-                        v-model="form.icon_sidebar"
-                        min="1"
-                        max="100"
-                     />
-                     <small>
-                        Icon Menggunakan Font Awesome 4 , untuk daftar iconnya dapat dilihat
-                        <a
-                           href="https://fontawesome.bootstrapcheatsheets.com/"
-                           target="_blank"
-                        >disini</a>
-                     </small>
-                  </td>
-               </tr>
-               <tr>
-                  <th>Status Sidebar</th>
-                  <td>
-                     <select class="form-control" v-model="form.status_sidebar" required>
-                        <option value="1">Aktif</option>
-                        <option value="0">Nonaktif</option>
-                     </select>
-                  </td>
-               </tr>
+               <thead>
+                  <tr>
+                     <th>Nama Sidebar</th>
+                     <td>
+                        <input
+                           type="text"
+                           class="form-control"
+                           required
+                           v-model="form.nama_sidebar"
+                           min="1"
+                           max="100"
+                        />
+                     </td>
+                  </tr>
+                  <tr>
+                     <th>Icon Sidebar</th>
+                     <td>
+                        <input
+                           type="text"
+                           class="form-control"
+                           required
+                           v-model="form.icon_sidebar"
+                           min="1"
+                           max="100"
+                        />
+                        <small>
+                           Icon Menggunakan Font Awesome 4 , untuk daftar iconnya dapat dilihat
+                           <a
+                              href="https://fontawesome.bootstrapcheatsheets.com/"
+                              target="_blank"
+                           >disini</a>
+                        </small>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th>Status Sidebar</th>
+                     <td>
+                        <select class="form-control" v-model="form.status_sidebar" required>
+                           <option value="1">Aktif</option>
+                           <option value="0">Nonaktif</option>
+                        </select>
+                     </td>
+                  </tr>
+               </thead>
             </table>
 
             <div class="my-2">

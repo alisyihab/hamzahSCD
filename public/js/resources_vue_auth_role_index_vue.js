@@ -288,8 +288,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "bg-white rounded border" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "bg-white box-shadow-1 border-radius-10" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row py-3" }, [
           _vm._m(0),
@@ -393,104 +393,107 @@ var render = function() {
                 [_vm._v("Reset")]
               )
             ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "py-2" }, [
-        _c(
-          "table",
-          { staticClass: "table table-hover" },
-          [
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._l(_vm.in_role.data, function(role, i) {
-              return _c("tr", { key: i }, [
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(role.nama_role))
-                ]),
-                _vm._v(" "),
-                _c("td", { staticClass: "px-3 align-middle" }, [
-                  _vm._v(_vm._s(role.get_creator.nama))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "px-3 align-middle", attrs: { width: "200" } },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-dark btn-block btn-sm",
-                        on: {
-                          click: function($event) {
-                            return _vm.$router.push({
-                              name: "impl-role-to-permission.index",
-                              params: { kd_role: role.kd_role }
-                            })
-                          }
-                        }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-plus mr-2",
-                          attrs: { "aria-hidden": "true" }
-                        }),
-                        _vm._v(" Kelola Akses\n                  ")
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  {
-                    staticClass: "px-3 align-middle text-center",
-                    attrs: { width: "25" }
-                  },
-                  [
-                    _c("div", { staticClass: "btn-group" }, [
-                      _vm._m(2, true),
-                      _vm._v(" "),
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-2" }, [
+          _c(
+            "table",
+            { staticClass: "table table-hover" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._l(_vm.in_role.data, function(role, i) {
+                return _c("tr", { key: i }, [
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(role.nama_role))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "px-3 align-middle" }, [
+                    _vm._v(_vm._s(role.get_creator.nama))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "px-3 align-middle",
+                      attrs: { width: "200" }
+                    },
+                    [
                       _c(
-                        "div",
-                        { staticClass: "dropdown-menu dropdown-menu-right" },
+                        "button",
+                        {
+                          staticClass: "btn btn-dark btn-block btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.$router.push({
+                                name: "impl-role-to-permission.index",
+                                params: { kd_role: role.kd_role }
+                              })
+                            }
+                          }
+                        },
                         [
-                          _vm.canDoUpdate
-                            ? _c(
-                                "router-link",
-                                {
-                                  staticClass: "dropdown-item",
-                                  attrs: { to: "role/create/" + role.kd_role }
-                                },
-                                [_vm._v("Edit")]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.canDoDestroy
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass: "dropdown-item cp",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.hapus(role.kd_role)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Delete")]
-                              )
-                            : _vm._e()
-                        ],
-                        1
+                          _c("i", {
+                            staticClass: "fa fa-plus mr-2",
+                            attrs: { "aria-hidden": "true" }
+                          }),
+                          _vm._v(" Kelola Akses\n                     ")
+                        ]
                       )
-                    ])
-                  ]
-                )
-              ])
-            })
-          ],
-          2
-        )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "px-3 align-middle text-center",
+                      attrs: { width: "25" }
+                    },
+                    [
+                      _c("div", { staticClass: "btn-group" }, [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "dropdown-menu dropdown-menu-right" },
+                          [
+                            _vm.canDoUpdate
+                              ? _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: { to: "role/create/" + role.kd_role }
+                                  },
+                                  [_vm._v("Edit")]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.canDoDestroy
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "dropdown-item cp",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.hapus(role.kd_role)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Delete")]
+                                )
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              })
+            ],
+            2
+          )
+        ])
       ])
     ])
   ])
@@ -520,7 +523,7 @@ var staticRenderFns = [
           staticClass: "fa fa-key mr-2",
           attrs: { "aria-hidden": "true" }
         }),
-        _vm._v(" Akses\n               ")
+        _vm._v(" Akses\n                  ")
       ]),
       _vm._v(" "),
       _c("th", { staticClass: "px-3 align-middle text-center" }, [

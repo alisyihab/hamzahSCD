@@ -62,7 +62,7 @@
         }
 
         .brand-link {
-            border-bottom: 1px solid #1E67AF !important;
+            border-bottom: 1px solid #2a5298 !important;
         }
 
         .sidebar-light {
@@ -71,7 +71,16 @@
 
 
         .user-panel {
-            border-bottom: 1px solid #1E67AF !important;
+            border-bottom: 1px solid #2a5298 !important;
+        }
+
+        .box-shadow-1 {
+            -webkit-box-shadow: -9px 3px 13px -5px rgba(136, 167, 179, 0.53);
+            box-shadow: -9px 3px 13px -5px rgba(136, 167, 179, 0.53);
+        }
+
+        .border-radius-10 {
+            border-radius: 10px !important;
         }
 
     </style>
