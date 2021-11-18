@@ -67,7 +67,7 @@ Route::middleware(['auth:api', "akses"])->group(function () {
     Route::get("/oapi-audit-trail/pencarian", [OpenApiAuditTrailController::class, "search"])->name("oapi-audit-trail.search");
     Route::resource('oapi-audit-trail', OpenApiAuditTrailController::class)->only("index");
 
-    Route::resource('history-per-hit-client', HistoryPerHitClientController::class)->only("index", "store");
+    Route::resource('history-per-hit-client', HistoryPerHitClientController::class)->only("index");
 });
 
 
