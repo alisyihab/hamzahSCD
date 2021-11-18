@@ -10,55 +10,26 @@ use App\Http\Controllers\Controller;
 
 class HistoryPerHitClientController extends Controller
 {
-
-    private HistoryPerHitClientService $historyperhitclientsService;
+    private HistoryPerHitClientService $historyPerHitClientService;
     private ResponseService $responseService;
 
     public function __construct(
-        HistoryPerHitClientService $historyperhitclientsService,
+        HistoryPerHitClientService $historyPerHitClientService,
         ResponseService $responseService
     ) {
-        $this->historyperhitclientsService = $historyperhitclientsService;
+        $this->historyPerHitClientService = $historyPerHitClientService;
         $this->responseService = $responseService;
     }
 
     public function index()
     {
-        $in_historyperhitclient = $this->historyperhitclientsService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_historyperhitclient");
-    }
-
-    public function create()
-    {
-        # code...
-    }
-
-    public function edit($id)
-    {
-        $in_historyperhitclient = $this->historyperhitclientsService->mendapatkanSatuData($id);
-        return compact("in_historyperhitclient");
-    }
-
-    public function store(Request $request)
-    {
-
-        return $this->responseService->menyimpanData($this->historyperhitclientsService->menyimpanData($request));
-    }
-
-    public function show($id)
-    {
-        $in_historyperhitclient = $this->historyperhitclientsService->mendapatkanSatuData($id);
-        return compact("in_historyperhitclient");
-    }
-
-    public function update(Request $request, $id)
-    {
-        return $this->responseService->updateData($this->historyperhitclientsService->memperbaruiData($request, $id));
+        $in_history_per_hit_client = $this->historyPerHitClientService->mendapatkanSeluruhDataPaginate($this->paginate);
+        return compact("in_history_per_hit_client");
     }
 
     public function destroy($id)
     {
-        $this->historyperhitclientsService->menghapusData($id);
+        $this->historyPerHitClientService->menghapusData($id);
         return $this->responseService->menghapusData($id);
     }
 }
