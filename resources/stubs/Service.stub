@@ -18,7 +18,7 @@ class {{modelName}}Service extends Controller
 
     private function EloquentData()
     {
-        return {{modelName}}::with('getCreator')->orderBy('created_at', "ASC");
+        return {{modelName}}::with('getCreator')->orderBy('created_at', "DESC");
     }
 
     public function mendapatkanSeluruhData()
@@ -33,7 +33,7 @@ class {{modelName}}Service extends Controller
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentData()->where($nama_kolom, $request->nama)->paginate($paginate);
+        return $this->EloquentData()->where($nama_kolom,'ILIKE',"%". $request. "%")->paginate($paginate);
     }
 
     public function mendapatkanSatuData($id)
