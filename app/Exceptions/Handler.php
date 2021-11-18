@@ -38,4 +38,24 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, \Throwable $exception)
+    {
+
+        if ($exception instanceof ClientIdInvalidException) {
+            return response()->json(
+                [
+                    "errors" => [
+                        "client-id" => "Tidak dikenal /  ditemukan",
+                        "client-secret" => "Tidak dikenal /  ditemukan",
+                    ],
+                    'message' => "Request Http gagal, Data Client Key Tidak ditemukan mohon gunakan client-id / client-secret yang sesuai ",
+                    'exception' => "ClientIdInvalidException",
+                    'middleware' => "verifyClientKey",
+                ],
+                400
+            );
+        }
+        return parent::render($request, $exception);
+    }
 }
