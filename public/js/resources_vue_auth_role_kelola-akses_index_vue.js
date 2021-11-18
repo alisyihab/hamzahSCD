@@ -66,6 +66,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -642,14 +643,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "container" },
     [
       _c("kembali"),
       _vm._v(" "),
-      _c("div", { staticClass: "bg-white rounded" }, [
-        _c("div", { staticClass: "p-2" }, [
+      _c("div", { staticClass: "bg-white box-shadow-1 border-radius-10" }, [
+        _c("div", { staticClass: "p-4" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md als col-sm-6" }, [
-              _c("div", { staticClass: "m-2 h5-font-size" }, [
+              _c("div", { staticClass: "m-2 f5-fz font-weight-bolder" }, [
                 _c("div", [
                   _vm._v("Kelola Akses Role : " + _vm._s(_vm.in_role.nama_role))
                 ])
@@ -683,45 +685,49 @@ var render = function() {
                 )
               ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table-sm table-hover" }, [
-          _vm._m(0),
+          ]),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.in_role.get_all_permission, function(permission, i) {
-              return _c("tr", { key: i }, [
-                _c("td", [_vm._v(_vm._s(i + 1))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(permission.nama_route))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(permission.created_by))]),
-                _vm._v(" "),
-                _c("td", { attrs: { width: "25" } }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-dark btn-sm btn-block",
-                      on: {
-                        click: function($event) {
-                          return _vm.hapus(permission.kd_impl_role_permission)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-trash",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                ])
-              ])
-            }),
-            0
-          )
+          _c("div", { staticClass: "table-responsive py-3" }, [
+            _c("table", { staticClass: "table table-sm table-hover" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.in_role.get_all_permission, function(permission, i) {
+                  return _c("tr", { key: i }, [
+                    _c("td", [_vm._v(_vm._s(i + 1))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(permission.nama_route))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(permission.created_by))]),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "25" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-dark btn-sm btn-block",
+                          on: {
+                            click: function($event) {
+                              return _vm.hapus(
+                                permission.kd_impl_role_permission
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-trash",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
       ])
     ],
@@ -733,16 +739,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Permission")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Creator")]),
-        _vm._v(" "),
-        _c("th")
-      ])
+    return _c("tr", [
+      _c("th", [_vm._v("#")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Permission")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Creator")]),
+      _vm._v(" "),
+      _c("th")
     ])
   }
 ]

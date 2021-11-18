@@ -1,10 +1,10 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_vue_auth_auditTrail_index_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_vue_auth_oapi-audit-trail_index_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/auditTrail/index.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/auditTrail/index.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -117,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isPencarian: false,
       isEditableData: false,
-      in_audit_trail: {},
+      in_oapi_audit_trail: {},
       cari_data: "",
       canDoStore: false,
       canDoUpdate: false,
@@ -135,8 +135,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.$router.push(this.$router.currentRoute.path + "?page=" + page);
-      axios.get(this.$api_audit_trail + "?page=" + page).then(function (respon) {
-        _this.in_audit_trail = respon.data.in_audit_trail;
+      axios.get(this.$api_oapi_audit_trail + "?page=" + page).then(function (respon) {
+        _this.in_oapi_audit_trail = respon.data.in_oapi_audit_trail;
       });
     },
     verify_permission: function verify_permission() {
@@ -164,12 +164,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.$Progress.start();
-      axios.get("/api/audit-trail/pencarian?cari=" + this.cari_data).then(function (respon) {
+      axios.get(this.$api_oapi_audit_trail + "/pencarian?cari=" + this.cari_data).then(function (respon) {
         _this3.isPencarian = true;
 
         _this3.$Progress.finish();
 
-        _this3.in_audit_trail = respon.data.in_audit_trail;
+        _this3.in_oapi_audit_trail = respon.data.in_oapi_audit_trail;
       })["catch"](function (e) {
         _this3.$Progress.fail();
 
@@ -181,10 +181,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isPencarian = false;
       this.$Progress.start();
-      axios.get(this.$api_audit_trail).then(function (respon) {
+      axios.get(this.$api_oapi_audit_trail).then(function (respon) {
         _this4.$Progress.finish();
 
-        _this4.in_audit_trail = respon.data.in_audit_trail;
+        _this4.in_oapi_audit_trail = respon.data.in_oapi_audit_trail;
       })["catch"](function (e) {
         _this4.$Progress.fail();
 
@@ -213,18 +213,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/vue/auth/auditTrail/index.vue":
-/*!*************************************************!*\
-  !*** ./resources/vue/auth/auditTrail/index.vue ***!
-  \*************************************************/
+/***/ "./resources/vue/auth/oapi-audit-trail/index.vue":
+/*!*******************************************************!*\
+  !*** ./resources/vue/auth/oapi-audit-trail/index.vue ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _index_vue_vue_type_template_id_250bafe4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=250bafe4& */ "./resources/vue/auth/auditTrail/index.vue?vue&type=template&id=250bafe4&");
-/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/vue/auth/auditTrail/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _index_vue_vue_type_template_id_0d7c5fcb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=0d7c5fcb& */ "./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=template&id=0d7c5fcb&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -235,8 +235,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _index_vue_vue_type_template_id_250bafe4___WEBPACK_IMPORTED_MODULE_0__.render,
-  _index_vue_vue_type_template_id_250bafe4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _index_vue_vue_type_template_id_0d7c5fcb___WEBPACK_IMPORTED_MODULE_0__.render,
+  _index_vue_vue_type_template_id_0d7c5fcb___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -246,46 +246,46 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/vue/auth/auditTrail/index.vue"
+component.options.__file = "resources/vue/auth/oapi-audit-trail/index.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/vue/auth/auditTrail/index.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/vue/auth/auditTrail/index.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/auditTrail/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/vue/auth/auditTrail/index.vue?vue&type=template&id=250bafe4&":
-/*!********************************************************************************!*\
-  !*** ./resources/vue/auth/auditTrail/index.vue?vue&type=template&id=250bafe4& ***!
-  \********************************************************************************/
+/***/ "./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=template&id=0d7c5fcb&":
+/*!**************************************************************************************!*\
+  !*** ./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=template&id=0d7c5fcb& ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_250bafe4___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_250bafe4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_0d7c5fcb___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_0d7c5fcb___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_250bafe4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./index.vue?vue&type=template&id=250bafe4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/auditTrail/index.vue?vue&type=template&id=250bafe4&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_0d7c5fcb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./index.vue?vue&type=template&id=0d7c5fcb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=template&id=0d7c5fcb&");
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/auditTrail/index.vue?vue&type=template&id=250bafe4&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/auditTrail/index.vue?vue&type=template&id=250bafe4& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=template&id=0d7c5fcb&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/vue/auth/oapi-audit-trail/index.vue?vue&type=template&id=0d7c5fcb& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -399,7 +399,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("th", { staticClass: "px-3 align-middle" }, [
-                  _vm._v("Aktor")
+                  _vm._v("Client App")
                 ]),
                 _vm._v(" "),
                 _c("th", { staticClass: "px-3 align-middle text-center" }, [
@@ -413,7 +413,7 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              _vm._l(_vm.in_audit_trail.data, function(audit_trail, i) {
+              _vm._l(_vm.in_oapi_audit_trail.data, function(audit_trail, i) {
                 return _c("tr", { key: i }, [
                   _c(
                     "td",
@@ -474,7 +474,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("td", { staticClass: "px-3 align-middle small" }, [
-                    _vm._v(_vm._s(audit_trail.get_creator.nama))
+                    _vm._v(_vm._s(audit_trail.get_app_name.app_name))
                   ]),
                   _vm._v(" "),
                   _c(
@@ -556,7 +556,7 @@ var render = function() {
             [
               _c("pagination", {
                 staticClass: "mt-3",
-                attrs: { limit: 1, data: _vm.in_audit_trail },
+                attrs: { limit: 1, data: _vm.in_oapi_audit_trail },
                 on: { "pagination-change-page": _vm.loadPaginate }
               })
             ],
@@ -574,7 +574,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm als" }, [
       _c("div", { staticClass: "font-weight-bolder h4" }, [
-        _vm._v("Daftar Audit Trail")
+        _vm._v("Daftar OApi Audit Trail")
       ])
     ])
   },

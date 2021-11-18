@@ -230,10 +230,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "container" },
     [
       _c("kembali"),
       _vm._v(" "),
-      _c("div", { staticClass: "bg-white rounded border" }, [
+      _c("div", { staticClass: "bg-white box-shadow-1 border-radius-10" }, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row py-3" }, [
             _vm._m(0),
@@ -313,57 +314,58 @@ var render = function() {
                   [_vm._v("Reset")]
                 )
               ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "py-2" }, [
-          _c(
-            "table",
-            { staticClass: "table table-hover" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._l(_vm.in_permission, function(permission, i) {
-                return _c("tr", { key: i }, [
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _vm._v(_vm._s(permission.nama_route))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _vm._v(_vm._s(permission.nama_grup))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _vm._v(_vm._s(permission.route_url))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-block btn-dark btn-block btn-sm",
-                        on: {
-                          click: function($event) {
-                            return _vm.pilih_akses(permission.route_url)
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "py-2 table-responsive" }, [
+            _c(
+              "table",
+              { staticClass: "table table-hover" },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._l(_vm.in_permission, function(permission, i) {
+                  return _c("tr", { key: i }, [
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _vm._v(_vm._s(permission.nama_route))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _vm._v(_vm._s(permission.nama_grup))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _vm._v(_vm._s(permission.route_url))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-block btn-dark btn-block btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.pilih_akses(permission.route_url)
+                            }
                           }
-                        }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-check mr-2",
-                          attrs: { "aria-hidden": "true" }
-                        }),
-                        _vm._v(
-                          "\n                     Pilih\n                  "
-                        )
-                      ]
-                    )
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-check mr-2",
+                            attrs: { "aria-hidden": "true" }
+                          }),
+                          _vm._v(
+                            "\n                        Pilih\n                     "
+                          )
+                        ]
+                      )
+                    ])
                   ])
-                ])
-              })
-            ],
-            2
-          )
+                })
+              ],
+              2
+            )
+          ])
         ])
       ])
     ],
