@@ -119,6 +119,12 @@ const routes = [
         component: () => import("../../vue/auth/oapi-audit-trail/index.vue"),
         name: "oapi-audit-trail.index"
     },
+    {
+        path: "/history-per-hit-client",
+        component: () =>
+        import("../../vue/auth/history-per-hit-client/index.vue"),
+        name: "history-per-hit-client.index"
+    },
 
     {
         path: "/*",
