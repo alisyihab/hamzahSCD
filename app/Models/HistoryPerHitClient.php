@@ -9,8 +9,8 @@ class HistoryPerHitClient extends Model
 {
     use HasFactory;
 
-    public function getCreator()
+    public function getClientApp()
     {
-        return $this->hasOne(User::class, "kd_user", 'created_by')->select("nama", "kd_user");
+        return $this->hasOne(KonsumerKey::class, "client_id", 'client_app_id')->select("app_name", "client_id");
     }
 }
