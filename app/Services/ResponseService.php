@@ -13,6 +13,11 @@ class ResponseService
             "data" => $data,
         ];
     }
+
+    public function responseData($api_version, $api_data)
+    {
+        return compact("api_version", "api_data");
+    }
     public function menyimpanData($data)
     {
         return [
