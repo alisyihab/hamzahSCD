@@ -60,9 +60,15 @@ export default class catching {
 
         if (e.response.status == 422) {
             window.btn_kelola(false);
+            if (e.response.data.errors.username) {
+                return Toast.fire({
+                    icon: "warning",
+                    title: "Kombinasi Username & Password tidak dikenal"
+                });
+            }
             Toast.fire({
-                icon: "warning",
-                title: "Kombinasi Username & Password tidak dikenal"
+                title: "Kesalahan Validasi ..",
+                icon: "warning"
             });
         }
 
