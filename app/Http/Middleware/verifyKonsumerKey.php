@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Exceptions\ClientIdInvalidException;
 use App\Services\GetClientIpAddressService;
+use App\Services\GetFullUrlService;
 use App\Services\HistoryPerHitClientService;
 use Browser;
 
@@ -18,18 +19,23 @@ class verifyKonsumerKey
     private $konsumerKeyService;
     private $getClientIpAddressService;
     private $historyPerHitClientService;
+    private $getFullUrlService;
 
     private $client_id;
     private $client_secret;
+    private $route_data;
     private $path_url;
+
     public function __construct(
         KonsumerKeyService $konsumerKeyService,
         GetClientIpAddressService $getClientIpAddressService,
-        HistoryPerHitClientService $historyPerHitClientService
+        HistoryPerHitClientService $historyPerHitClientService,
+        GetFullUrlService $getFullUrlService
     ) {
         $this->konsumerKeyService = $konsumerKeyService;
         $this->getClientIpAddressService = $getClientIpAddressService;
         $this->historyPerHitClientService = $historyPerHitClientService;
+        $this->getFullUrlService = $getFullUrlService;
     }
     /**
      * Handle an incoming request.
@@ -51,7 +57,8 @@ class verifyKonsumerKey
     {
         $this->client_id = \Request::header()["client-id"][0] ?? null;
         $this->client_secret = \Request::header()["client-secret"][0] ?? null;
-        $this->path_url =  \Request::route();
+        $this->route_data =  \Request::route();
+        $this->path_url =  $this->getFullUrlService->url();
     }
 
     public function verifyClientKey()
@@ -76,9 +83,9 @@ class verifyKonsumerKey
     {
         $data = [];
         $data["client_app_id"] = $this->client_id;
-        $data["path"] = $this->path_url->uri();
+        $data["path"] = $this->path_url;
         $data["ip_address"] = $this->getClientIpAddressService->getIp();
-        $data["method"] = $this->path_url->methods()[0];
+        $data["method"] = $this->route_data->methods()[0];
         $data["browserName"] = Browser::browserName();
         $data["browserEngine"] = Browser::browserEngine();
         $data["platformName"] = Browser::platformName();
