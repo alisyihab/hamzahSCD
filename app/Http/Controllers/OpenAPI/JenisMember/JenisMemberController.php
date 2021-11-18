@@ -5,25 +5,35 @@ namespace App\Http\Controllers\OpenAPI\JenisMember;
 use Illuminate\Http\Request;
 use App\Services\responseService;
 use App\Http\Controllers\Controller;
+use App\Services\VersioningApiService;
 
 class JenisMemberController extends Controller
 {
 
     private JenisMemberService $jenismembersService;
     private ResponseService $responseService;
+    private $version;
 
     public function __construct(
         JenisMemberService $jenismembersService,
-        ResponseService $responseService
+        ResponseService $responseService,
+        VersioningApiService $versioningApiService,
+
     ) {
         $this->jenismembersService = $jenismembersService;
         $this->responseService = $responseService;
+        $this->version = $versioningApiService->version_1_0();
     }
 
     public function index()
     {
-        $in_jenismember = $this->jenismembersService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_jenismember");
+        $in_jenis_member = $this->jenismembersService->mendapatkanSeluruhDataPaginate($this->paginate);
+        return $this->responseService->responseData($this->version, $in_jenis_member);
+    }
+
+    public function search(Request $request)
+    {
+        return $this->responseService->responseData($this->version, $this->jenismembersService->mencariDataBerdasarkanKostum("nama_jenis_member", $request->cari, $this->paginate));
     }
 
     public function create()
@@ -33,7 +43,7 @@ class JenisMemberController extends Controller
 
     public function edit($id)
     {
-        $in_jenismember = $this->jenismembersService->mendapatkanSatuData($id);
+        $in_jenis_member = $this->jenismembersService->mendapatkanSatuData($id);
         return compact("in_jenismember");
     }
 
@@ -45,7 +55,7 @@ class JenisMemberController extends Controller
 
     public function show($id)
     {
-        $in_jenismember = $this->jenismembersService->mendapatkanSatuData($id);
+        $in_jenis_member = $this->jenismembersService->mendapatkanSatuData($id);
         return compact("in_jenismember");
     }
 
@@ -55,7 +65,7 @@ class JenisMemberController extends Controller
     }
 
     public function destroy($id)
-    {
+    {   
         $this->jenismembersService->menghapusData($id);
         return $this->responseService->menghapusData($id);
     }
