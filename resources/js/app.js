@@ -101,6 +101,7 @@ Vue.prototype.$api_user_agreement = "/api/user-agreement";
 Vue.prototype.$api_konsumer_key = "/api/konsumer-key";
 Vue.prototype.$api_oapi_audit_trail = "/api/oapi-audit-trail";
 Vue.prototype.$api_history_per_hit_client = "/api/history-per-hit-client";
+Vue.prototype.$ica_jenis_member = "/internal-client-api/jenis-member";
 
 Vue.prototype.$canDoStore = false;
 Vue.prototype.$canDoUpdate = false;
