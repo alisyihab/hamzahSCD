@@ -1,6 +1,6 @@
-# Compay Gate Apps
-#### Sejak : 4 November 2021
-Sebuah Aplikasi yang dapat mengelola apliaksi yang tersedia pada suatu perusahaan ,
+# Hamzah Data Center Apps
+#### Sejak : 15 November 2021
+Sebuah Aplikasi Data Center Dari Hamzah Group Apps
 
 ### Implement With Wadah Laravel Versi 2.0
 #### 100% Implementasi sudah di terapkan dari versi sebelumnya
@@ -33,6 +33,11 @@ Sebuah Aplikasi yang dapat mengelola apliaksi yang tersedia pada suatu perusahaa
 -   Implement Permission
 -   Implement Role to Permission 
 -   Basic Example of Modul to implement Role
+-   (New*op) Modul Konsumer Key
+-   (New*op) Middleware Konsumer Key
+-   (New*op) Open API data 
+-   (New*op) Open API Audit Trail 
+-   (New*op) History Hit Open API 
 
 #### New
 
@@ -49,5 +54,8 @@ Sebuah Aplikasi yang dapat mengelola apliaksi yang tersedia pada suatu perusahaa
 
 ##### Default System
 
+
+#### Note
+ - *op : On progress to implement to wadah_laravel_2
 
 
