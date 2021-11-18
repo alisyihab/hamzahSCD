@@ -41,11 +41,4 @@ class ResetKonsumerKeySecretRequest extends FormRequest
             "app_name_confirmation.same" => "konfirmasi Nama aplikasi tidak sesuai dengan nama aplikasi ",
             'app_name.max' => 'Panjang maksimal Nama Aplikasi 50 karakter',
         ];
-    }
-    // public function messages()
-    // {
-    //     return [
-    //         "app_name_confirmation.same:app_name" => "Nama aplikasi tidak sesuai dengan konfirmasi nama aplikasi"
-    //     ];
-    // }
-}
+    }}
