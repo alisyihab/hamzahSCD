@@ -98,6 +98,8 @@ Vue.prototype.$api_audit_trail = "/api/audit-trail";
 Vue.prototype.$api_jenis_ketentuan = "/api/jenis-ketentuan";
 Vue.prototype.$api_ketentuan_penggunaan = "/api/ketentuan-penggunaan";
 Vue.prototype.$api_user_agreement = "/api/user-agreement";
+Vue.prototype.$api_konsumer_key = "/api/konsumer-key";
+Vue.prototype.$api_oapi_audit_trail = "/api/oapi-audit-trail";
 
 Vue.prototype.$canDoStore = false;
 Vue.prototype.$canDoUpdate = false;
