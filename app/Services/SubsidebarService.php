@@ -69,7 +69,7 @@ class SubsidebarService
     public function menyimpanData($request)
     {
         $model = new SubSidebar();
-        $model->urutan_sub_sidebar = $this->urutanAction->getUrutanData("sub_sidebars", "urutan_sub_sidebar");
+        $model->urutan_sub_sidebar = $this->urutanAction->oneParenMethodtGetUrutanData("sub_sidebars", "urutan_sub_sidebar", "fk_kd_sidebar", $request->fk_kd_sidebar);
         return $this->mengelolaData($model, $request);
     }
 
@@ -100,9 +100,10 @@ class SubsidebarService
         }
 
         if ($request->urutan_only) {
+
             $old = $model->urutan_sub_sidebar;
             $new =  $request->urutan_subsidebar;
-            $this->urutanAction->resufleUrutanIfExist("sub_sidebars", "urutan_sub_sidebar", $old, $new);
+            $this->urutanAction->oneParentMethodResufleUrutanIfExist("sub_sidebars", "urutan_sub_sidebar", $old, $new, "fk_kd_sidebar", $model->fk_kd_sidebar);
             $model->urutan_sub_sidebar = $request->urutan_subsidebar;
         }
 
