@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\API\AuditTrailController;
 use App\Http\Controllers\API\AutentikasiController;
 use App\Http\Controllers\API\KelolaRolePermissionController;
@@ -8,8 +9,11 @@ use App\Http\Controllers\API\PermissionController;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\SidebarController;
 use App\Http\Controllers\API\SubSidebarController;
+use App\Http\Controllers\API\KonsumerKeyController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AplikasiController;
+use App\Http\Controllers\API\OpenApiAuditTrailController;
+use App\Http\Controllers\API\HistoryPerHitClientController;
+
 
 
 Route::post("/login-app", [AutentikasiController::class, "loginDefault"])->name("app.login");
@@ -43,8 +47,6 @@ Route::middleware(['auth:api', "akses"])->group(function () {
         'only' => ["index", "create", "edit", "show", "store", "update", "destroy"]
     ]);
 
-
-
     route::prefix("role-permission")->name("role-permission.")->group(function () {
         Route::get("{kd_role}", [KelolaRolePermissionController::class, "index"])->name('index');
         Route::get("{kd_role}/pencarian", [KelolaRolePermissionController::class, "search"])->name('search');
@@ -56,7 +58,19 @@ Route::middleware(['auth:api', "akses"])->group(function () {
     Route::apiResources(['audit-trail' => AuditTrailController::class], [
         'only' => ["index",  "show"]
     ]);
+
+
+    Route::get("/konsumer-key/pencarian", [KonsumerKeyController::class, "search"])->name("konsumer-key.search");
+    Route::put("konsumer-key/config/reset-secret/{kd_konsumer_key}", [KonsumerKeyController::class, "resetSecret"])->name("konsumer-key.reset-secret");
+    Route::resource('/konsumer-key', KonsumerKeyController::class);
+
+    Route::get("/oapi-audit-trail/pencarian", [OpenApiAuditTrailController::class, "search"])->name("oapi-audit-trail.search");
+    Route::resource('oapi-audit-trail', OpenApiAuditTrailController::class)->only("index");
+
+    Route::resource('history-per-hit-client', HistoryPerHitClientController::class)->only("index", "store");
 });
+
+
 
 
 // JANGAN LUPA amr:getAllRoutes setiap nambahin route
