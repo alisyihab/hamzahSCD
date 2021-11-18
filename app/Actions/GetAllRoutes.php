@@ -26,14 +26,14 @@ class GetAllRoutes
         foreach ($data_url as  $url) {
             if (explode('/', $url->uri)[0] == 'api') {
                 if (empty($url->action['as'])) {
-                    dd($url->action);
+                    dd($url->action, "api name Undifined");
                 }
 
                 $mendapatkan_jenis = explode('.', $url->action['as'])[1];
                 if ($mendapatkan_jenis  == "edit" || $mendapatkan_jenis == "create") {
-                     continue;
+                    continue;
                 }
-                
+
                 if (count(explode('.', $url->action['as'])) > 1) {
                     $cek_duplikasi_data_api = DB::table('permissions')
                         ->where('route_url', $url->action['as'])
@@ -48,9 +48,11 @@ class GetAllRoutes
                             'nama_grup' => $data_explode[0],
                         ]);
 
-                        $data_tersimpan[] = [$data_nama  . ' ' . $data_explode[0],
-                                            $url->action['as'] ,
-                                            $data_explode[0]];
+                        $data_tersimpan[] = [
+                            $data_nama  . ' ' . $data_explode[0],
+                            $url->action['as'],
+                            $data_explode[0]
+                        ];
                     }
                 }
             }
