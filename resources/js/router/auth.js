@@ -40,8 +40,7 @@ const routes = [
         component: () => import("../../vue/auth/subsidebar/create.vue"),
         name: "subsidebar.update"
     },
-    
-    
+
     {
         path: "/kelola-user",
         component: () => import("../../vue/auth/kelola-user/index.vue"),
@@ -56,6 +55,27 @@ const routes = [
         path: "/kelola-user/create/:kd_user",
         component: () => import("../../vue/auth/kelola-user/create.vue"),
         name: "kelola-user.update"
+    },
+
+    {
+        path: "/konsumer-key",
+        component: () => import("../../vue/auth/konsumer-key/index.vue"),
+        name: "konsumer-key.index"
+    },
+    {
+        path: "/konsumer-key/create",
+        component: () => import("../../vue/auth/konsumer-key/create.vue"),
+        name: "konsumer-key.store"
+    },
+    {
+        path: "/konsumer-key/create/:kd_konsumer_key",
+        component: () => import("../../vue/auth/konsumer-key/create.vue"),
+        name: "konsumer-key.update"
+    },
+    {
+        path: "/konsumer-key/reset/:kd_konsumer_key",
+        component: () => import("../../vue/auth/konsumer-key/reset.vue"),
+        name: "konsumer-key.reset"
     },
 
     {
@@ -93,6 +113,11 @@ const routes = [
         path: "/audit-trail",
         component: () => import("../../vue/auth/auditTrail/index.vue"),
         name: "audit-trail.index"
+    },
+    {
+        path: "/oapi-audit-trail",
+        component: () => import("../../vue/auth/oapi-audit-trail/index.vue"),
+        name: "oapi-audit-trail.index"
     },
 
     {
