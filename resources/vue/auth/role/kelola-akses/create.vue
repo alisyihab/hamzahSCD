@@ -1,8 +1,8 @@
 
 <template>
-   <div>
+   <div class="container">
       <kembali></kembali>
-      <div class="bg-white rounded border">
+      <div class="bg-white box-shadow-1 border-radius-10">
          <div class="container">
             <div class="row py-3">
                <div class="col-sm als">
@@ -29,30 +29,30 @@
                Hasil Dari : {{cari_data}}
                <div class="text-blue cp" @click="reset()">Reset</div>
             </section>
-         </div>
-         <div class="py-2">
-            <table class="table table-hover">
-               <tr>
-                  <th class="px-3 align-middle">Deskripsi Route</th>
-                  <th class="px-3 align-middle">grup</th>
-                  <th class="px-3 align-middle">Nama Route</th>
-                  <th></th>
-               </tr>
-               <tr v-for="(permission,i) in in_permission" :key="i">
-                  <td class="px-3 align-middle">{{permission.nama_route}}</td>
-                  <td class="px-3 align-middle">{{permission.nama_grup}}</td>
-                  <td class="px-3 align-middle">{{permission.route_url}}</td>
-                  <td>
-                     <button
-                        class="btn btn-block btn-dark btn-block btn-sm"
-                        @click="pilih_akses(permission.route_url)"
-                     >
-                        <i class="fa fa-check mr-2" aria-hidden="true"></i>
-                        Pilih
-                     </button>
-                  </td>
-               </tr>
-            </table>
+            <div class="py-2 table-responsive">
+               <table class="table table-hover">
+                  <tr>
+                     <th class="px-3 align-middle">Deskripsi Route</th>
+                     <th class="px-3 align-middle">grup</th>
+                     <th class="px-3 align-middle">Nama Route</th>
+                     <th></th>
+                  </tr>
+                  <tr v-for="(permission,i) in in_permission" :key="i">
+                     <td class="px-3 align-middle">{{permission.nama_route}}</td>
+                     <td class="px-3 align-middle">{{permission.nama_grup}}</td>
+                     <td class="px-3 align-middle">{{permission.route_url}}</td>
+                     <td>
+                        <button
+                           class="btn btn-block btn-dark btn-block btn-sm"
+                           @click="pilih_akses(permission.route_url)"
+                        >
+                           <i class="fa fa-check mr-2" aria-hidden="true"></i>
+                           Pilih
+                        </button>
+                     </td>
+                  </tr>
+               </table>
+            </div>
          </div>
       </div>
    </div>
