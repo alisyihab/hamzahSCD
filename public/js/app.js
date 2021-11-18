@@ -2319,6 +2319,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_ketentuan_penggunaan 
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_user_agreement = "/api/user-agreement";
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_konsumer_key = "/api/konsumer-key";
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_oapi_audit_trail = "/api/oapi-audit-trail";
+vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_history_per_hit_client = "/api/history-per-hit-client";
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$canDoStore = false;
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$canDoUpdate = false;
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$canDoDestroy = false;
@@ -2792,6 +2793,12 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_vue_auth_oapi-audit-trail_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../../vue/auth/oapi-audit-trail/index.vue */ "./resources/vue/auth/oapi-audit-trail/index.vue"));
   },
   name: "oapi-audit-trail.index"
+}, {
+  path: "/history-per-hit-client",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_vue_auth_history-per-hit-client_index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../../vue/auth/history-per-hit-client/index.vue */ "./resources/vue/auth/history-per-hit-client/index.vue"));
+  },
+  name: "history-per-hit-client.index"
 }, {
   path: "/*",
   component: function component() {
@@ -60158,7 +60165,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_vue_home_vue":1,"resources_vue_auth_dashboard_vue":1,"resources_vue_auth_sidebar_index_vue":1,"resources_vue_auth_sidebar_create_vue":1,"resources_vue_auth_subsidebar_index_vue":1,"resources_vue_auth_subsidebar_create_vue":1,"resources_vue_auth_kelola-user_index_vue":1,"resources_vue_auth_kelola-user_create_vue":1,"resources_vue_auth_konsumer-key_index_vue":1,"resources_vue_auth_konsumer-key_create_vue":1,"resources_vue_auth_konsumer-key_reset_vue":1,"resources_vue_auth_role_index_vue":1,"resources_vue_auth_role_create_vue":1,"resources_vue_auth_role_kelola-akses_index_vue":1,"resources_vue_auth_role_kelola-akses_create_vue":1,"resources_vue_auth_permission_index_vue":1,"resources_vue_auth_auditTrail_index_vue":1,"resources_vue_auth_oapi-audit-trail_index_vue":1,"resources_vue_404_vue":1,"resources_vue_homepage_vue":1,"resources_vue_login_vue":1,"resources_vue_demo_img_compresor_vue":1,"resources_js_components_navbar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_vue_home_vue":1,"resources_vue_auth_dashboard_vue":1,"resources_vue_auth_sidebar_index_vue":1,"resources_vue_auth_sidebar_create_vue":1,"resources_vue_auth_subsidebar_index_vue":1,"resources_vue_auth_subsidebar_create_vue":1,"resources_vue_auth_kelola-user_index_vue":1,"resources_vue_auth_kelola-user_create_vue":1,"resources_vue_auth_konsumer-key_index_vue":1,"resources_vue_auth_konsumer-key_create_vue":1,"resources_vue_auth_konsumer-key_reset_vue":1,"resources_vue_auth_role_index_vue":1,"resources_vue_auth_role_create_vue":1,"resources_vue_auth_role_kelola-akses_index_vue":1,"resources_vue_auth_role_kelola-akses_create_vue":1,"resources_vue_auth_permission_index_vue":1,"resources_vue_auth_auditTrail_index_vue":1,"resources_vue_auth_oapi-audit-trail_index_vue":1,"resources_vue_auth_history-per-hit-client_index_vue":1,"resources_vue_404_vue":1,"resources_vue_homepage_vue":1,"resources_vue_login_vue":1,"resources_vue_demo_img_compresor_vue":1,"resources_js_components_navbar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
