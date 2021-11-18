@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\rolePermissionCheck;
+use App\Http\Middleware\verifyKonsumerKey;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        "akses" => rolePermissionCheck::class
+        "akses" => rolePermissionCheck::class,
+        "verifyClientKey" => verifyKonsumerKey::class
     ];
 }
