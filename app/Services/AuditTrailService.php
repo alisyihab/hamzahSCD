@@ -14,7 +14,7 @@ class AuditTrailService extends Controller
     }
 
 
-    public function inisialisasiAuditTrail($jenis, $nama_form, $model, $dataBeforeUpdated)
+    public function inisialisasiAuditTrail($jenis, $nama_form, $model, $dataBeforeUpdated, $masking = false)
     {
         $data = [];
         $data["nama_form"] = $nama_form;
@@ -24,7 +24,7 @@ class AuditTrailService extends Controller
             if ($key != "updated_at") {
                 $data["nama_field"][] = $key;
                 $data["value_sebelumnya"][] = $dataBeforeUpdated[$key];
-                $data["value_terbaru"][] = $perubahanData;
+                $data["value_terbaru"][] = $masking == false ? $perubahanData : $masking;
             }
         }
 
