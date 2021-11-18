@@ -149,6 +149,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -157,13 +162,11 @@ __webpack_require__.r(__webpack_exports__);
       isEditableData: false,
       in_history_per_hit_client: {},
       cari_data: "",
-      canDoStore: false,
-      canDoUpdate: false,
-      canDoDestroy: false,
-      grup_url: "audit-trail"
+      grup_url: ""
     };
   },
   mounted: function mounted() {
+    this.grup_url = this.$router.currentRoute.name.split(".")[0];
     this.verify_permission();
     this.load();
   },
@@ -189,15 +192,15 @@ __webpack_require__.r(__webpack_exports__);
           var data_permission = permission.url.split(".")[1];
 
           if (data_permission == "store") {
-            _this2.canDoStore = true;
+            _this2.$canDoStore = true;
           }
 
           if (data_permission == "update") {
-            _this2.canDoUpdate = true;
+            _this2.$canDoUpdate = true;
           }
 
           if (data_permission == "destroy") {
-            _this2.canDoDestroy = true;
+            _this2.$canDoDestroy = true;
           }
         }
       });

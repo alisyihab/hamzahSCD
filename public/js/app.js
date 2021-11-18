@@ -2320,6 +2320,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_user_agreement = "/ap
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_konsumer_key = "/api/konsumer-key";
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_oapi_audit_trail = "/api/oapi-audit-trail";
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$api_history_per_hit_client = "/api/history-per-hit-client";
+vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$ica_jenis_member = "/internal-client-api/jenis-member";
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$canDoStore = false;
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$canDoUpdate = false;
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.$canDoDestroy = false;
