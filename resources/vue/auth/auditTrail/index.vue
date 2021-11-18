@@ -28,7 +28,7 @@
                Hasil Dari : {{cari_data}}
                <div class="text-blue cp" @click="load()">Reset</div>
             </section>
-            <div class="py-2">
+            <div class="py-2 table-responsive">
                <table class="table table-hover">
                   <tr>
                      <th class="px-3 align-middle">Jenis</th>
@@ -43,7 +43,7 @@
                   <tr v-for="(audit_trail,i) in in_audit_trail.data" :key="i">
                      <td class="px-3 align-middle" width="25">{{audit_trail.jenis_kegiatan}}</td>
                      <td class="px-3 align-middle">{{audit_trail.nama_form}}</td>
-                     <td class="px-3 align-middle">
+                     <td class="px-3 align-middle" width="400">
                         <table class="table-sm table table-bordered">
                            <tr>
                               <th class="small">Nama Field</th>
@@ -60,13 +60,10 @@
                            </tr>
                         </table>
                      </td>
-                     <td class="px-3 align-middle">{{audit_trail.get_creator.nama}}</td>
-                     <!-- <td
-                     class="px-3 align-middle text-center"
-                     >{{audit_trail.created_at | dayjs('YYYY-MM-DD')}}</td>-->
+                     <td class="px-3 align-middle small">{{audit_trail.get_creator.nama}}</td>
 
                      <td
-                        class="px-3 align-middle text-center"
+                        class="px-3 align-middle text-center small"
                      >{{ $date(audit_trail.created_at).format('dddd, DD/MMM/YY HH:mm') }}</td>
                      <td class="px-3 align-middle text-center" width="25" v-if="isEditableData">
                         <div class="btn-group">
