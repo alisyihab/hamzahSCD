@@ -18,7 +18,7 @@ class HistoryPerHitClientService extends Controller
 
     private function EloquentData()
     {
-        return HistoryPerHitClient::with('getCreator')->orderBy('created_at', "DESC");
+        return HistoryPerHitClient::with('getClientApp')->orderBy('created_at', "DESC");
     }
 
     public function mendapatkanSeluruhData()
