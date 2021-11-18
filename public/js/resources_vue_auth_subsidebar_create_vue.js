@@ -111,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 
         var permission_selected = _this.in_permission.map(function (e) {
           return e.route_url;
-        }).indexOf("kelola-user.index");
+        }).indexOf(respon.data.in_sub_sidebar.fk_nama_permission);
 
         _this.form.fill(respon.data.in_sub_sidebar);
 

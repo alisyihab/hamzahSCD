@@ -98,9 +98,10 @@ export default {
                   .map(function(e) {
                      return e.route_url;
                   })
-                  .indexOf("kelola-user.index");
+                  .indexOf(respon.data.in_sub_sidebar.fk_nama_permission);
 
                this.form.fill(respon.data.in_sub_sidebar);
+
                this.form.data_permission = this.in_permission[
                   permission_selected
                ];
