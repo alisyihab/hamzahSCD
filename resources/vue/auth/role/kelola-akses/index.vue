@@ -1,11 +1,11 @@
 <template>
-   <div>
+   <div class="container">
       <kembali></kembali>
-      <div class="bg-white rounded">
-         <div class="p-2">
+      <div class="bg-white box-shadow-1 border-radius-10">
+         <div class="p-4">
             <div class="row">
                <div class="col-md als col-sm-6">
-                  <div class="m-2 h5-font-size">
+                  <div class="m-2 f5-fz font-weight-bolder">
                      <div>Kelola Akses Role : {{in_role.nama_role}}</div>
                   </div>
                </div>
@@ -24,32 +24,33 @@
                   </div>
                </div>
             </div>
+            <div class="table-responsive py-3">
+               <table class="table table-sm table-hover">
+                  <tr>
+                     <th>#</th>
+                     <th>Permission</th>
+                     <th>Creator</th>
+                     <th></th>
+                  </tr>
+
+                  <tbody>
+                     <tr v-for="(permission,i) in in_role.get_all_permission" :key="i">
+                        <td>{{i+1}}</td>
+                        <td>{{permission.nama_route}}</td>
+                        <td>{{permission.created_by}}</td>
+                        <td width="25">
+                           <button
+                              class="btn btn-dark btn-sm btn-block"
+                              @click="hapus(permission.kd_impl_role_permission)"
+                           >
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                           </button>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
          </div>
-         <table class="table table-sm table-hover">
-            <thead>
-               <tr>
-                  <th>#</th>
-                  <th>Permission</th>
-                  <th>Creator</th>
-                  <th></th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr v-for="(permission,i) in in_role.get_all_permission" :key="i">
-                  <td>{{i+1}}</td>
-                  <td>{{permission.nama_route}}</td>
-                  <td>{{permission.created_by}}</td>
-                  <td width="25">
-                     <button
-                        class="btn btn-dark btn-sm btn-block"
-                        @click="hapus(permission.kd_impl_role_permission)"
-                     >
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                     </button>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
       </div>
    </div>
 </template>
