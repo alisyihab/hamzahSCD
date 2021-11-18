@@ -78,7 +78,12 @@
             <div class="modal-content" style="border:none !important">
                <div class="modal-header gr-bg-d-blue text-white">
                   <h5 class="modal-title">Detail History Hit</h5>
-                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                  <button
+                     type="button"
+                     class="close text-white"
+                     data-dismiss="modal"
+                     aria-label="Close"
+                  >
                      <span aria-hidden="true">&times;</span>
                   </button>
                </div>
@@ -145,13 +150,11 @@ export default {
          isEditableData: false,
          in_history_per_hit_client: {},
          cari_data: "",
-         canDoStore: false,
-         canDoUpdate: false,
-         canDoDestroy: false,
-         grup_url: "audit-trail"
+         grup_url: ""
       };
    },
    mounted() {
+      this.grup_url = this.$router.currentRoute.name.split(".")[0];
       this.verify_permission();
       this.load();
    },
@@ -174,13 +177,13 @@ export default {
             if (permission.grup == this.grup_url) {
                let data_permission = permission.url.split(".")[1];
                if (data_permission == "store") {
-                  this.canDoStore = true;
+                  this.$canDoStore = true;
                }
                if (data_permission == "update") {
-                  this.canDoUpdate = true;
+                  this.$canDoUpdate = true;
                }
                if (data_permission == "destroy") {
-                  this.canDoDestroy = true;
+                  this.$canDoDestroy = true;
                }
             }
          });
