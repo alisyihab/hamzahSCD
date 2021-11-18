@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Http\Controllers\OpenAPI\{{modelName}};
+
+use App\Http\Controllers\Controller;
+use App\Services\AuditTrailService;
+
+class {{modelName}}Service extends Controller
+{
+
+    private AuditTrailService $auditTrailService;
+
+    public function __construct(AuditTrailService $auditTrailService)
+    {
+        $this->auditTrailService = $auditTrailService;
+    }
+
+    private function EloquentData()
+    {
+        return {{modelName}}::with('getAppName')->orderBy('created_at', "DESC");
+    }
+
+    public function mendapatkanSeluruhData()
+    {
+        return $this->EloquentData()->get();
+    }
+
+    public function mendapatkanSeluruhDataPaginate($paginate)
+    {
+        return $this->EloquentData()->paginate($paginate);
+    }
+
+    public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
+    {
+        return $this->EloquentData()->where($nama_kolom,'ILIKE',"%". $request. "%")->paginate($paginate);
+    }
+
+    public function mendapatkanSatuData($id)
+    {
+        return {{modelName}}::findOrFail($id);
+    }
+
+    public function menyimpanData($request)
+    {
+        $model = new {{modelName}}();
+        $model->created_by =  #appName;
+        return $this->mengelolaData($model, $request);
+    }
+
+    public function memperbaruiData($request, $id)
+    {
+        $model = {{modelName}}::findOrFail($id);
+        $dataSebelumBerubah = $model->getOriginal();
+        $response =  $this->mengelolaData($model, $request);
+        $this->auditTrailService->inisialisasiAuditTrail("update", "{{modelName}}", $model, $dataSebelumBerubah);
+        return $response;
+    }
+
+    private  function mengelolaData($model, $request)
+    {
+        // JANGAN LUPA DI SET
+        $model->save();
+        return $model;
+    }
+
+    public function menghapusData($id)
+    {
+        $data = {{modelName}}::findOrFail($id)->delete();
+        return $data;
+    }
+}

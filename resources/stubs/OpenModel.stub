@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Controllers\OpenAPI\{{modelName}};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class {{modelName}} extends Model
+{
+    use HasFactory;
+
+    public $primaryKey = "kd_{{modelNameSingularLowerCase}}";
+    
+public function getAppName()
+    {
+        return $this->hasOne(KonsumerKey::class, "client_id", 'client_app_id')->select("app_name", "client_id");
+    }
+
+}

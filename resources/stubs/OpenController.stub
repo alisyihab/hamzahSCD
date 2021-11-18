@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Http\Controllers\OpenAPI\{{modelName}};
+
+use Illuminate\Http\Request;
+use App\Services\responseService;
+use App\Http\Controllers\Controller;
+
+class {{modelName}}Controller extends Controller
+{
+
+    private {{modelName}}Service ${{modelNamePluralLowerCase}}Service;
+    private ResponseService $responseService;
+    
+    public function __construct({{modelName}}Service ${{modelNamePluralLowerCase}}Service , 
+                                ResponseService $responseService)
+    {
+        $this->{{modelNamePluralLowerCase}}Service = ${{modelNamePluralLowerCase}}Service;
+        $this->responseService = $responseService;
+
+    }
+
+    public function index()
+    {
+        $in_{{modelNameSingularLowerCase}} = $this->{{modelNamePluralLowerCase}}Service->mendapatkanSeluruhDataPaginate($this->paginate);
+        return compact("in_{{modelNameSingularLowerCase}}");
+    }
+
+    public function create()
+    {
+        # code...
+    }
+
+    public function edit($id)
+    {
+        $in_{{modelNameSingularLowerCase}} = $this->{{modelNamePluralLowerCase}}Service->mendapatkanSatuData($id);
+        return compact("in_{{modelNameSingularLowerCase}}");
+    }
+
+    public function store(Request $request)
+    {
+
+        return $this->responseService->menyimpanData($this->{{modelNamePluralLowerCase}}Service->menyimpanData($request));
+    }
+
+    public function show($id)
+    {
+        $in_{{modelNameSingularLowerCase}} = $this->{{modelNamePluralLowerCase}}Service->mendapatkanSatuData($id);
+        return compact("in_{{modelNameSingularLowerCase}}");
+    }
+
+    public function update(Request $request, $id)
+    {
+        return $this->responseService->updateData($this->{{modelNamePluralLowerCase}}Service->memperbaruiData($request, $id));
+    }
+
+    public function destroy($id)
+    {
+        $this->{{modelNamePluralLowerCase}}Service->menghapusData($id);
+        return $this->responseService->menghapusData($id);
+    }
+}
