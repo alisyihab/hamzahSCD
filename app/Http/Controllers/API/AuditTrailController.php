@@ -16,15 +16,12 @@ class AuditTrailController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $in_audit_trail = $this->auditTrailService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_audit_trail");
-    }
-
-    public function search(Request $request)
-    {
-        $in_audit_trail = $this->auditTrailService->mencariDataBerdasarkanKostum("nama_form", $request->cari, $this->paginate);
+        $in_audit_trail = $this->auditTrailService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
         return compact("in_audit_trail");
     }
 

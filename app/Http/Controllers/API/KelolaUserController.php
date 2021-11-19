@@ -24,15 +24,12 @@ class KelolaUserController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $in_kelola_user =  $this->kelolaUserService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_kelola_user");
-    }
-
-    public function search(Request $request)
-    {
-        $in_kelola_user  = $this->kelolaUserService->mencariDataBerdasarkanKostum("nama", $request->cari, $this->paginate);
+        $in_kelola_user =  $this->kelolaUserService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
         return compact("in_kelola_user");
     }
 
