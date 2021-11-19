@@ -35,8 +35,11 @@ class KelolaUserService extends Controller
         return $this->EloquentDataAktif()->get();
     }
 
-    public function mendapatkanSeluruhDataPaginate($paginate)
+    public function mendapatkanSeluruhDataPaginate($paginate, $isCari = false)
     {
+        if ($isCari) {
+            return $this->mencariDataBerdasarkanKostum("nama", $isCari, $paginate);
+        }
         return $this->EloquentDataAktif()->paginate($paginate);
     }
 

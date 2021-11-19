@@ -37,8 +37,11 @@ class AuditTrailService extends Controller
         return $this->EloquentData()->get();
     }
 
-    public function mendapatkanSeluruhDataPaginate($paginate)
+    public function mendapatkanSeluruhDataPaginate($paginate, $isCari = false)
     {
+        if ($isCari) {
+            return $this->mencariDataBerdasarkanKostum("nama_form", $isCari, $paginate);
+        }
         return $this->EloquentData()->paginate($paginate);
     }
 
