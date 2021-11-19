@@ -31,7 +31,6 @@ Route::middleware(['auth:api', "akses"])->group(function () {
         'only' => ["index", "show", "store", "update", "destroy"]
     ]);
 
-    Route::get("/kelola-user/pencarian", [KelolaUserController::class, "search"])->name('kelola-user.search');
     Route::apiResources(['/kelola-user' => KelolaUserController::class], [
         'only' => ["index", "create", "edit", "show", "store", "update", "destroy"]
     ]);
@@ -54,7 +53,7 @@ Route::middleware(['auth:api', "akses"])->group(function () {
         Route::delete("{kd_impl_permission}", [KelolaRolePermissionController::class, "destroy"])->name('destroy');
     });
 
-    Route::get("/audit-trail/pencarian", [AuditTrailController::class, "search"])->name('audit-trail.search');
+    // Route::get("/audit-trail/pencarian", [AuditTrailController::class, "search"])->name('audit-trail.search');
     Route::apiResources(['audit-trail' => AuditTrailController::class], [
         'only' => ["index",  "show"]
     ]);
@@ -67,6 +66,7 @@ Route::middleware(['auth:api', "akses"])->group(function () {
     Route::get("/oapi-audit-trail/pencarian", [OpenApiAuditTrailController::class, "search"])->name("oapi-audit-trail.search");
     Route::resource('oapi-audit-trail', OpenApiAuditTrailController::class)->only("index");
 
+    Route::get("/history-per-hit-client/pencarian", [HistoryPerHitClientController::class, "search"])->name("history-per-hit-client.search");
     Route::resource('history-per-hit-client', HistoryPerHitClientController::class)->only("index");
 });
 
