@@ -5,15 +5,21 @@ namespace App\Services;
 use App\Http\Controllers\Controller;
 use App\Models\HistoryPerHitClient;
 use App\Services\AuditTrailService;
+use Browser;
 
 class HistoryPerHitClientService extends Controller
 {
 
+    private GetClientIpAddressService $getClientIpAddressService;
     private AuditTrailService $auditTrailService;
 
-    public function __construct(AuditTrailService $auditTrailService)
-    {
+    public function __construct(
+        AuditTrailService $auditTrailService,
+        GetClientIpAddressService $getClientIpAddressService,
+
+    ) {
         $this->auditTrailService = $auditTrailService;
+        $this->getClientIpAddressService = $getClientIpAddressService;
     }
 
     private function EloquentData()
@@ -33,7 +39,10 @@ class HistoryPerHitClientService extends Controller
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentData()->where($nama_kolom, 'ILIKE', "%" . $request . "%")->paginate($paginate);
+        return $this->EloquentData()
+            ->join("konsumer_keys", "konsumer_keys.client_id", "=", "history_per_hit_clients.client_app_id")
+            ->select("konsumer_keys.app_name", "history_per_hit_clients.*")
+            ->where($nama_kolom, 'ILIKE', "%" . $request . "%")->paginate($paginate);
     }
 
     public function mendapatkanSatuData($id)
@@ -44,7 +53,18 @@ class HistoryPerHitClientService extends Controller
     public function menyimpanData($request)
     {
         $model = new HistoryPerHitClient();
-        return $this->mengelolaData($model, $request);
+        $data = [];
+        $data["client_app_id"] = $request["client_id"];
+        $data["path"] = $request["path_url"];
+        $data["ip_address"] = $this->getClientIpAddressService->getIp();
+        $data["method"] = $request["route_data"]->methods()[0];
+        $data["browserName"] = Browser::browserName();
+        $data["browserEngine"] = Browser::browserEngine();
+        $data["platformName"] = Browser::platformName();
+        $data["platformFamily"] = Browser::platformFamily();
+        $data["deviceFamily"] = Browser::deviceFamily();
+        $data["isBot"] = Browser::isBot();
+        return $this->mengelolaData($model, $data);
     }
 
     public function memperbaruiData($request, $id)
