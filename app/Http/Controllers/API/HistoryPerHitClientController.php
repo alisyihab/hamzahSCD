@@ -27,6 +27,12 @@ class HistoryPerHitClientController extends Controller
         return compact("in_history_per_hit_client");
     }
 
+    public function search(Request $request)
+    {
+        $in_history_per_hit_client = $this->historyPerHitClientService->mencariDataBerdasarkanKostum("app_name", $request->cari, $this->paginate);
+        return compact("in_history_per_hit_client");
+    }
+
     public function destroy($id)
     {
         $this->historyPerHitClientService->menghapusData($id);
