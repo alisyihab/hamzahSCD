@@ -11,6 +11,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -109,25 +111,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {
-      in_kelola_user: {},
-      cari_data: "",
+    var _ref;
+
+    return _ref = {
       isPencarian: false,
-      grup_url: ""
-    };
+      queryUrlIfExist: "",
+      in_kelola_user: {},
+      cari_data: ""
+    }, _defineProperty(_ref, "isPencarian", false), _defineProperty(_ref, "grup_url", ""), _ref;
   },
   mounted: function mounted() {
     this.grup_url = this.$router.currentRoute.name.split(".")[0];
+    this.queryUrlIfExist = this.$router.currentRoute.query;
     this.verify_permission();
     this.load_kelola_user();
   },
   methods: {
+    checkIsPencarianTrue: function checkIsPencarianTrue() {
+      if (this.$router.currentRoute.query.cari) {
+        this.cari_data = this.$router.currentRoute.query.cari;
+        return true;
+      }
+
+      return false;
+    },
+    resetQueryIfExist: function resetQueryIfExist() {
+      this.$router.push(this.grup_url);
+      this.queryUrlIfExist = [];
+    },
+    resetPencarian: function resetPencarian() {
+      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.load_kelola_user();
+    },
+    updateRouteUrl: function updateRouteUrl(data) {
+      this.$router.push({
+        path: this.$router.currentRoute.fullPath,
+        query: data
+      });
+      this.queryUrlIfExist = this.$router.currentRoute.query;
+    },
     loadPaginate: function loadPaginate() {
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      this.$router.push(this.$router.currentRoute.path + "?page=" + page);
-      axios.get(this.$api_kelola_user + "?page=" + page).then(function (respon) {
+      this.updateRouteUrl({
+        page: page
+      });
+      axios.get(this.$api_kelola_user, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this.in_kelola_user = respon.data.in_kelola_user;
       });
     },
@@ -155,8 +188,14 @@ __webpack_require__.r(__webpack_exports__);
     pencarian: function pencarian() {
       var _this3 = this;
 
+      this.resetQueryIfExist();
+      this.updateRouteUrl({
+        cari: this.cari_data
+      });
       this.$Progress.start();
-      axios.get(this.$api_kelola_user + "/pencarian?cari=" + this.cari_data).then(function (respon) {
+      axios.get(this.$api_kelola_user, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this3.$Progress.finish();
 
         _this3.in_kelola_user = respon.data.in_kelola_user;
@@ -170,10 +209,11 @@ __webpack_require__.r(__webpack_exports__);
     load_kelola_user: function load_kelola_user() {
       var _this4 = this;
 
-      this.cari_data = null;
-      this.isPencarian = false;
+      this.isPencarian = this.checkIsPencarianTrue();
       this.$Progress.start();
-      axios.get(this.$api_kelola_user).then(function (respon) {
+      axios.get(this.$api_kelola_user, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this4.$Progress.finish();
 
         _this4.in_kelola_user = respon.data.in_kelola_user;
@@ -386,7 +426,7 @@ var render = function() {
                     staticClass: "text-blue cp",
                     on: {
                       click: function($event) {
-                        return _vm.load_kelola_user()
+                        return _vm.resetPencarian()
                       }
                     }
                   },

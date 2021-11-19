@@ -93,25 +93,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -119,54 +100,83 @@ __webpack_require__.r(__webpack_exports__);
       isEditableData: false,
       in_audit_trail: {},
       cari_data: "",
-      canDoStore: false,
-      canDoUpdate: false,
-      canDoDestroy: false,
-      grup_url: "audit-trail"
+      grup_url: "",
+      queryUrlIfExist: ""
     };
   },
   mounted: function mounted() {
-    this.verify_permission();
+    this.grup_url = this.$router.currentRoute.name.split(".")[0];
+    this.queryUrlIfExist = this.$router.currentRoute.query;
     this.load();
   },
   methods: {
+    checkIsPencarianTrue: function checkIsPencarianTrue() {
+      if (this.$router.currentRoute.query.cari) {
+        this.cari_data = this.$router.currentRoute.query.cari;
+        return true;
+      }
+
+      return false;
+    },
+    resetQueryIfExist: function resetQueryIfExist() {
+      this.$router.push(this.grup_url);
+      this.queryUrlIfExist = [];
+    },
+    resetPencarian: function resetPencarian() {
+      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.load();
+    },
+    updateRouteUrl: function updateRouteUrl(data) {
+      this.$router.push({
+        path: this.$router.currentRoute.fullPath,
+        query: data
+      });
+      this.queryUrlIfExist = this.$router.currentRoute.query;
+    },
     loadPaginate: function loadPaginate() {
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      this.$router.push(this.$router.currentRoute.path + "?page=" + page);
-      axios.get(this.$api_audit_trail + "?page=" + page).then(function (respon) {
+      this.updateRouteUrl({
+        page: page
+      });
+      axios.get(this.$api_audit_trail, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this.in_audit_trail = respon.data.in_audit_trail;
       });
     },
-    verify_permission: function verify_permission() {
+    pencarian: function pencarian() {
       var _this2 = this;
 
-      window.amr_data_permission_users.forEach(function (permission) {
-        if (permission.grup == _this2.grup_url) {
-          var data_permission = permission.url.split(".")[1];
+      this.resetQueryIfExist();
+      this.updateRouteUrl({
+        cari: this.cari_data
+      });
+      this.$Progress.start();
+      axios.get(this.$api_audit_trail, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this2.isPencarian = true;
 
-          if (data_permission == "store") {
-            _this2.canDoStore = true;
-          }
+        _this2.$Progress.finish();
 
-          if (data_permission == "update") {
-            _this2.canDoUpdate = true;
-          }
+        _this2.in_audit_trail = respon.data.in_audit_trail;
+      })["catch"](function (e) {
+        _this2.$Progress.fail();
 
-          if (data_permission == "destroy") {
-            _this2.canDoDestroy = true;
-          }
-        }
+        _this2.$error["catch"](e);
       });
     },
-    pencarian: function pencarian() {
+    load: function load() {
       var _this3 = this;
 
+      this.isPencarian = this.checkIsPencarianTrue();
       this.$Progress.start();
-      axios.get("/api/audit-trail/pencarian?cari=" + this.cari_data).then(function (respon) {
-        _this3.isPencarian = true;
-
+      axios.get(this.$api_audit_trail, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this3.$Progress.finish();
 
         _this3.in_audit_trail = respon.data.in_audit_trail;
@@ -174,38 +184,6 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$Progress.fail();
 
         _this3.$error["catch"](e);
-      });
-    },
-    load: function load() {
-      var _this4 = this;
-
-      this.isPencarian = false;
-      this.$Progress.start();
-      axios.get(this.$api_audit_trail).then(function (respon) {
-        _this4.$Progress.finish();
-
-        _this4.in_audit_trail = respon.data.in_audit_trail;
-      })["catch"](function (e) {
-        _this4.$Progress.fail();
-
-        _this4.$error["catch"](e);
-      });
-    },
-    hapus: function hapus(data_kode) {
-      var _this5 = this;
-
-      konfirmasiHapus.fire().then(function (result) {
-        if (result.isConfirmed) {
-          _this5.$toast.df102();
-
-          axios["delete"]("/api/audit-trail/" + data_kode).then(function () {
-            _this5.$toast.df200();
-
-            _this5.load();
-          })["catch"](function (e) {
-            _this5.$error["catch"](e);
-          });
-        }
       });
     }
   }
@@ -371,7 +349,7 @@ var render = function() {
                   staticClass: "text-blue cp",
                   on: {
                     click: function($event) {
-                      return _vm.load()
+                      return _vm.resetPencarian()
                     }
                   }
                 },
@@ -489,61 +467,7 @@ var render = function() {
                         )
                       )
                     ]
-                  ),
-                  _vm._v(" "),
-                  _vm.isEditableData
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "px-3 align-middle text-center",
-                          attrs: { width: "25" }
-                        },
-                        [
-                          _c("div", { staticClass: "btn-group" }, [
-                            _vm._m(2, true),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "dropdown-menu dropdown-menu-right"
-                              },
-                              [
-                                _vm.canDoUpdate
-                                  ? _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "dropdown-item",
-                                        attrs: {
-                                          to:
-                                            "audit-trail/create/" +
-                                            audit_trail.id
-                                        }
-                                      },
-                                      [_vm._v("Edit")]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.canDoDestroy
-                                  ? _c(
-                                      "div",
-                                      {
-                                        staticClass: "dropdown-item cp",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.hapus(audit_trail.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Delete")]
-                                    )
-                                  : _vm._e()
-                              ],
-                              1
-                            )
-                          ])
-                        ]
-                      )
-                    : _vm._e()
+                  )
                 ])
               })
             ],
@@ -589,19 +513,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", { staticClass: "small" }, [_vm._v("V.After")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-sm",
-        attrs: { type: "button", "data-toggle": "dropdown" }
-      },
-      [_c("i", { staticClass: "fa fa-ellipsis-v" })]
-    )
   }
 ]
 render._withStripped = true
