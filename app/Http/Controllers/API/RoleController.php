@@ -18,16 +18,12 @@ class RoleController extends Controller
         $this->response = $response;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-
-        $in_role = $this->roleService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_role");
-    }
-
-    public function search(Request $request)
-    {
-        $in_role = $this->roleService->mencariDataBerdasarkanKostum("nama_role", $request->cari, $this->paginate);
+        $in_role = $this->roleService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
         return compact("in_role");
     }
 
@@ -60,7 +56,7 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-        $this->roleService->menghapusDatamendapatkanSeluruhData($id);
+        $this->roleService->menghapusData($id);
         return $this->response->menghapusData($id);
     }
 }

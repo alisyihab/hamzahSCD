@@ -40,7 +40,7 @@
         }
 
         table>tr>th {
-            background: #415db5;
+            background: #4758dd;
             color: white !important;
         }
 
@@ -50,9 +50,29 @@
         }
 
         .gr-bg-d-blue {
-            background: #1e3c72;
-            background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);
-            background: linear-gradient(to right, #2a5298, #1e3c72);
+            background: linear-gradient(120deg, #4758dd, #4558d5, #4357cd, #4257c5, #4256bc, #4155b4, #4155ac, #4154a3, #42539b, #425193, #43508a, #434f82);
+        }
+
+        .gr-bg-d-red {
+            background: #ED213A;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #93291E, #ED213A);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #93291E, #ED213A);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+        }
+
+        .gr-bg-d-red-tl {
+            background: #ED213A;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #93291E, #ED213A);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #93291E, #ED213A);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
         }
 
         .gr-bg-d-blue-tl {
@@ -62,7 +82,7 @@
         }
 
         .brand-link {
-            border-bottom: 1px solid #2a5298 !important;
+            border-bottom: 1px solid #415db5 !important;
         }
 
         .sidebar-light {
@@ -71,7 +91,7 @@
 
 
         .user-panel {
-            border-bottom: 1px solid #2a5298 !important;
+            border-bottom: 1px solid #415db5 !important;
         }
 
         .box-shadow-1 {

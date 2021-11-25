@@ -159,10 +159,9 @@ __webpack_require__.r(__webpack_exports__);
         params: this.queryUrlIfExist
       }).then(function (respon) {
         _this2.isPencarian = true;
+        _this2.in_audit_trail = respon.data.in_audit_trail;
 
         _this2.$Progress.finish();
-
-        _this2.in_audit_trail = respon.data.in_audit_trail;
       })["catch"](function (e) {
         _this2.$Progress.fail();
 
@@ -177,13 +176,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.$api_audit_trail, {
         params: this.queryUrlIfExist
       }).then(function (respon) {
-        _this3.$Progress.finish();
-
         _this3.in_audit_trail = respon.data.in_audit_trail;
-      })["catch"](function (e) {
-        _this3.$Progress.fail();
 
+        _this3.$Progress.finish();
+      })["catch"](function (e) {
         _this3.$error["catch"](e);
+
+        _this3.$Progress.fail();
       });
     }
   }

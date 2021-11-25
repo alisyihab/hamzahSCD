@@ -31,8 +31,11 @@ class SidebarService
 
     private function EloquentData()
     {
-        return Sidebar::orderBy('urutan_sidebar', "ASC");
+        return Sidebar::orderBy('urutan_sidebar', "ASC")->with("getSubsidebar");
     }
+
+
+
 
     private function EloquentDataNonaktif()
     {
@@ -44,14 +47,17 @@ class SidebarService
         return $this->EloquentDataAktif()->get();
     }
 
-    public function mendapatkanSeluruhDataPaginate($paginate)
+    public function mendapatkanSeluruhDataPaginate($paginate, $isCari = false)
     {
-        return $this->EloquentDataAktif()->paginate($paginate);
+        if ($isCari) {
+            return $this->mencariDataBerdasarkanKostum("nama_sidebar", $isCari, $paginate);
+        }
+        return $this->EloquentData()->paginate($paginate);
     }
 
     public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentDataAktif()->where($nama_kolom, 'ILIKE', '%' . $request . '%')->paginate($paginate);
+        return $this->EloquentData()->where($nama_kolom, 'ILIKE', '%' . $request . '%')->paginate($paginate);
     }
 
     public function mencariDataBerdasarkanKostumNonPaginate($nama_kolom, $request)

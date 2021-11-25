@@ -148,8 +148,8 @@ export default {
             })
             .then(respon => {
                this.isPencarian = true;
-               this.$Progress.finish();
                this.in_audit_trail = respon.data.in_audit_trail;
+               this.$Progress.finish();
             })
             .catch(e => {
                this.$Progress.fail();
@@ -165,12 +165,12 @@ export default {
                params: this.queryUrlIfExist
             })
             .then(respon => {
-               this.$Progress.finish();
                this.in_audit_trail = respon.data.in_audit_trail;
+               this.$Progress.finish();
             })
             .catch(e => {
-               this.$Progress.fail();
                this.$error.catch(e);
+               this.$Progress.fail();
             });
       }
    }

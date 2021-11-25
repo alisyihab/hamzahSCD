@@ -157,6 +157,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      queryUrlIfExist: "",
       detailHisotry: [],
       isPencarian: false,
       isEditableData: false,
@@ -167,10 +168,35 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.grup_url = this.$router.currentRoute.name.split(".")[0];
+    this.queryUrlIfExist = this.$router.currentRoute.query;
     this.verify_permission();
     this.load();
   },
   methods: {
+    checkIsPencarianTrue: function checkIsPencarianTrue() {
+      if (this.$router.currentRoute.query.cari) {
+        this.cari_data = this.$router.currentRoute.query.cari;
+        return true;
+      }
+
+      return false;
+    },
+    resetQueryIfExist: function resetQueryIfExist() {
+      this.$router.push(this.grup_url);
+      this.queryUrlIfExist = [];
+    },
+    resetPencarian: function resetPencarian() {
+      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.load();
+    },
+    updateRouteUrl: function updateRouteUrl(data) {
+      this.$router.push({
+        path: this.$router.currentRoute.fullPath,
+        query: data
+      });
+      this.queryUrlIfExist = this.$router.currentRoute.query;
+    },
     showDetailsHistoryAsModal: function showDetailsHistoryAsModal(dataHisotry) {
       $("#modal_showDetailsHistoryAsModal").modal("show");
       this.detailHisotry = dataHisotry;
@@ -179,8 +205,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      this.$router.push(this.$router.currentRoute.path + "?page=" + page);
-      axios.get(this.$api_history_per_hit_client + "?page=" + page).then(function (respon) {
+      this.updateRouteUrl({
+        page: page
+      });
+      axios.get(this.$api_history_per_hit_client, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this.in_history_per_hit_client = respon.data.in_history_per_hit_client;
       });
     },
@@ -208,13 +238,18 @@ __webpack_require__.r(__webpack_exports__);
     pencarian: function pencarian() {
       var _this3 = this;
 
+      this.resetQueryIfExist();
+      this.updateRouteUrl({
+        cari: this.cari_data
+      });
       this.$Progress.start();
-      axios.get(this.$api_history_per_hit_client + "/pencarian?cari=" + this.cari_data).then(function (respon) {
+      axios.get(this.$api_history_per_hit_client, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this3.isPencarian = true;
+        _this3.in_history_per_hit_client = respon.data.in_history_per_hit_client;
 
         _this3.$Progress.finish();
-
-        _this3.in_history_per_hit_client = respon.data.in_history_per_hit_client;
       })["catch"](function (e) {
         _this3.$Progress.fail();
 
@@ -224,16 +259,18 @@ __webpack_require__.r(__webpack_exports__);
     load: function load() {
       var _this4 = this;
 
-      this.isPencarian = false;
+      this.isPencarian = this.checkIsPencarianTrue();
       this.$Progress.start();
-      axios.get(this.$api_history_per_hit_client).then(function (respon) {
-        _this4.$Progress.finish();
-
+      axios.get(this.$api_history_per_hit_client, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
         _this4.in_history_per_hit_client = respon.data.in_history_per_hit_client;
-      })["catch"](function (e) {
-        _this4.$Progress.fail();
 
+        _this4.$Progress.finish();
+      })["catch"](function (e) {
         _this4.$error["catch"](e);
+
+        _this4.$Progress.fail();
       });
     },
     hapus: function hapus(data_kode) {
@@ -416,7 +453,7 @@ var render = function() {
                   staticClass: "text-blue cp",
                   on: {
                     click: function($event) {
-                      return _vm.load()
+                      return _vm.resetPencarian()
                     }
                   }
                 },

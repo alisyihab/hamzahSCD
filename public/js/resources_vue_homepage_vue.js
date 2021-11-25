@@ -83,6 +83,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
@@ -142,7 +163,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.data_center[data-v-e87276e2] {\r\n   background: url(\"/file/default/data_center.jpg\");\r\n   background-repeat: no-repeat;\r\n   background-size: auto;\r\n   background-position: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.data_center[data-v-e87276e2] {\r\n   background: url(\"/file/default/scd.jpg\");\r\n   background-repeat: no-repeat;\r\n   background-size: auto;\r\n   background-position: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -629,137 +650,143 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "gr-bg-d-blue-tl text-white",
-      staticStyle: { "overflow-y": "hidden" }
-    },
-    [
-      _c(
-        "svg",
-        {
-          staticStyle: { position: "absolute", "z-index": "0", bottom: "0px" },
+  return _c("div", { staticStyle: { "overflow-y": "hidden" } }, [
+    _c(
+      "svg",
+      {
+        staticStyle: { position: "fixed", "z-index": "0", top: "-50px" },
+        attrs: { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1440 320" }
+      },
+      [
+        _c("path", {
           attrs: {
-            xmlns: "http://www.w3.org/2000/svg",
-            viewBox: "0 0 1440 320"
+            fill: "#4758DD",
+            "fill-opacity": "1",
+            d:
+              "M0,96L48,117.3C96,139,192,181,288,181.3C384,181,480,139,576,149.3C672,160,768,224,864,250.7C960,277,1056,267,1152,240C1248,213,1344,171,1392,149.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
           }
-        },
-        [
-          _c("path", {
-            attrs: {
-              fill: "#415db5",
-              "fill-opacity": "1",
-              d:
-                "M0,32L24,64C48,96,96,160,144,170.7C192,181,240,139,288,133.3C336,128,384,160,432,165.3C480,171,528,149,576,133.3C624,117,672,107,720,112C768,117,816,139,864,165.3C912,192,960,224,1008,202.7C1056,181,1104,107,1152,85.3C1200,64,1248,96,1296,96C1344,96,1392,64,1416,48L1440,32L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row no-gutters", staticStyle: { height: "100vh" } },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 my-auto" }, [
-            _c("div", { staticClass: "p-3" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group p-2" }, [
-                _c(
-                  "form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.login.apply(null, arguments)
-                      }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "svg",
+      {
+        staticStyle: { position: "fixed", "z-index": "0", bottom: "-10px" },
+        attrs: { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1440 320" }
+      },
+      [
+        _c("path", {
+          attrs: {
+            fill: "#ACB7E7",
+            "fill-opacity": "1",
+            d:
+              "M0,32L24,64C48,96,96,160,144,170.7C192,181,240,139,288,133.3C336,128,384,160,432,165.3C480,171,528,149,576,133.3C624,117,672,107,720,112C768,117,816,139,864,165.3C912,192,960,224,1008,202.7C1056,181,1104,107,1152,85.3C1200,64,1248,96,1296,96C1344,96,1392,64,1416,48L1440,32L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row no-gutters", staticStyle: { height: "100vh" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4 my-auto" }, [
+          _c("div", { staticClass: "p-3" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group p-2" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.login.apply(null, arguments)
                     }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Username")]),
-                      _vm._v(" "),
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Username")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.username,
+                          expression: "form.username"
+                        }
+                      ],
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.form.username },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "username", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "" } }, [_vm._v("Password")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group" }, [
                       _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.form.username,
-                            expression: "form.username"
+                            value: _vm.form.password,
+                            expression: "form.password"
                           }
                         ],
                         staticClass: "form-control form-control-sm",
-                        attrs: { type: "text" },
-                        domProps: { value: _vm.form.username },
+                        attrs: { type: "password", id: "password" },
+                        domProps: { value: _vm.form.password },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.form, "username", $event.target.value)
+                            _vm.$set(_vm.form, "password", $event.target.value)
                           }
                         }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "" } }, [_vm._v("Password")]),
+                      }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "input-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.password,
-                              expression: "form.password"
-                            }
-                          ],
-                          staticClass: "form-control form-control-sm",
-                          attrs: { type: "password", id: "password" },
-                          domProps: { value: _vm.form.password },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.form,
-                                "password",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "input-group-prepend" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "btn btn-sm btn btn-outline-light ml-1 als round-right",
-                              attrs: { type: "button" },
-                              on: { click: _vm.show_password }
-                            },
-                            [_c("i", { staticClass: "fa fa-eye" })]
-                          )
-                        ])
+                      _c("span", { staticClass: "input-group-prepend" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-sm btn btn-dark ml-1 als round-right",
+                            attrs: { type: "button" },
+                            on: { click: _vm.show_password }
+                          },
+                          [_c("i", { staticClass: "fa fa-eye" })]
+                        )
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ]
-                )
-              ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              )
             ])
           ])
-        ]
-      )
-    ]
-  )
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -778,9 +805,14 @@ var staticRenderFns = [
           }
         },
         [
-          _c("h2", { staticClass: "font-weight-bolder text-white" }, [
-            _vm._v("Hamzah Data Center")
-          ])
+          _c(
+            "h2",
+            {
+              staticClass: "font-weight-bolder text-white",
+              staticStyle: { "text-shadow": "2px 5px 7px rgba(0,0,0,0.53)" }
+            },
+            [_vm._v("Singgle Costumer Database")]
+          )
         ]
       )
     ])
@@ -789,18 +821,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-5 text-center font-weight-bold h3" }, [
-      _c("div", { staticClass: "f5-fz" }, [_vm._v("Masuk")])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "px-5 font-weight-bolder text-white h1 position-absolute d-md-block d-sm-none",
+        staticStyle: { top: "-100px", left: "0" }
+      },
+      [_c("div", [_vm._v("Masuk")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "px-5 font-weight-bolder text-center mb-4 h1 d-md-none d-sm-block"
+      },
+      [_c("div", [_vm._v("Masuk")])]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("button", { staticClass: "btn btn-outline-light btn-block" }, [
-        _vm._v("Login")
-      ])
+      _c("button", { staticClass: "btn btn-dark btn-block" }, [_vm._v("Login")])
     ])
   }
 ]

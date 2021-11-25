@@ -18,6 +18,7 @@ class Controller extends BaseController
 
     public $paginate  = 25;
 
+
     public function resufleUrutanIfExist($table, $nama_kolom, $old, $new)
     {
         $data = DB::table($table)->where($nama_kolom, $new)->update(
@@ -25,6 +26,7 @@ class Controller extends BaseController
         );
         return $new;
     }
+    
     public function initialAuditTrail($jenis, $nama_form, $model, $dataBeforeUpdated)
     {
         $data = [];

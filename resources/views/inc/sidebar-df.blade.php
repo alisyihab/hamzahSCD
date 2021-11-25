@@ -1,60 +1,11 @@
-@php
-$in_sidebar = [
-    [
-        'nama_sidebar' => 'Sidebar',
-        'icon_sidebar' => 'fa-align-left',
-        'get_sub_sidebar' => [
-            [
-                'fk_nama_permission' => 'sidebar.index',
-                'nama_sub_sidebar' => 'Daftar Sidebar',
-            ],
-            // [
-            //     'fk_nama_permission' => '/sidebar/create',
-            //     'nama_sub_sidebar' => 'Tambah Sidebar',
-            // ],
-        ],
-    ],
-    [
-        'nama_sidebar' => 'Kelola User',
-        'icon_sidebar' => 'fa-users',
-        'get_sub_sidebar' => [
-            [
-                'fk_nama_permission' => 'kelola-user.index',
-                'nama_sub_sidebar' => 'Daftar User',
-            ],
-            [
-                'fk_nama_permission' => 'kelola-user.create',
-                'nama_sub_sidebar' => 'Tambah User',
-            ],
-        ],
-    ],
-    [
-        'nama_sidebar' => 'Akses User',
-        'icon_sidebar' => 'fa-cogs',
-        'get_sub_sidebar' => [
-            [
-                'fk_nama_permission' => 'role.index',
-                'nama_sub_sidebar' => 'Daftar Role',
-            ],
-            [
-                'fk_nama_permission' => '/permission',
-                'nama_sub_sidebar' => 'Daftar Permission',
-            ],
-        ],
-    ],
-];
-
-@endphp
-
-
-<aside class="main-sidebar sidebar-light-lime ">
+<aside class="main-sidebar sidebar-light-lime  gr-bg-d-blue">
     {{-- {{ $in_sidebars }} --}}
 
-    <a href="#" class="brand-link gr-bg-d-blue text-white">
+    <a href="#" class="brand-link text-white">
         <img src="/file/default/data.png" alt="Data Center" class="brand-image">
-        <span class="brand-text font-weight-bolder">Data Center</span>
+        <span class="brand-text font-weight-bolder">Single Costumer</span>
     </a>
-    <div class="sidebar  gr-bg-d-blue">
+    <div class="sidebar">
         @auth
             <div class="user-panel  mt-3 pb-3 mb-3 d-flex">
                 <div class="image " style="align-self: center;">

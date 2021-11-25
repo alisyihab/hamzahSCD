@@ -74,66 +74,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       in_permission: {},
       cari_data: "",
-      canDoStore: false,
-      canDoUpdate: false,
-      canDoDestroy: false,
-      grup_url: "permission",
+      grup_url: "",
+      queryUrlIfExist: "",
       isPencarian: false
     };
   },
   mounted: function mounted() {
+    this.grup_url = this.$router.currentRoute.name.split(".")[0];
+    this.queryUrlIfExist = this.$router.currentRoute.query;
     this.verify_permission();
     this.load_permission();
   },
   methods: {
-    verify_permission: function verify_permission() {
+    checkIsPencarianTrue: function checkIsPencarianTrue() {
+      if (this.$router.currentRoute.query.cari) {
+        this.cari_data = this.$router.currentRoute.query.cari;
+        return true;
+      }
+
+      return false;
+    },
+    resetQueryIfExist: function resetQueryIfExist() {
+      this.$router.push(this.grup_url);
+      this.queryUrlIfExist = [];
+    },
+    resetPencarian: function resetPencarian() {
+      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.load_permission();
+    },
+    updateRouteUrl: function updateRouteUrl(data) {
+      this.$router.push({
+        path: this.$router.currentRoute.fullPath,
+        query: data
+      });
+      this.queryUrlIfExist = this.$router.currentRoute.query;
+    },
+    loadPaginate: function loadPaginate() {
       var _this = this;
 
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.updateRouteUrl({
+        page: page
+      });
+      axios.get(this.$api_permission, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this.in_permission = respon.data.in_permission;
+      });
+    },
+    verify_permission: function verify_permission() {
+      var _this2 = this;
+
       window.amr_data_permission_users.forEach(function (permission) {
-        if (permission.grup == _this.grup_url) {
+        if (permission.grup == _this2.grup_url) {
           var data_permission = permission.url.split(".")[1];
 
-          if (data_permission == "store") {
-            _this.canDoStore = true;
-          }
-
-          if (data_permission == "update") {
-            _this.canDoUpdate = true;
-          }
-
           if (data_permission == "destroy") {
-            _this.canDoDestroy = true;
+            _this2.$canDoDestroy = true;
           }
         }
       });
     },
     pencarian: function pencarian() {
-      var _this2 = this;
-
-      this.isPencarian = true;
-      this.$Progress.start();
-      axios.get("/api/permission/pencarian?cari=" + this.cari_data).then(function (respon) {
-        _this2.$Progress.finish();
-
-        _this2.in_permission = respon.data.in_permission;
-      })["catch"](function (e) {
-        _this2.$Progress.fail();
-
-        _this2.$error["catch"](e);
-      });
-    },
-    load_permission: function load_permission() {
       var _this3 = this;
 
-      this.isPencarian = false;
-      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.updateRouteUrl({
+        cari: this.cari_data
+      });
       this.$Progress.start();
-      axios.get("/api/permission").then(function (respon) {
+      axios.get(this.$api_permission, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this3.isPencarian = true;
+
         _this3.$Progress.finish();
 
         _this3.in_permission = respon.data.in_permission;
@@ -143,19 +172,36 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$error["catch"](e);
       });
     },
-    hapus: function hapus(data_kode) {
+    load_permission: function load_permission() {
       var _this4 = this;
+
+      this.isPencarian = this.checkIsPencarianTrue();
+      this.$Progress.start();
+      axios.get(this.$api_permission, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this4.$Progress.finish();
+
+        _this4.in_permission = respon.data.in_permission;
+      })["catch"](function (e) {
+        _this4.$Progress.fail();
+
+        _this4.$error["catch"](e);
+      });
+    },
+    hapus: function hapus(data_kode) {
+      var _this5 = this;
 
       konfirmasiHapus.fire().then(function (result) {
         if (result.isConfirmed) {
-          _this4.$toast.df102();
+          _this5.$toast.df102();
 
-          axios["delete"]("/api/permission/" + data_kode).then(function () {
-            _this4.$toast.df200();
+          axios["delete"](_this5.$api_permission + "/" + data_kode).then(function () {
+            _this5.$toast.df200();
 
-            _this4.load_permission();
+            _this5.load_permission();
           })["catch"](function (e) {
-            _this4.$error["catch"](e);
+            _this5.$error["catch"](e);
           });
         }
       });
@@ -327,7 +373,7 @@ var render = function() {
                   staticClass: "text-blue cp",
                   on: {
                     click: function($event) {
-                      return _vm.load_kelola_user()
+                      return _vm.resetPencarian()
                     }
                   }
                 },
@@ -343,7 +389,7 @@ var render = function() {
             [
               _vm._m(2),
               _vm._v(" "),
-              _vm._l(_vm.in_permission, function(permission, i) {
+              _vm._l(_vm.in_permission.data, function(permission, i) {
                 return _c("tr", { key: i }, [
                   _c("td", { staticClass: "px-3 align-middle" }, [
                     _vm._v(_vm._s(permission.nama_route))
@@ -364,21 +410,36 @@ var render = function() {
                       attrs: { width: "25" }
                     },
                     [
-                      _c("i", {
-                        staticClass: "fa fa-trash text-danger",
-                        attrs: { "aria-hidden": "true" },
-                        on: {
-                          click: function($event) {
-                            return _vm.hapus(permission.kd_permission)
-                          }
-                        }
-                      })
+                      _vm.$canDoDestroy
+                        ? _c("i", {
+                            staticClass: "fa fa-trash text-danger",
+                            attrs: { "aria-hidden": "true" },
+                            on: {
+                              click: function($event) {
+                                return _vm.hapus(permission.kd_permission)
+                              }
+                            }
+                          })
+                        : _vm._e()
                     ]
                   )
                 ])
               })
             ],
             2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "container" },
+            [
+              _c("pagination", {
+                staticClass: "mt-3",
+                attrs: { limit: 1, data: _vm.in_permission },
+                on: { "pagination-change-page": _vm.loadPaginate }
+              })
+            ],
+            1
           )
         ])
       ])

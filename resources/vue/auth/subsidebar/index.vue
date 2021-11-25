@@ -17,54 +17,54 @@
                </div>
             </div>
          </div>
-      </div>
-      <div class="bg-white">
-         <div class="table-responsive">
-            <table class="table-sm table-hover table">
-               <tr>
-                  <th class="px-3">#</th>
-                  <th class="px-3">Nama</th>
-                  <th class="px-3">Status</th>
-                  <th class="text-center px-3">Urutan</th>
-                  <th class="px-3"></th>
-               </tr>
-
-               <tbody>
-                  <tr v-for="(sub_sidebar,i)  in in_sidebar.get_subsidebar" :key="i">
-                     <td class="px-3">{{i+1}}</td>
-                     <td class="px-3">{{sub_sidebar.nama_sub_sidebar}}</td>
-                     <td class="px-3">{{sub_sidebar.status_sub_sidebar | STATUS}}</td>
-                     <td class="px-3" width="25">
-                        <input
-                           type="text"
-                           class="form-control text-center"
-                           :value="sub_sidebar.urutan_sub_sidebar"
-                           @change="updateUrutan"
-                           :id=" sub_sidebar.kd_sub_sidebar"
-                        />
-                     </td>
-                     <td class="px-3">
-                        <div class="btn-group">
-                           <button class="btn btn-sm" type="button" data-toggle="dropdown">
-                              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                           </button>
-                           <div class="dropdown-menu dropdown-menu-right">
-                              <a
-                                 v-if="canDoUpdate"
-                                 class="dropdown-item"
-                                 @click="edit(sub_sidebar)"
-                              >Edit</a>
-                              <a
-                                 v-if="canDoDestroy"
-                                 class="dropdown-item"
-                                 @click="hapus(sub_sidebar.kd_sub_sidebar)"
-                              >Hapus</a>
-                           </div>
-                        </div>
-                     </td>
+         <div class="bg-white">
+            <div class="table-responsive">
+               <table class="table-sm table-hover table">
+                  <tr>
+                     <th class="px-3">#</th>
+                     <th class="px-3">Nama</th>
+                     <th class="px-3">Status</th>
+                     <th class="text-center px-3">Urutan</th>
+                     <th class="px-3"></th>
                   </tr>
-               </tbody>
-            </table>
+
+                  <tbody>
+                     <tr v-for="(sub_sidebar,i)  in in_sidebar.get_subsidebar" :key="i">
+                        <td class="px-3">{{i+1}}</td>
+                        <td class="px-3">{{sub_sidebar.nama_sub_sidebar}}</td>
+                        <td class="px-3">{{sub_sidebar.status_sub_sidebar | STATUS}}</td>
+                        <td class="px-3" width="25">
+                           <input
+                              type="text"
+                              class="form-control text-center"
+                              :value="sub_sidebar.urutan_sub_sidebar"
+                              @change="updateUrutan"
+                              :id=" sub_sidebar.kd_sub_sidebar"
+                           />
+                        </td>
+                        <td class="px-3">
+                           <div class="btn-group">
+                              <button class="btn btn-sm" type="button" data-toggle="dropdown">
+                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                 <a
+                                    v-if="canDoUpdate"
+                                    class="dropdown-item"
+                                    @click="edit(sub_sidebar)"
+                                 >Edit</a>
+                                 <a
+                                    v-if="canDoDestroy"
+                                    class="dropdown-item"
+                                    @click="hapus(sub_sidebar.kd_sub_sidebar)"
+                                 >Hapus</a>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
          </div>
       </div>
    </div>

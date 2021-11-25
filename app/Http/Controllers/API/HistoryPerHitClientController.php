@@ -21,15 +21,12 @@ class HistoryPerHitClientController extends Controller
         $this->responseService = $responseService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $in_history_per_hit_client = $this->historyPerHitClientService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_history_per_hit_client");
-    }
-
-    public function search(Request $request)
-    {
-        $in_history_per_hit_client = $this->historyPerHitClientService->mencariDataBerdasarkanKostum("app_name", $request->cari, $this->paginate);
+        $in_history_per_hit_client = $this->historyPerHitClientService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
         return compact("in_history_per_hit_client");
     }
 

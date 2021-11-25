@@ -23,15 +23,12 @@ class KonsumerKeyController extends Controller
         $this->responseService = $responseService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $in_konsumer_key = $this->konsumerkeysService->mendapatkanSeluruhDataPaginate($this->paginate);
-        return compact("in_konsumer_key");
-    }
-
-    public function search(Request $request)
-    {
-        $in_konsumer_key = $this->konsumerkeysService->mencariDataBerdasarkanKostum("client_id", $request->cari, $this->paginate);
+        $in_konsumer_key = $this->konsumerkeysService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
         return compact("in_konsumer_key");
     }
 

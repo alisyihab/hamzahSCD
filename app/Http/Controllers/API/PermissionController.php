@@ -17,18 +17,22 @@ class PermissionController extends Controller
         $this->permissionService = $permissionService;
         $this->responseService = $responseService;
     }
-    
-    public function index()
+
+    public function index(Request $request)
     {
-        $in_permission = $this->permissionService->mendapatkanSeluruhData();
+        $in_permission = $this->permissionService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
+
         return compact("in_permission");
     }
 
-    public function search(Request $request)
-    {
-        $in_permission = $this->permissionService->mencariDataBerdasarkanKostum("nama_route", $request->cari);
-        return compact("in_permission");
-    }
+    // public function search(Request $request)
+    // {
+    //     $in_permission = $this->permissionService->mencariDataBerdasarkanKostum("nama_route", $request->cari);
+    //     return compact("in_permission");
+    // }
 
     public function destroy($id)
     {

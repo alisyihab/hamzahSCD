@@ -110,91 +110,132 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       isPencarian: false,
       in_role: {},
       cari_data: "",
-      canDoStore: true,
-      canDoUpdate: true,
-      canDoDestroy: true,
-      grup_url: "role"
+      grup_url: "",
+      queryUrlIfExist: ""
     };
   },
   mounted: function mounted() {
-    this.load_role();
+    this.grup_url = this.$router.currentRoute.name.split(".")[0];
+    this.queryUrlIfExist = this.$router.currentRoute.query;
     this.verify_permission();
+    this.load_role();
   },
   methods: {
-    verify_permission: function verify_permission() {
+    checkIsPencarianTrue: function checkIsPencarianTrue() {
+      if (this.$router.currentRoute.query.cari) {
+        this.cari_data = this.$router.currentRoute.query.cari;
+        return true;
+      }
+
+      return false;
+    },
+    resetQueryIfExist: function resetQueryIfExist() {
+      this.$router.push(this.grup_url);
+      this.queryUrlIfExist = [];
+    },
+    resetPencarian: function resetPencarian() {
+      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.load_role();
+    },
+    updateRouteUrl: function updateRouteUrl(data) {
+      this.$router.push({
+        path: this.$router.currentRoute.fullPath,
+        query: data
+      });
+      this.queryUrlIfExist = this.$router.currentRoute.query;
+    },
+    loadPaginate: function loadPaginate() {
       var _this = this;
 
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.updateRouteUrl({
+        page: page
+      });
+      axios.get(this.$api_role, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this.in_role = respon.data.in_role;
+      });
+    },
+    verify_permission: function verify_permission() {
+      var _this2 = this;
+
       window.amr_data_permission_users.forEach(function (permission) {
-        if (permission.grup == _this.grup_url) {
+        if (permission.grup == _this2.grup_url) {
           var data_permission = permission.url.split(".")[1];
 
           if (data_permission == "store") {
-            _this.canDoStore = true;
+            _this2.$canDoStore = true;
           }
 
           if (data_permission == "update") {
-            _this.canDoUpdate = true;
+            _this2.$canDoUpdate = true;
           }
 
           if (data_permission == "destroy") {
-            _this.canDoDestroy = true;
+            _this2.$canDoDestroy = true;
           }
         }
       });
     },
     pencarian: function pencarian() {
-      var _this2 = this;
+      var _this3 = this;
 
+      this.resetQueryIfExist();
+      this.updateRouteUrl({
+        cari: this.cari_data
+      });
       this.$Progress.start();
-      axios.get("/api/role/pencarian?cari=" + this.cari_data).then(function (respon) {
-        _this2.isPencarian = true;
+      axios.get(this.$api_role, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this3.isPencarian = true;
+        _this3.in_role = respon.data.in_role;
 
-        _this2.$Progress.finish();
-
-        _this2.in_role = respon.data.in_role;
+        _this3.$Progress.finish();
       })["catch"](function (e) {
-        _this2.$Progress.fail();
+        _this3.$error["catch"](e);
 
-        _this2.$error["catch"](e);
+        _this3.$Progress.fail();
       });
     },
     load_role: function load_role() {
-      var _this3 = this;
+      var _this4 = this;
 
+      this.isPencarian = this.checkIsPencarianTrue();
       this.$Progress.start();
-      axios.get("/api/role").then(function (respon) {
-        _this3.isPencarian = false;
+      axios.get(this.$api_role, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this4.in_role = respon.data.in_role;
 
-        _this3.$Progress.finish();
-
-        _this3.in_role = respon.data.in_role;
+        _this4.$Progress.finish();
       })["catch"](function (e) {
-        _this3.$Progress.fail();
+        _this4.$Progress.fail();
 
-        _this3.$error["catch"](e);
+        _this4.$error["catch"](e);
       });
     },
     hapus: function hapus(data_kode) {
-      var _this4 = this;
+      var _this5 = this;
 
       konfirmasiHapus.fire().then(function (result) {
         if (result.isConfirmed) {
-          _this4.$toast.df102();
+          _this5.$toast.df102();
 
-          axios["delete"]("/api/role/" + data_kode).then(function () {
-            _this4.$toast.df200();
+          axios["delete"](_this5.$api_role + "/" + data_kode).then(function () {
+            _this5.$toast.df200();
 
-            _this4.load_role();
+            _this5.load_role();
           })["catch"](function (e) {
-            _this4.$error["catch"](e);
+            _this5.$error["catch"](e);
           });
         }
       });
@@ -350,7 +391,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-5" }, [
             _c("div", { staticClass: "row" }, [
-              _vm.canDoStore
+              _vm.$canDoStore
                 ? _c("div", { staticClass: "col-sm" }, [
                     _c(
                       "div",
@@ -386,7 +427,7 @@ var render = function() {
                   staticClass: "text-blue cp",
                   on: {
                     click: function($event) {
-                      return _vm.load_role()
+                      return _vm.resetPencarian()
                     }
                   }
                 },
@@ -395,105 +436,120 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "py-2" }, [
-          _c(
-            "table",
-            { staticClass: "table table-hover" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._l(_vm.in_role.data, function(role, i) {
-                return _c("tr", { key: i }, [
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _vm._v(_vm._s(role.nama_role))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3 align-middle" }, [
-                    _vm._v(_vm._s(role.get_creator.nama))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    {
-                      staticClass: "px-3 align-middle",
-                      attrs: { width: "200" }
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-dark btn-block btn-sm",
-                          on: {
-                            click: function($event) {
-                              return _vm.$router.push({
-                                name: "impl-role-to-permission.index",
-                                params: { kd_role: role.kd_role }
-                              })
-                            }
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-plus mr-2",
-                            attrs: { "aria-hidden": "true" }
-                          }),
-                          _vm._v(" Kelola Akses\n                     ")
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    {
-                      staticClass: "px-3 align-middle text-center",
-                      attrs: { width: "25" }
-                    },
-                    [
-                      _c("div", { staticClass: "btn-group" }, [
-                        _vm._m(2, true),
-                        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "py-2" },
+          [
+            _c(
+              "table",
+              { staticClass: "table table-hover" },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._l(_vm.in_role.data, function(role, i) {
+                  return _c("tr", { key: i }, [
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _vm._v(_vm._s(role.nama_role))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "px-3 align-middle" }, [
+                      _vm._v(_vm._s(role.get_creator.nama))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "px-3 align-middle",
+                        attrs: { width: "200" }
+                      },
+                      [
                         _c(
-                          "div",
-                          { staticClass: "dropdown-menu dropdown-menu-right" },
+                          "button",
+                          {
+                            staticClass: "btn btn-dark btn-block btn-sm",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({
+                                  name: "impl-role-to-permission.index",
+                                  params: { kd_role: role.kd_role }
+                                })
+                              }
+                            }
+                          },
                           [
-                            _vm.canDoUpdate
-                              ? _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "dropdown-item",
-                                    attrs: { to: "role/create/" + role.kd_role }
-                                  },
-                                  [_vm._v("Edit")]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _vm.canDoDestroy
-                              ? _c(
-                                  "div",
-                                  {
-                                    staticClass: "dropdown-item cp",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.hapus(role.kd_role)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("Delete")]
-                                )
-                              : _vm._e()
-                          ],
-                          1
+                            _c("i", {
+                              staticClass: "fa fa-plus mr-2",
+                              attrs: { "aria-hidden": "true" }
+                            }),
+                            _vm._v(" Kelola Akses\n                     ")
+                          ]
                         )
-                      ])
-                    ]
-                  )
-                ])
-              })
-            ],
-            2
-          )
-        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "px-3 align-middle text-center",
+                        attrs: { width: "25" }
+                      },
+                      [
+                        _c("div", { staticClass: "btn-group" }, [
+                          _vm._m(2, true),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "dropdown-menu dropdown-menu-right"
+                            },
+                            [
+                              _vm.$canDoUpdate
+                                ? _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "dropdown-item",
+                                      attrs: {
+                                        to: "role/create/" + role.kd_role
+                                      }
+                                    },
+                                    [_vm._v("Edit")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.$canDoDestroy
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass: "dropdown-item cp",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.hapus(role.kd_role)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                })
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("pagination", {
+              staticClass: "mt-3",
+              attrs: { limit: 1, data: _vm.in_role },
+              on: { "pagination-change-page": _vm.loadPaginate }
+            })
+          ],
+          1
+        )
       ])
     ])
   ])

@@ -25,15 +25,7 @@
                </div>
                <div class="col-sm-5">
                   <div class="row">
-                     <!-- <div class="col-sm">
-                        <div class="my-2">
-                           <button
-                              @click="export_all()"
-                              class="btn btn-outline-dark btn-block btn-sm"
-                           >Export role</button>
-                        </div>
-                     </div>-->
-                     <div class="col-sm" v-if="canDoStore">
+                     <div class="col-sm" v-if="$canDoStore">
                         <div class="my-2">
                            <router-link
                               to="/role/create"
@@ -46,7 +38,7 @@
             </div>
             <section v-if="isPencarian">
                Hasil Dari : {{cari_data}}
-               <div class="text-blue cp" @click="load_role()">Reset</div>
+               <div class="text-blue cp" @click="resetPencarian()">Reset</div>
             </section>
             <div class="py-2">
                <table class="table table-hover">
@@ -80,12 +72,12 @@
                            </button>
                            <div class="dropdown-menu dropdown-menu-right">
                               <router-link
-                                 v-if="canDoUpdate"
+                                 v-if="$canDoUpdate"
                                  :to="'role/create/'+role.kd_role"
                                  class="dropdown-item"
                               >Edit</router-link>
                               <div
-                                 v-if="canDoDestroy"
+                                 v-if="$canDoDestroy"
                                  class="dropdown-item cp"
                                  @click="hapus(role.kd_role)"
                               >Delete</div>
@@ -94,6 +86,12 @@
                      </td>
                   </tr>
                </table>
+               <pagination
+                  class="mt-3"
+                  :limit="1"
+                  :data="in_role"
+                  @pagination-change-page="loadPaginate"
+               ></pagination>
             </div>
          </div>
       </div>
@@ -106,55 +104,100 @@ export default {
          isPencarian: false,
          in_role: {},
          cari_data: "",
-         canDoStore: true,
-         canDoUpdate: true,
-         canDoDestroy: true,
-         grup_url: "role"
+         grup_url: "",
+         queryUrlIfExist: ""
       };
    },
    mounted() {
-      this.load_role();
+      this.grup_url = this.$router.currentRoute.name.split(".")[0];
+      this.queryUrlIfExist = this.$router.currentRoute.query;
       this.verify_permission();
+      this.load_role();
    },
    methods: {
+      checkIsPencarianTrue() {
+         if (this.$router.currentRoute.query.cari) {
+            this.cari_data = this.$router.currentRoute.query.cari;
+            return true;
+         }
+         return false;
+      },
+
+      resetQueryIfExist() {
+         this.$router.push(this.grup_url);
+         this.queryUrlIfExist = [];
+      },
+
+      resetPencarian() {
+         this.cari_data = null;
+         this.resetQueryIfExist();
+         this.load_role();
+      },
+
+      updateRouteUrl(data) {
+         this.$router.push({
+            path: this.$router.currentRoute.fullPath,
+            query: data
+         });
+         this.queryUrlIfExist = this.$router.currentRoute.query;
+      },
+
+      loadPaginate(page = 1) {
+         this.updateRouteUrl({ page: page });
+         axios
+            .get(this.$api_role, {
+               params: this.queryUrlIfExist
+            })
+            .then(respon => {
+               this.in_role = respon.data.in_role;
+            });
+      },
+
       verify_permission() {
          window.amr_data_permission_users.forEach(permission => {
             if (permission.grup == this.grup_url) {
                let data_permission = permission.url.split(".")[1];
                if (data_permission == "store") {
-                  this.canDoStore = true;
+                  this.$canDoStore = true;
                }
                if (data_permission == "update") {
-                  this.canDoUpdate = true;
+                  this.$canDoUpdate = true;
                }
                if (data_permission == "destroy") {
-                  this.canDoDestroy = true;
+                  this.$canDoDestroy = true;
                }
             }
          });
       },
       pencarian() {
+         this.resetQueryIfExist();
+         this.updateRouteUrl({ cari: this.cari_data });
+
          this.$Progress.start();
          axios
-            .get("/api/role/pencarian?cari=" + this.cari_data)
+            .get(this.$api_role, {
+               params: this.queryUrlIfExist
+            })
             .then(respon => {
                this.isPencarian = true;
-               this.$Progress.finish();
                this.in_role = respon.data.in_role;
+               this.$Progress.finish();
             })
             .catch(e => {
-               this.$Progress.fail();
                this.$error.catch(e);
+               this.$Progress.fail();
             });
       },
       load_role() {
+         this.isPencarian = this.checkIsPencarianTrue();
          this.$Progress.start();
          axios
-            .get("/api/role")
+            .get(this.$api_role, {
+               params: this.queryUrlIfExist
+            })
             .then(respon => {
-               this.isPencarian = false;
-               this.$Progress.finish();
                this.in_role = respon.data.in_role;
+               this.$Progress.finish();
             })
             .catch(e => {
                this.$Progress.fail();
@@ -166,7 +209,7 @@ export default {
             if (result.isConfirmed) {
                this.$toast.df102();
                axios
-                  .delete("/api/role/" + data_kode)
+                  .delete(this.$api_role + "/" + data_kode)
                   .then(() => {
                      this.$toast.df200();
                      this.load_role();

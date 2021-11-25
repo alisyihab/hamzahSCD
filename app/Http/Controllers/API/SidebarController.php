@@ -23,9 +23,12 @@ class SidebarController extends Controller
         $this->permissionService = $permissionService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataDenganRelasiSubSidebar();
+        $in_sidebar = $this->sidebarService->mendapatkanSeluruhDataPaginate(
+            paginate: $this->paginate,
+            isCari: $request->cari
+        );
         return compact("in_sidebar");
     }
 

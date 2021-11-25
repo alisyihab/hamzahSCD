@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Permission;
 use Illuminate\Support\Facades\DB;
+use phpseclib3\System\SSH\Agent;
 
 class PermissionService
 {
@@ -17,6 +18,16 @@ class PermissionService
         return $this->EloquentData()->get();
     }
 
+
+    public function mendapatkanSeluruhDataPaginate($paginate, $isCari = false)
+    {
+        if ($isCari) {
+            return $this->mencariDataBerdasarkanKostum("nama_route", $isCari, $paginate);
+        }
+        return $this->EloquentData()->paginate($paginate);
+    }
+
+
     public function mendapatkanSeluruhDataBelumTerpilih($role)
     {
         return $this->EloquentData()
@@ -25,9 +36,9 @@ class PermissionService
                 ->select("fk_kd_permission"));
     }
 
-    public function mencariDataBerdasarkanKostum($nama_kolom, $request)
+    public function mencariDataBerdasarkanKostum($nama_kolom, $request, $paginate)
     {
-        return $this->EloquentData()->where($nama_kolom, "LIKE", '%' . $request . '%')->get();
+        return $this->EloquentData()->where($nama_kolom, "LIKE", '%' . $request . '%')->paginate($paginate);
     }
 
     public function mendapatkanDataBelumTerpilih($role)

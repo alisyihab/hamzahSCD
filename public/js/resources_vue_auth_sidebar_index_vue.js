@@ -129,23 +129,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       isPencarian: false,
       in_sidebar: {},
       cari_data: "",
-      grup_url: ""
+      grup_url: "",
+      queryUrlIfExist: ""
     };
   },
   mounted: function mounted() {
     this.grup_url = this.$router.currentRoute.name.split(".")[0];
+    this.queryUrlIfExist = this.$router.currentRoute.query;
     this.verify_permission();
     this.load_sidebar();
   },
   methods: {
-    updateUrutan: function updateUrutan(e) {
+    checkIsPencarianTrue: function checkIsPencarianTrue() {
+      if (this.$router.currentRoute.query.cari) {
+        this.cari_data = this.$router.currentRoute.query.cari;
+        return true;
+      }
+
+      return false;
+    },
+    resetQueryIfExist: function resetQueryIfExist() {
+      this.$router.push(this.grup_url);
+      this.queryUrlIfExist = [];
+    },
+    resetPencarian: function resetPencarian() {
+      this.cari_data = null;
+      this.resetQueryIfExist();
+      this.load_sidebar();
+    },
+    updateRouteUrl: function updateRouteUrl(data) {
+      this.$router.push({
+        path: this.$router.currentRoute.fullPath,
+        query: data
+      });
+      this.queryUrlIfExist = this.$router.currentRoute.query;
+    },
+    loadPaginate: function loadPaginate() {
       var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.updateRouteUrl({
+        page: page
+      });
+      axios.get(this.$api_sidebar, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this.in_sidebar = respon.data.in_sidebar;
+      });
+    },
+    updateUrutan: function updateUrutan(e) {
+      var _this2 = this;
 
       this.$toast.df102();
       var update_urutan = {
@@ -153,30 +200,30 @@ __webpack_require__.r(__webpack_exports__);
         urutan_sidebar: e.target.value
       };
       axios.put(this.$api_sidebar + "/" + e.target.id, update_urutan).then(function () {
-        _this.load_sidebar();
+        _this2.load_sidebar();
 
-        _this.$toast.df200();
+        _this2.$toast.df200();
       })["catch"](function (e) {
-        _this.$error["catch"](e);
+        _this2.$error["catch"](e);
       });
     },
     verify_permission: function verify_permission() {
-      var _this2 = this;
+      var _this3 = this;
 
       window.amr_data_permission_users.forEach(function (permission) {
-        if (permission.grup == _this2.grup_url) {
+        if (permission.grup == _this3.grup_url) {
           var data_permission = permission.url.split(".")[1];
 
           if (data_permission == "store") {
-            _this2.$canDoStore = true;
+            _this3.$canDoStore = true;
           }
 
           if (data_permission == "update") {
-            _this2.$canDoUpdate = true;
+            _this3.$canDoUpdate = true;
           }
 
           if (data_permission == "destroy") {
-            _this2.$canDoDestroy = true;
+            _this3.$canDoDestroy = true;
           }
         }
       });
@@ -190,48 +237,56 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     pencarian: function pencarian() {
-      var _this3 = this;
-
-      this.$Progress.start();
-      this.isPencarian = true;
-      axios.get(this.$api_sidebar + "/pencarian?cari=" + this.cari_data).then(function (respon) {
-        _this3.$Progress.finish();
-
-        _this3.in_sidebar = respon.data.in_sidebar;
-      })["catch"](function (e) {
-        _this3.$Progress.fail();
-
-        _this3.$error["catch"](e);
-      });
-    },
-    load_sidebar: function load_sidebar() {
       var _this4 = this;
 
-      this.isPencarian = false;
+      this.resetQueryIfExist();
+      this.updateRouteUrl({
+        cari: this.cari_data
+      });
       this.$Progress.start();
-      axios.get(this.$api_sidebar).then(function (respon) {
-        _this4.$Progress.finish();
-
+      axios.get(this.$api_sidebar, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this4.isPencarian = true;
         _this4.in_sidebar = respon.data.in_sidebar;
+
+        _this4.$Progress.finish();
       })["catch"](function (e) {
         _this4.$Progress.fail();
 
         _this4.$error["catch"](e);
       });
     },
-    hapus: function hapus(data_kode) {
+    load_sidebar: function load_sidebar() {
       var _this5 = this;
+
+      this.isPencarian = this.checkIsPencarianTrue();
+      this.$Progress.start();
+      axios.get(this.$api_sidebar, {
+        params: this.queryUrlIfExist
+      }).then(function (respon) {
+        _this5.in_sidebar = respon.data.in_sidebar;
+
+        _this5.$Progress.finish();
+      })["catch"](function (e) {
+        _this5.$error["catch"](e);
+
+        _this5.$Progress.fail();
+      });
+    },
+    hapus: function hapus(data_kode) {
+      var _this6 = this;
 
       konfirmasiHapus.fire().then(function (result) {
         if (result.isConfirmed) {
-          _this5.$toast.df102();
+          _this6.$toast.df102();
 
-          axios["delete"](_this5.$api_sidebar + "/" + data_kode).then(function () {
-            _this5.$toast.df200();
+          axios["delete"](_this6.$api_sidebar + "/" + data_kode).then(function () {
+            _this6.$toast.df200();
 
-            _this5.load_sidebar();
+            _this6.load_sidebar();
           })["catch"](function (e) {
-            _this5.$error["catch"](e);
+            _this6.$error["catch"](e);
           });
         }
       });
@@ -423,7 +478,7 @@ var render = function() {
                   staticClass: "text-blue cp",
                   on: {
                     click: function($event) {
-                      return _vm.load_sidebar()
+                      return _vm.resetPencarian()
                     }
                   }
                 },
@@ -439,7 +494,7 @@ var render = function() {
             [
               _vm._m(1),
               _vm._v(" "),
-              _vm._l(_vm.in_sidebar, function(sidebar, i) {
+              _vm._l(_vm.in_sidebar.data, function(sidebar, i) {
                 return _c("tr", { key: i }, [
                   _c("td", [_vm._v(_vm._s(i + 1))]),
                   _vm._v(" "),
@@ -561,6 +616,19 @@ var render = function() {
               })
             ],
             2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "container" },
+            [
+              _c("pagination", {
+                staticClass: "mt-3",
+                attrs: { limit: 1, data: _vm.in_sidebar },
+                on: { "pagination-change-page": _vm.loadPaginate }
+              })
+            ],
+            1
           )
         ])
       ])

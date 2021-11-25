@@ -25,7 +25,7 @@
             </div>
             <section v-if="isPencarian">
                Hasil Dari : {{cari_data}}
-               <div class="text-blue cp" @click="load()">Reset</div>
+               <div class="text-blue cp" @click="resetPencarian()">Reset</div>
             </section>
             <div class="py-2 table-responsive">
                <table class="table table-hover">
@@ -145,6 +145,7 @@
 export default {
    data() {
       return {
+         queryUrlIfExist: "",
          detailHisotry: [],
          isPencarian: false,
          isEditableData: false,
@@ -155,23 +156,55 @@ export default {
    },
    mounted() {
       this.grup_url = this.$router.currentRoute.name.split(".")[0];
+      this.queryUrlIfExist = this.$router.currentRoute.query;
       this.verify_permission();
       this.load();
    },
    methods: {
+      checkIsPencarianTrue() {
+         if (this.$router.currentRoute.query.cari) {
+            this.cari_data = this.$router.currentRoute.query.cari;
+            return true;
+         }
+         return false;
+      },
+
+      resetQueryIfExist() {
+         this.$router.push(this.grup_url);
+         this.queryUrlIfExist = [];
+      },
+
+      resetPencarian() {
+         this.cari_data = null;
+         this.resetQueryIfExist();
+         this.load();
+      },
+
+      updateRouteUrl(data) {
+         this.$router.push({
+            path: this.$router.currentRoute.fullPath,
+            query: data
+         });
+         this.queryUrlIfExist = this.$router.currentRoute.query;
+      },
+
       showDetailsHistoryAsModal(dataHisotry) {
          $("#modal_showDetailsHistoryAsModal").modal("show");
          this.detailHisotry = dataHisotry;
       },
+
       loadPaginate(page = 1) {
-         this.$router.push(this.$router.currentRoute.path + "?page=" + page);
+         this.updateRouteUrl({ page: page });
          axios
-            .get(this.$api_history_per_hit_client + "?page=" + page)
+            .get(this.$api_history_per_hit_client, {
+               params: this.queryUrlIfExist
+            })
             .then(respon => {
                this.in_history_per_hit_client =
                   respon.data.in_history_per_hit_client;
             });
       },
+
       verify_permission() {
          window.amr_data_permission_users.forEach(permission => {
             if (permission.grup == this.grup_url) {
@@ -189,18 +222,19 @@ export default {
          });
       },
       pencarian() {
+         this.resetQueryIfExist();
+         this.updateRouteUrl({ cari: this.cari_data });
+
          this.$Progress.start();
          axios
-            .get(
-               this.$api_history_per_hit_client +
-                  "/pencarian?cari=" +
-                  this.cari_data
-            )
+            .get(this.$api_history_per_hit_client, {
+               params: this.queryUrlIfExist
+            })
             .then(respon => {
                this.isPencarian = true;
-               this.$Progress.finish();
                this.in_history_per_hit_client =
                   respon.data.in_history_per_hit_client;
+               this.$Progress.finish();
             })
             .catch(e => {
                this.$Progress.fail();
@@ -208,18 +242,20 @@ export default {
             });
       },
       load() {
-         this.isPencarian = false;
+         this.isPencarian = this.checkIsPencarianTrue();
          this.$Progress.start();
          axios
-            .get(this.$api_history_per_hit_client)
+            .get(this.$api_history_per_hit_client, {
+               params: this.queryUrlIfExist
+            })
             .then(respon => {
-               this.$Progress.finish();
                this.in_history_per_hit_client =
                   respon.data.in_history_per_hit_client;
+               this.$Progress.finish();
             })
             .catch(e => {
-               this.$Progress.fail();
                this.$error.catch(e);
+               this.$Progress.fail();
             });
       },
       hapus(data_kode) {

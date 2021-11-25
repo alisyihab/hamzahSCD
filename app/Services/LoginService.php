@@ -17,6 +17,7 @@ class LoginService
         "username",
 
     ];
+    
     public function login($request)
     {
         $username = $request->username;

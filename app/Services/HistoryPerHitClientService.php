@@ -32,8 +32,11 @@ class HistoryPerHitClientService extends Controller
         return $this->EloquentData()->get();
     }
 
-    public function mendapatkanSeluruhDataPaginate($paginate)
+    public function mendapatkanSeluruhDataPaginate($paginate, $isCari = false)
     {
+        if ($isCari) {
+            return $this->mencariDataBerdasarkanKostum("app_name", $isCari, $paginate);
+        }
         return $this->EloquentData()->paginate($paginate);
     }
 
@@ -56,7 +59,7 @@ class HistoryPerHitClientService extends Controller
         $data = [];
         $data["client_app_id"] = $request["client_id"];
         $data["path"] = $request["path_url"];
-        $data["ip_address"] = $this->getClientIpAddressService->getIp();
+        $data["ip_address"] =  $this->getClientIpAddressService->getIp();
         $data["method"] = $request["route_data"]->methods()[0];
         $data["browserName"] = Browser::browserName();
         $data["browserEngine"] = Browser::browserEngine();

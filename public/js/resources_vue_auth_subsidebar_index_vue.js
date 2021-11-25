@@ -307,90 +307,106 @@ var render = function() {
                   ])
                 ])
               : _vm._e()
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "bg-white" }, [
-        _c("div", { staticClass: "table-responsive" }, [
-          _c("table", { staticClass: "table-sm table-hover table" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.in_sidebar.get_subsidebar, function(sub_sidebar, i) {
-                return _c("tr", { key: i }, [
-                  _c("td", { staticClass: "px-3" }, [_vm._v(_vm._s(i + 1))]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3" }, [
-                    _vm._v(_vm._s(sub_sidebar.nama_sub_sidebar))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3" }, [
-                    _vm._v(
-                      _vm._s(_vm._f("STATUS")(sub_sidebar.status_sub_sidebar))
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3", attrs: { width: "25" } }, [
-                    _c("input", {
-                      staticClass: "form-control text-center",
-                      attrs: { type: "text", id: sub_sidebar.kd_sub_sidebar },
-                      domProps: { value: sub_sidebar.urutan_sub_sidebar },
-                      on: { change: _vm.updateUrutan }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "px-3" }, [
-                    _c("div", { staticClass: "btn-group" }, [
-                      _vm._m(1, true),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "bg-white" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table-sm table-hover table" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.in_sidebar.get_subsidebar, function(
+                    sub_sidebar,
+                    i
+                  ) {
+                    return _c("tr", { key: i }, [
+                      _c("td", { staticClass: "px-3" }, [
+                        _vm._v(_vm._s(i + 1))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "px-3" }, [
+                        _vm._v(_vm._s(sub_sidebar.nama_sub_sidebar))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "px-3" }, [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("STATUS")(sub_sidebar.status_sub_sidebar)
+                          )
+                        )
+                      ]),
                       _vm._v(" "),
                       _c(
-                        "div",
-                        { staticClass: "dropdown-menu dropdown-menu-right" },
+                        "td",
+                        { staticClass: "px-3", attrs: { width: "25" } },
                         [
-                          _vm.canDoUpdate
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "dropdown-item",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.edit(sub_sidebar)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Edit")]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.canDoDestroy
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "dropdown-item",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.hapus(
-                                        sub_sidebar.kd_sub_sidebar
-                                      )
-                                    }
-                                  }
-                                },
-                                [_vm._v("Hapus")]
-                              )
-                            : _vm._e()
+                          _c("input", {
+                            staticClass: "form-control text-center",
+                            attrs: {
+                              type: "text",
+                              id: sub_sidebar.kd_sub_sidebar
+                            },
+                            domProps: { value: sub_sidebar.urutan_sub_sidebar },
+                            on: { change: _vm.updateUrutan }
+                          })
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "px-3" }, [
+                        _c("div", { staticClass: "btn-group" }, [
+                          _vm._m(1, true),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "dropdown-menu dropdown-menu-right"
+                            },
+                            [
+                              _vm.canDoUpdate
+                                ? _c(
+                                    "a",
+                                    {
+                                      staticClass: "dropdown-item",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.edit(sub_sidebar)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Edit")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.canDoDestroy
+                                ? _c(
+                                    "a",
+                                    {
+                                      staticClass: "dropdown-item",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.hapus(
+                                            sub_sidebar.kd_sub_sidebar
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Hapus")]
+                                  )
+                                : _vm._e()
+                            ]
+                          )
+                        ])
+                      ])
                     ])
-                  ])
-                ])
-              }),
-              0
-            )
+                  }),
+                  0
+                )
+              ])
+            ])
           ])
-        ])
-      ])
+        ]
+      )
     ],
     1
   )
