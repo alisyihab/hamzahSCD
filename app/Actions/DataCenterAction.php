@@ -14,9 +14,12 @@ class DataCenterAction
     private static $_instance = null;
     public static $endpointData;
     public static $responseJsonData;
+    public static $paginate;
 
     public function __construct()
     {
+        self::$paginate = request("page");
+
         if (self::$endpointData == null) {
             dd("endpoint Data belum di set, mohon untuk set dengan benar");
         }
@@ -52,7 +55,9 @@ class DataCenterAction
 
     public function get()
     {
-        self::$responseJsonData =  self::httpRequest()->get(self::fullURL());
+        self::$responseJsonData =  self::httpRequest()->get(self::fullURL(), [
+            "page" => self::$paginate,
+        ]);
         return $this;
     }
 
@@ -60,7 +65,8 @@ class DataCenterAction
     public function search($cari)
     {
         self::$responseJsonData =  self::httpRequest()->get(self::fullURL(), [
-            "cari" => $cari
+            "cari" => $cari,
+            "page" => self::$paginate,
         ]);
         return $this;
     }
@@ -107,7 +113,7 @@ class DataCenterAction
 
     public function json()
     {
-        return self::$responseJsonData->json();
+        return response(self::$responseJsonData->json(), self::$responseJsonData->status());
     }
 
     public static function setEndpoint($endpoint)
@@ -120,6 +126,13 @@ class DataCenterAction
         $endpoints =  [
             "jenisMember" => "jenis-member",
             "kostumerMember" => "kostumer-member",
+            "provinsi" => "alamat/provinsi",
+            "wilayah"=>"alamat/wilayah",
+            "kecamatan"=>"alamat/kecamatan",
+            "kelurahan"=>"alamat/kelurahan",
+            "kodepos"=>"alamat/kodepos",
+            "regional"=>"alamat/regional",
+            "negara"=>"alamat/negara",
         ];
 
         return $endpoints[self::$endpointData];
