@@ -19,13 +19,6 @@
                               label="nama_route"
                            ></multiselect>
                         </div>
-                        <!-- <select class="form-control" required v-model="form.data_permission">
-                        <option
-                           :value="pemission.id"
-                           v-for=" (pemission,i)  in  in_permission"
-                           :key="i"
-                        >{{pemission.nama_route}}</option>
-                        </select>-->
                      </td>
                   </tr>
                   <tr>
