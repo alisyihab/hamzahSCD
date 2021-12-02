@@ -31,6 +31,11 @@ class JenisMemberController extends Controller
         return $this->jenisMemberService->memperbaruiData($request, $id);
     }
 
+    public function edit($id)
+    {
+        return $this->jenisMemberService->mendapatkanSatuData($id);
+    }
+
     public function show($id)
     {
         return null;
