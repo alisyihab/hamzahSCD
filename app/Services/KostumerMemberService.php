@@ -40,16 +40,28 @@ class KostumerMemberService extends Controller
 
     public function menyimpanData($request)
     {
-        return DataCenterAction::http()->post($request)->json();
+        return DataCenterAction::http()->post($this->parsingData($request))->json();
     }
 
     public function memperbaruiData($request, $id)
     {
-        return DataCenterAction::http()->put($request, $id)->json();
+        return DataCenterAction::http()->put($this->parsingData($request), $id)->json();
     }
 
     public function menghapusData($id)
     {
         return DataCenterAction::http()->delete($id)->json();
+    }
+
+    public function parsingData($request)
+    {
+        $request["daerah"] = $request["daerah"]["wilayah"];
+        $request["kewarganegaraan"] = $request["kewarganegaraan"]["nama_negara"];
+        $request["provinsi"] = $request["provinsi"]["provinsi"];
+        $request["kecamatan"] = $request["kecamatan"]["kecamatan"];
+        $request["kelurahan"] = $request["kelurahan"]["kelurahan"];
+        $request["kodepos"] = $request["kodepos"]["kode_pos"];
+        $request["fk_kd_jenis_member"] = $request["fk_kd_jenis_member"]["kd_jenis_member"];
+        return $request;
     }
 }
