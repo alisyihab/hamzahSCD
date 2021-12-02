@@ -22,6 +22,11 @@ class JenisMemberService extends Controller
         return DataCenterAction::http()->get()->json();
     }
 
+    public function mendapatkanSatuData($id)
+    {
+        return DataCenterAction::http()->edit($id)->json();
+    }
+
     public function menyimpanData($request)
     {
         return DataCenterAction::http()->post($request)->json();
