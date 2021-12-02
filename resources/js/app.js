@@ -86,6 +86,7 @@ Vue.component("pagination", require("laravel-vue-pagination"));
 Vue.component("kosong", require("./components/kosong.vue").default);
 Vue.component("kembali", require("./components/kembali.vue").default);
 Vue.component("loading", require("./components/loading.vue").default);
+Vue.component("validasi", require("./components/textValidasi.vue").default);
 
 // API
 Vue.prototype.$api_role = "/api/role";
@@ -101,7 +102,12 @@ Vue.prototype.$api_user_agreement = "/api/user-agreement";
 Vue.prototype.$api_konsumer_key = "/api/konsumer-key";
 Vue.prototype.$api_oapi_audit_trail = "/api/oapi-audit-trail";
 Vue.prototype.$api_history_per_hit_client = "/api/history-per-hit-client";
-Vue.prototype.$ica_jenis_member = "/internal-client-api/jenis-member";
+Vue.prototype.$api_jenis_member = "/api/jenis-member";
+Vue.prototype.$api_kostumer_member = "/api/kostumer-member";
+Vue.prototype.$api_wilayah = "/api/alamat/wilayah";
+Vue.prototype.$api_kecamatan = "/api/alamat/kecamatan"
+Vue.prototype.$api_kelurahan = "/api/alamat/kelurahan"
+Vue.prototype.$api_kodepos = "/api/alamat/kodepos"
 
 Vue.prototype.$canDoStore = false;
 Vue.prototype.$canDoUpdate = false;

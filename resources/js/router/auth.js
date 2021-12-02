@@ -122,8 +122,40 @@ const routes = [
     {
         path: "/history-per-hit-client",
         component: () =>
-        import("../../vue/auth/history-per-hit-client/index.vue"),
+            import("../../vue/auth/history-per-hit-client/index.vue"),
         name: "history-per-hit-client.index"
+    },
+
+    {
+        path: "/jenis-member",
+        component: () => import("../../vue/auth/jenis-member/index.vue"),
+        name: "jenis-member.index"
+    },
+    {
+        path: "/jenis-member/create",
+        component: () => import("../../vue/auth/jenis-member/create.vue"),
+        name: "jenis-member.store"
+    },
+    {
+        path: "/jenis-member/edit/:kd_jenis_member",
+        component: () => import("../../vue/auth/jenis-member/create.vue"),
+        name: "jenis-member.update"
+    },
+
+    {
+        path: "/kostumer-member",
+        component: () => import("../../vue/auth/kostumer-member/index.vue"),
+        name: "kostumer-member.index"
+    },
+    {
+        path: "/kostumer-member/create",
+        component: () => import("../../vue/auth/kostumer-member/create.vue"),
+        name: "kostumer-member.store"
+    },
+    {
+        path: "/kostumer-member/edit/:kd_kostumer_member",
+        component: () => import("../../vue/auth/kostumer-member/create.vue"),
+        name: "kostumer-member.update"
     },
 
     {
