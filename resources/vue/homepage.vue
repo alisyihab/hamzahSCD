@@ -65,6 +65,7 @@
                         <label for>Password</label>
                         <div class="input-group">
                            <input
+                              autocomplete="on"
                               type="password"
                               id="password"
                               class="form-control form-control-sm"
