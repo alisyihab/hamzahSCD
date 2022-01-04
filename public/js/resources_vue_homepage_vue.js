@@ -104,6 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
@@ -751,7 +752,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control form-control-sm",
-                        attrs: { type: "password", id: "password" },
+                        attrs: {
+                          autocomplete: "on",
+                          type: "password",
+                          id: "password"
+                        },
                         domProps: { value: _vm.form.password },
                         on: {
                           input: function($event) {

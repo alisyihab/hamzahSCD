@@ -312,7 +312,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     var _Form;
@@ -743,10 +742,6 @@ var render = function() {
                               }
                             },
                             [
-                              _c("option", { attrs: { value: "test" } }, [
-                                _vm._v("Test")
-                              ]),
-                              _vm._v(" "),
                               _c("option", { attrs: { value: "islam" } }, [
                                 _vm._v("Islam")
                               ]),
