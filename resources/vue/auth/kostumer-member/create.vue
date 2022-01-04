@@ -51,7 +51,6 @@
                            <th class="px-3 align-middle">agama</th>
                            <td class="px-3 align-middle">
                               <select v-model="form.agama" required class="form-control">
-                                 <option value="test">Test</option>
                                  <option value="islam">Islam</option>
                                  <option value="kristern">kristen</option>
                               </select>
