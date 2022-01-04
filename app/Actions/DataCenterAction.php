@@ -7,12 +7,14 @@ use PhpParser\Node\Expr\StaticCall;
 
 class DataCenterAction
 {
-    public const clientID = "0b9bcb584f005057d0b15269f728fcfc";
-    public const clientSecret = "fa76210d693dccc65614c77cbbaa76f435e5b783187747d33ef1081cdb091486";
+    
+    public const clientID = "30107f032463e34740ced8efa3acbe41";
+    public const clientSecret = "a91228697ab4ba03221ab64fb2e59d419d985b048ddc765e81db7f6ccce01a52";
     public const baseURL1_0_0 = "http://127.0.0.1:7000/client-api/v1.0/";
 
     private static $_instance = null;
-    public static $endpointData;
+    
+    public static $endpointData;    
     public static $responseJsonData;
     public static $paginate;
 
