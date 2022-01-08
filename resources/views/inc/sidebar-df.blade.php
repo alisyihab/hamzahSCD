@@ -28,7 +28,7 @@
                     <router-link to="/dashboard" class="nav-link text-white">
                         <i class="nav-icon fa fa-home  "></i>
                         <p>
-                            Halaman Utama 123123123
+                            Halaman Utama asdf
                         </p>
                     </router-link>
                 </li>
