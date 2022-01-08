@@ -25,10 +25,10 @@
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <router-link to="/dashboard " class="nav-link text-white">
+                    <router-link to="/dashboard" class="nav-link text-white">
                         <i class="nav-icon fa fa-home  "></i>
                         <p>
-                            Halaman Utama
+                            Halaman Utama 123123123
                         </p>
                     </router-link>
                 </li>
