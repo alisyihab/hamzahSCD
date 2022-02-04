@@ -1,6 +1,6 @@
 <template>
    <div>
-      helo ini ada update dari branch development
+
    </div>
 </template>
 <script>
